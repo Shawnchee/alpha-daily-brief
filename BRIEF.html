@@ -169,16 +169,29 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14
 .pulse{width:8px;height:8px;border-radius:50%;background:var(--text);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
 .footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:11px;color:var(--faint)}
-.pivot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:1rem}
-.pivot-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.pivot-card-header{background:var(--surface2);padding:10px 16px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-family:var(--mono);border-bottom:1px solid var(--border)}
-.pivot-table{width:100%;border-collapse:collapse;font-size:13px}
-.pivot-table tr{border-bottom:.5px solid var(--border)}
-.pivot-table tr:last-child{border-bottom:none}
-.pivot-table td{padding:9px 16px;font-family:var(--mono)}
-.pivot-table td:first-child{color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.04em;width:40%}
-.pivot-table td:last-child{font-weight:500;text-align:right}
 .piv-r{color:var(--red)}.piv-s{color:var(--green)}.piv-p{color:var(--text)}
+.pivot-outer{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:1rem}
+.pivot-outer-header{background:var(--surface2);padding:10px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.pivot-outer-title{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:var(--mono)}
+.pivot-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.pivot-tbl{width:100%;border-collapse:collapse;font-size:12px;min-width:600px}
+.pivot-tbl thead tr{background:var(--surface2)}
+.pivot-tbl thead th{padding:9px 14px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.04em;text-align:center;border-right:.5px solid var(--border);border-bottom:1.5px solid var(--border2);white-space:nowrap}
+.pivot-tbl thead th:first-child{text-align:left;border-right:1.5px solid var(--border2);min-width:90px}
+.pivot-tbl thead th:last-child{border-right:none}
+.pivot-tbl thead th.th-s{color:var(--green)}
+.pivot-tbl thead th.th-r{color:var(--red)}
+.pivot-tbl thead th.th-p{color:var(--text);background:rgba(0,0,0,.03)}
+.pivot-tbl tbody tr{border-bottom:.5px solid var(--border);transition:background .1s}
+.pivot-tbl tbody tr:last-child{border-bottom:none}
+.pivot-tbl tbody tr:hover{background:var(--surface2)}
+.pivot-tbl tbody td{padding:10px 14px;font-family:var(--mono);font-size:12px;font-weight:500;text-align:center;border-right:.5px solid var(--border);white-space:nowrap}
+.pivot-tbl tbody td:last-child{border-right:none}
+.pivot-tbl tbody td.td-name{text-align:left;font-weight:700;font-size:11px;color:var(--text);background:var(--surface2);border-right:1.5px solid var(--border2);letter-spacing:.03em}
+.pivot-tbl tbody td.td-s{color:var(--green);font-weight:600}
+.pivot-tbl tbody td.td-r{color:var(--red);font-weight:600}
+.pivot-tbl tbody td.td-p{color:var(--text);font-weight:700;background:rgba(0,0,0,.02)}
+.pivot-note{font-size:12px;color:var(--muted);padding:10px 16px;background:var(--surface2);border-top:.5px solid var(--border);font-family:var(--mono)}
 .tv-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:1.5rem}
 .tv-header{background:var(--surface2);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
 .tv-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -332,9 +345,15 @@ function renderPerps(d){
 
 function renderGold(d){
   const g=d.goldPivots||{};
-  if(!g.classic&&!g.fibonacci)return;
+  if(!g.classic&&!g.fibonacci&&!g.camarilla)return;
 
-  // Summary stats
+  // Helper: get value by label from array
+  function gv(arr,label){
+    const item=(arr||[]).find(x=>x.label===label);
+    return item&&item.value&&item.value!=='N/A'?item.value:'—';
+  }
+
+  // Gold summary stats
   const stats=d.goldSummary||{};
   const summaryHtml=Object.keys(stats).length?`
     <div class="gold-summary">
@@ -346,31 +365,75 @@ function renderGold(d){
         </div>`).join('')}
     </div>` : '';
 
-  // Pivot tables
-  function pivotTable(label,rows){
-    if(!rows||!rows.length)return'';
-    return`<div class="pivot-card">
-      <div class="pivot-card-header">${label}</div>
-      <table class="pivot-table">
-        ${rows.map(r=>`<tr>
-          <td>${r.label}</td>
-          <td class="${r.label.startsWith('R')?'piv-r':r.label.startsWith('S')?'piv-s':'piv-p'}">${r.value||'—'}</td>
-        </tr>`).join('')}
-      </table>
-    </div>`;
+  // ── INVESTING.COM LAYOUT ────────────────────────────────────
+  // ONE unified table: rows = methods, columns = S3→R3
+  // Camarilla gets extra S4/R4 columns shown as separate rows
+  // ─────────────────────────────────────────────────────────────
+
+  const stdCols = ['S3','S2','S1','Pivot Points','R1','R2','R3'];
+  const camCols = ['S4','S3','S2','S1','Pivot Points','R1','R2','R3','R4'];
+
+  function tdCls(col){
+    if(col.startsWith('R'))return'td-r';
+    if(col.startsWith('S'))return'td-s';
+    return'td-p';
+  }
+  function thCls(col){
+    if(col.startsWith('R'))return'th-r';
+    if(col.startsWith('S'))return'th-s';
+    return'th-p';
   }
 
-  const classic=g.classic||[];
-  const fib=g.fibonacci||[];
-  const cam=g.camarilla||[];
+  // Normalise lookup key: "Pivot Points" → "Pivot"
+  function lookupLabel(col){ return col==='Pivot Points'?'Pivot':col; }
+
+  const methods=[
+    {key:'classic',   label:'Classic'},
+    {key:'fibonacci', label:'Fibonacci'},
+    {key:'camarilla', label:'Camarilla'}
+  ].filter(m=>g[m.key]&&g[m.key].length);
+
+  if(!methods.length)return;
+
+  // Determine if we need the wider camarilla columns
+  const hasCam = methods.some(m=>m.key==='camarilla');
+  const cols = hasCam ? camCols : stdCols;
+
+  // Header
+  const headerRow=`
+    <tr>
+      <th style="text-align:left;color:var(--faint);font-weight:600">Name</th>
+      ${cols.map(c=>`<th class="${thCls(c)}">${c}</th>`).join('')}
+    </tr>`;
+
+  // Body rows — Classic and Fibonacci use stdCols, Camarilla uses camCols
+  const bodyRows=methods.map(m=>{
+    const useCols = m.key==='camarilla' ? camCols : cols;
+    const cells = cols.map(c=>{
+      // If this method doesn't use this column (e.g. Classic doesn't have R4/S4), show —
+      const inUse = useCols.includes(c);
+      const val = inUse ? gv(g[m.key], lookupLabel(c)) : '—';
+      return`<td class="${tdCls(c)}">${val}</td>`;
+    }).join('');
+    return`<tr><td class="td-name">${m.label}</td>${cells}</tr>`;
+  }).join('');
+
+  const noteHtml=g.note?`<div class="pivot-note">${g.note}</div>`:'';
 
   document.getElementById('r-gold-pivots').innerHTML=`
-    <div class="pivot-grid">
-      ${pivotTable('Classic Pivots',classic)}
-      ${pivotTable('Fibonacci Pivots',fib)}
-      ${cam.length?pivotTable('Camarilla Pivots',cam):''}
-    </div>
-    ${g.note?`<div style="font-size:12px;color:var(--muted);margin-top:8px;font-family:var(--mono)">${g.note}</div>`:''}`;
+    <div class="pivot-outer">
+      <div class="pivot-outer-header">
+        <span class="pivot-outer-title">Pivot Points — Gold Futures (XAU/USD)</span>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--faint)">Daily</span>
+      </div>
+      <div class="pivot-scroll">
+        <table class="pivot-tbl">
+          <thead>${headerRow}</thead>
+          <tbody>${bodyRows}</tbody>
+        </table>
+      </div>
+      ${noteHtml}
+    </div>`;
 
   if(summaryHtml){
     document.getElementById('r-gold-summary').innerHTML=summaryHtml;
