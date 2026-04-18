@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="data.js"></script>
+<script src="insights.js"></script>
 <style>
 :root{--bg:#F5F4F0;--surface:#FFFFFF;--surface2:#EEEDE8;--border:#E0DED6;--border2:#C8C6BC;--text:#18170F;--muted:#68665A;--faint:#9A9888;--green:#1A6B3C;--green-bg:#E8F5EE;--red:#B83028;--red-bg:#FAEAEA;--amber:#8A5800;--amber-bg:#FFF4DC;--blue:#1A3A8A;--blue-bg:#EAF0FA;--purple:#5A1A8A;--purple-bg:#F2EAFA;--mono:'DM Mono',monospace;--sans:'Syne',sans-serif;--r:4px}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -275,6 +276,7 @@ function renderPerps(d){
 
 function init(){
   const d=window.CRUCIX_DATA;
+  const ins=window.CRUCIX_INSIGHTS||{};
   const tabs=['overview','crypto','us','malaysia','insights','perps'];
   if(!d){
     tabs.forEach(id=>{document.getElementById('r-'+id).innerHTML=`<div class="no-data"><div class="pulse"></div><h2>Awaiting first run</h2><p>The routine will populate this at 7:00 AM KL time.</p></div>`;});
@@ -286,8 +288,10 @@ function init(){
   document.getElementById('r-crypto').innerHTML=renderCrypto(d);
   document.getElementById('r-us').innerHTML=renderUS(d);
   document.getElementById('r-malaysia').innerHTML=renderMalaysia(d);
-  document.getElementById('r-insights').innerHTML=renderInsights(d);
-  document.getElementById('r-perps').innerHTML=renderPerps(d);
+  // Insights and perps come from insights.js
+  const insData = {...d, insights: ins.insights||d.insights||{}, perps: ins.perps||d.perps||[] };
+  document.getElementById('r-insights').innerHTML=renderInsights(insData);
+  document.getElementById('r-perps').innerHTML=renderPerps(insData);
 }
 window.addEventListener('DOMContentLoaded',init);
 </script>
