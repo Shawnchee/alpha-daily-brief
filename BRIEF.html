@@ -1,1 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crucix Intel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="data.js"></script>
+<style>
+  :root {
+    --bg: #F5F4F0;
+    --surface: #FFFFFF;
+    --surface2: #F0EFE9;
+    --border: #E2E0D8;
+    --border2: #CCCAC0;
+    --text: #1A1916;
+    --muted: #6B6860;
+    --faint: #9A9890;
+    --green: #1A6B3C;
+    --green-bg: #EAF5EE;
+    --red: #B83030;
+    --red-bg: #FAEAEA;
+    --amber: #8A5A00;
+    --amber-bg: #FFF4DC;
+    --blue: #1A3A8A;
+    --blue-bg: #EAF0FA;
+    --accent: #1A1916;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 1.5px solid var(--text);
+    padding-bottom: 1.25rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .header-left h1 {
+    font-family: var(--sans);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+
+  .header-left h1 span {
+    font-weight: 400;
+    opacity: 0.4;
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .header-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .session-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 2px;
+    background: var(--text);
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  .session-badge.evening { background: #2C1A5E; }
+
+  .mood-bar {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    max-width: 480px;
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .mood-bar.bearish { color: var(--red); }
+  .mood-bar.bullish { color: var(--green); }
+  .mood-bar.neutral { color: var(--amber); }
+
+  /* SECTION */
+  .section { margin-bottom: 2.5rem; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    padding-bottom: 6px;
+    border-bottom: 0.5px solid var(--border2);
+  }
+
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+  }
+
+  /* VERDICT BOX */
+  .verdict {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--text);
+    padding: 14px 18px;
+    border-radius: 0 4px 4px 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text);
+    margin-top: 1rem;
+  }
+
+  .verdict.bullish { border-left-color: var(--green); }
+  .verdict.bearish { border-left-color: var(--red); }
+  .verdict.caution { border-left-color: var(--amber); }
+
+  /* METRIC GRID */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px;
+  }
+
+  .metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    position: relative;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: var(--faint);
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .metric-value {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .metric-change {
+    font-family: var(--mono);
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+  .metric-signal {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.4;
+    border-top: 0.5px solid var(--border);
+    padding-top: 6px;
+  }
+
+  .up { color: var(--green); }
+  .down { color: var(--red); }
+  .flat { color: var(--muted); }
+
+  /* CRYPTO CARDS */
+  .crypto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .crypto-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 18px;
+  }
+
+  .crypto-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .crypto-name {
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.2px;
+  }
+
+  .crypto-symbol {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    margin-top: 1px;
+  }
+
+  .crypto-price-block { text-align: right; }
+
+  .crypto-price {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .crypto-changes {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 2px;
+  }
+
+  .change-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  .change-pill.up { background: var(--green-bg); color: var(--green); }
+  .change-pill.down { background: var(--red-bg); color: var(--red); }
+  .change-pill.flat { background: var(--surface2); color: var(--muted); }
+
+  .crypto-insight {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+    border-top: 0.5px solid var(--border);
+    padding-top: 10px;
+    margin-top: 4px;
+  }
+
+  /* DOMINANCE BAR */
+  .dominance-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .dom-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    text-transform: uppercase;
+    min-width: 120px;
+  }
+
+  .dom-bar-wrap {
+    flex: 1;
+    min-width: 200px;
+    height: 6px;
+    background: var(--surface2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .dom-bar-fill {
+    height: 100%;
+    background: var(--text);
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+
+  .dom-value {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 50px;
+    text-align: right;
+  }
+
+  .dom-signal {
+    font-size: 12px;
+    color: var(--muted);
+    flex: 1;
+    min-width: 200px;
+  }
+
+  /* MEMECOIN TABLE */
+  .meme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 8px;
+  }
+
+  .meme-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 14px;
+  }
+
+  .meme-name {
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .meme-change {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 4px 0;
+  }
+
+  .meme-note {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* STOCK TABLE */
+  .stock-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    font-size: 13px;
+  }
+
+  .stock-table thead tr {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stock-table th {
+    padding: 8px 14px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--faint);
+    font-family: var(--mono);
+  }
+
+  .stock-table th.right, .stock-table td.right { text-align: right; }
+
+  .stock-table tbody tr {
+    border-bottom: 0.5px solid var(--border);
+    transition: background 0.1s;
+  }
+
+  .stock-table tbody tr:last-child { border-bottom: none; }
+  .stock-table tbody tr:hover { background: var(--surface2); }
+
+  .stock-table td {
+    padding: 9px 14px;
+    vertical-align: top;
+  }
+
+  .stock-ticker {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .stock-name {
+    font-size: 11px;
+    color: var(--faint);
+    margin-top: 1px;
+  }
+
+  .stock-price {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .stock-change {
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  .stock-insight {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 320px;
+  }
+
+  .stock-flag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .flag-earnings { background: var(--amber-bg); color: var(--amber); }
+  .flag-watch { background: var(--blue-bg); color: var(--blue); }
+  .flag-hot { background: var(--red-bg); color: var(--red); }
+
+  /* IPO TABLE */
+  .ipo-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .ipo-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .ipo-main { flex: 1; }
+  .ipo-name { font-weight: 600; font-size: 14px; }
+  .ipo-meta { font-size: 11px; color: var(--muted); margin-top: 3px; font-family: var(--mono); }
+  .ipo-note { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+  .ipo-right { text-align: right; }
+
+  .ipo-price {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .ipo-status {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+    margin-top: 6px;
+    display: inline-block;
+  }
+
+  .status-open { background: var(--green-bg); color: var(--green); }
+  .status-upcoming { background: var(--amber-bg); color: var(--amber); }
+  .status-listed { background: var(--surface2); color: var(--muted); }
+
+  /* NEWS */
+  .news-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .news-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 18px;
+  }
+
+  .news-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .news-headline {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .news-sentiment {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-family: var(--mono);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .sent-bullish { background: var(--green-bg); color: var(--green); }
+  .sent-bearish { background: var(--red-bg); color: var(--red); }
+  .sent-neutral { background: var(--surface2); color: var(--muted); }
+  .sent-watch { background: var(--amber-bg); color: var(--amber); }
+
+  .news-source {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+    margin-bottom: 8px;
+  }
+
+  .news-meaning {
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.6;
+    background: var(--surface2);
+    padding: 8px 12px;
+    border-radius: 2px;
+    border-left: 2px solid var(--border2);
+  }
+
+  .news-meaning strong {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--faint);
+    display: block;
+    margin-bottom: 2px;
+    font-family: var(--mono);
+  }
+
+  /* OPPORTUNITIES */
+  .opp-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .opp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px 18px;
+    border-left: 3px solid var(--border2);
+  }
+
+  .opp-card.breakout { border-left-color: var(--green); }
+  .opp-card.dip { border-left-color: var(--blue); }
+  .opp-card.momentum { border-left-color: var(--amber); }
+  .opp-card.avoid { border-left-color: var(--red); }
+  .opp-card.watch { border-left-color: var(--faint); }
+
+  .opp-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .opp-ticker {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .opp-type {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-family: var(--mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .type-breakout { background: var(--green-bg); color: var(--green); }
+  .type-dip { background: var(--blue-bg); color: var(--blue); }
+  .type-momentum { background: var(--amber-bg); color: var(--amber); }
+  .type-avoid { background: var(--red-bg); color: var(--red); }
+  .type-watch { background: var(--surface2); color: var(--muted); }
+
+  .opp-timeframe {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--faint);
+    padding: 3px 8px;
+    border: 0.5px solid var(--border2);
+    border-radius: 2px;
+    margin-left: auto;
+  }
+
+  .opp-reasoning {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* TWO COLUMN */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer-left {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+  }
+
+  .footer-right {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--faint);
+  }
+
+  /* NO DATA STATE */
+  .no-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .no-data h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .no-data p {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 320px;
+    line-height: 1.6;
+  }
+
+  .no-data .pulse {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--text);
+    animation: pulse 2s infinite;
+    margin-bottom: 8px;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.7); }
+  }
+
+  /* TRENDING ROW */
+  .trending-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .trending-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  .trending-ticker { font-weight: 500; }
+  .trending-price { color: var(--muted); }
+
+  /* INDICES ROW */
+  .indices-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .index-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 14px;
+  }
+
+  .index-name {
+    font-size: 11px;
+    color: var(--faint);
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .index-value {
+    font-family: var(--mono);
+    font-size: 17px;
+    font-weight: 500;
+    margin: 3px 0;
+  }
+
+  .index-change {
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  /* KLCI HIGHLIGHT */
+  .klci-card {
+    background: var(--text);
+    color: white;
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin-bottom: 8px;
+  }
+
+  .klci-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .klci-value {
+    font-family: var(--mono);
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    margin: 4px 0;
+  }
+
+  .klci-change {
+    font-family: var(--mono);
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  .klci-context {
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  /* USDMYR ROW */
+  .forex-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 18px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .forex-pair {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .forex-rate {
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .forex-signal {
+    font-size: 12px;
+    color: var(--muted);
+    flex: 1;
+    text-align: right;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 0.5px;
+    background: var(--border);
+    margin: 2rem 0;
+  }
+</style>
+</head>
+<body>
+<div class="page" id="root"></div>
+
+<script>
+// ─── HELPERS ───────────────────────────────────────────────────────────────────
+
+function changeClass(val) {
+  if (val === undefined || val === null || val === '') return 'flat';
+  const n = parseFloat(String(val).replace('%','').replace('+',''));
+  if (isNaN(n) || n === 0) return 'flat';
+  return n > 0 ? 'up' : 'down';
+}
+
+function fmtChange(val) {
+  if (val === undefined || val === null || val === '') return '—';
+  const s = String(val);
+  const n = parseFloat(s.replace('%','').replace('+',''));
+  if (isNaN(n)) return s;
+  const sign = n > 0 ? '+' : '';
+  return sign + n.toFixed(2) + (s.includes('%') ? '%' : '');
+}
+
+function oppTypeClass(type) {
+  const t = (type||'').toLowerCase();
+  if (t.includes('break')) return 'breakout';
+  if (t.includes('dip')) return 'dip';
+  if (t.includes('momentum') || t.includes('mom')) return 'momentum';
+  if (t.includes('avoid')) return 'avoid';
+  return 'watch';
+}
+
+function sentClass(s) {
+  const v = (s||'').toLowerCase();
+  if (v.includes('bull')) return 'sent-bullish';
+  if (v.includes('bear')) return 'sent-bearish';
+  if (v.includes('watch')) return 'sent-watch';
+  return 'sent-neutral';
+}
+
+function moodClass(s) {
+  const v = (s||'').toLowerCase();
+  if (v.includes('bullish') || v.includes('risk-on') || v.includes('green')) return 'bullish';
+  if (v.includes('bearish') || v.includes('risk-off') || v.includes('red') || v.includes('fear')) return 'bearish';
+  return 'neutral';
+}
+
+function verdictClass(text) {
+  const t = (text||'').toLowerCase();
+  const bullScore = (t.match(/bull|opportunity|buy|upside|positive|breakout/g)||[]).length;
+  const bearScore = (t.match(/bear|risk|caution|sell|downside|negative|break/g)||[]).length;
+  if (bullScore > bearScore) return 'bullish';
+  if (bearScore > bullScore) return 'bearish';
+  return 'caution';
+}
+
+// ─── RENDERERS ──────────────────────────────────────────────────────────────────
+
+function renderHeader(d) {
+  const session = d.session || 'Morning';
+  const mClass = moodClass(d.mood || '');
+  return `
+    <div class="header">
+      <div class="header-left">
+        <h1>Crucix <span>Intel</span></h1>
+        <div class="header-meta">
+          <span class="header-date">${d.generated || '—'}</span>
+          <span class="session-badge ${session === 'Evening' ? 'evening' : ''}">${session} Brief</span>
+        </div>
+      </div>
+      <div class="mood-bar ${mClass}">${d.mood || 'Analysing market conditions...'}</div>
+    </div>`;
+}
+
+function renderMacro(macro) {
+  if (!macro) return '';
+  const items = [
+    { key: 'dxy',     label: 'DXY' },
+    { key: 'gold',    label: 'Gold' },
+    { key: 'oil',     label: 'Crude Oil' },
+    { key: 'yield10y',label: '10Y Yield' },
+    { key: 'vix',     label: 'VIX' },
+    { key: 'usdmyr',  label: 'USD/MYR' },
+    { key: 'silver',  label: 'Silver' },
+    { key: 'sp500',   label: 'S&P 500' },
+  ];
+
+  const cards = items.filter(i => macro[i.key]).map(i => {
+    const m = macro[i.key];
+    const cc = changeClass(m.change);
+    return `
+      <div class="metric-card">
+        <div class="metric-label">${i.label}</div>
+        <div class="metric-value">${m.value || '—'}</div>
+        <div class="metric-change ${cc}">${fmtChange(m.change)}</div>
+        ${m.signal ? `<div class="metric-signal">${m.signal}</div>` : ''}
+      </div>`;
+  }).join('');
+
+  const vClass = verdictClass(macro.verdict || '');
+
+  return `
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <span class="section-title">Macro Pulse</span>
+      </div>
+      <div class="metric-grid">${cards}</div>
+      ${macro.verdict ? `<div class="verdict ${vClass}">${macro.verdict}</div>` : ''}
+    </div>`;
+}
+
+function renderCrypto(crypto) {
+  if (!crypto) return '';
+
+  const mainCoins = (crypto.main || []).map(c => {
+    const c1 = changeClass(c.change1h);
+    const c24 = changeClass(c.change24h);
+    const c7 = changeClass(c.change7d);
+    return `
+      <div class="crypto-card">
+        <div class="crypto-top">
+          <div>
+            <div class="crypto-name">${c.name}</div>
+            <div class="crypto-symbol">${c.symbol || ''}</div>
+          </div>
+          <div class="crypto-price-block">
+            <div class="crypto-price ${c24}">${c.price}</div>
+            <div class="crypto-changes">
+              ${c.change1h !== undefined ? `<span class="change-pill ${c1}">1h ${fmtChange(c.change1h)}%</span>` : ''}
+              <span class="change-pill ${c24}">24h ${fmtChange(c.change24h)}%</span>
+              ${c.change7d !== undefined ? `<span class="change-pill ${c7}">7d ${fmtChange(c.change7d)}%</span>` : ''}
+            </div>
+          </div>
+        </div>
+        ${c.insight ? `<div class="crypto-insight">${c.insight}</div>` : ''}
+      </div>`;
+  }).join('');
+
+  const domHtml = crypto.dominance ? `
+    <div class="dominance-row">
+      <div class="dom-label">BTC Dominance</div>
+      <div class="dom-bar-wrap">
+        <div class="dom-bar-fill" style="width:${Math.min(parseFloat(crypto.dominance.value)||50, 100)}%"></div>
+      </div>
+      <div class="dom-value ${changeClass(crypto.dominance.change)}">${crypto.dominance.value}%</div>
+      <div class="dom-signal">${crypto.dominance.signal || ''}</div>
+    </div>` : '';
+
+  const memeHtml = (crypto.memecoins || []).length ? `
+    <div class="section-header" style="margin-top:1.25rem;">
+      <span class="section-title" style="font-size:10px;">Memecoin Radar</span>
+    </div>
+    <div class="meme-grid">
+      ${(crypto.memecoins || []).map(m => {
+        const cc = changeClass(m.change24h);
+        return `
+          <div class="meme-card">
+            <div class="meme-name">${m.name} <span style="font-weight:400;color:var(--faint);font-size:11px;">${m.symbol||''}</span></div>
+            <div class="meme-change ${cc}">${fmtChange(m.change24h)}%</div>
+            ${m.price ? `<div style="font-family:var(--mono);font-size:12px;color:var(--muted);">${m.price}</div>` : ''}
+            ${m.note ? `<div class="meme-note">${m.note}</div>` : ''}
+          </div>`;
+      }).join('')}
+    </div>` : '';
+
+  const vClass = verdictClass(crypto.verdict || '');
+
+  return `
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <span class="section-title">Crypto Market</span>
+      </div>
+      ${domHtml}
+      <div class="crypto-grid">${mainCoins}</div>
+      ${memeHtml}
+      ${crypto.verdict ? `<div class="verdict ${vClass}" style="margin-top:1rem;">${crypto.verdict}</div>` : ''}
+    </div>`;
+}
+
+function renderUSMarkets(us) {
+  if (!us) return '';
+
+  const indicesHtml = (us.indices || []).length ? `
+    <div class="indices-row">
+      ${(us.indices || []).map(idx => {
+        const cc = changeClass(idx.change);
+        return `
+          <div class="index-card">
+            <div class="index-name">${idx.name}</div>
+            <div class="index-value ${cc}">${idx.value}</div>
+            <div class="index-change ${cc}">${fmtChange(idx.change)}</div>
+          </div>`;
+      }).join('')}
+    </div>` : '';
+
+  const etfRows = (us.etfs || []).map(s => `
+    <tr>
+      <td><div class="stock-ticker">${s.ticker}</div><div class="stock-name">${s.name||''}</div></td>
+      <td class="right"><div class="stock-price">${s.price||'—'}</div></td>
+      <td class="right"><div class="stock-change ${changeClass(s.change)}">${fmtChange(s.change)}</div></td>
+      <td><div class="stock-insight">${s.insight||''}</div></td>
+    </tr>`).join('');
+
+  const stockRows = (us.stocks || []).map(s => `
+    <tr>
+      <td>
+        <div class="stock-ticker">${s.ticker}</div>
+        <div class="stock-name">${s.name||''}</div>
+        ${s.flag ? `<span class="stock-flag flag-${(s.flag||'').toLowerCase()}">${s.flag}</span>` : ''}
+      </td>
+      <td class="right"><div class="stock-price">${s.price||'—'}</div></td>
+      <td class="right"><div class="stock-change ${changeClass(s.change)}">${fmtChange(s.change)}</div></td>
+      <td><div class="stock-insight">${s.insight||''}</div></td>
+    </tr>`).join('');
+
+  const trendingHtml = (us.trending || []).length ? `
+    <div style="margin-top:1rem;">
+      <div class="section-header" style="margin-bottom:0.75rem;">
+        <span class="section-title" style="font-size:10px;">Trending & Most Active</span>
+      </div>
+      <div class="trending-row">
+        ${(us.trending || []).map(t => `
+          <div class="trending-pill">
+            <span class="trending-ticker">${t.ticker}</span>
+            <span class="trending-price ${changeClass(t.change)}">${fmtChange(t.change)}</span>
+          </div>`).join('')}
+      </div>
+    </div>` : '';
+
+  const vClass = verdictClass(us.verdict || '');
+
+  return `
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <span class="section-title">US Markets</span>
+      </div>
+      ${indicesHtml}
+      ${etfRows ? `
+        <div style="margin-bottom:8px;">
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint);font-family:var(--mono);margin-bottom:6px;">ETF Watchlist</div>
+          <table class="stock-table">
+            <thead><tr>
+              <th>Ticker</th><th class="right">Price</th><th class="right">Change</th><th>Insight</th>
+            </tr></thead>
+            <tbody>${etfRows}</tbody>
+          </table>
+        </div>` : ''}
+      ${stockRows ? `
+        <div>
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint);font-family:var(--mono);margin-bottom:6px;">Stocks Watchlist</div>
+          <table class="stock-table">
+            <thead><tr>
+              <th>Ticker</th><th class="right">Price</th><th class="right">Change</th><th>Insight</th>
+            </tr></thead>
+            <tbody>${stockRows}</tbody>
+          </table>
+        </div>` : ''}
+      ${trendingHtml}
+      ${us.verdict ? `<div class="verdict ${vClass}" style="margin-top:1rem;">${us.verdict}</div>` : ''}
+    </div>`;
+}
+
+function renderMalaysia(my) {
+  if (!my) return '';
+
+  const klciHtml = my.klci ? `
+    <div class="klci-card">
+      <div class="klci-label">FTSE Bursa Malaysia KLCI</div>
+      <div class="klci-value">${my.klci.value}</div>
+      <div class="klci-change">${fmtChange(my.klci.change)} today</div>
+      ${my.klci.context ? `<div class="klci-context">${my.klci.context}</div>` : ''}
+    </div>` : '';
+
+  const forexHtml = my.usdmyr ? `
+    <div class="forex-row">
+      <div class="forex-pair">USD / MYR</div>
+      <div class="forex-rate ${changeClass(my.usdmyr.change)}">${my.usdmyr.value}</div>
+      <div class="forex-signal">${my.usdmyr.signal || ''}</div>
+    </div>` : '';
+
+  const myStockRows = (my.stocks || []).map(s => `
+    <tr>
+      <td><div class="stock-ticker">${s.ticker}</div><div class="stock-name">${s.name||''}</div></td>
+      <td class="right"><div class="stock-price">RM ${s.price||'—'}</div></td>
+      <td class="right"><div class="stock-change ${changeClass(s.change)}">${fmtChange(s.change)}</div></td>
+      <td><div class="stock-insight">${s.insight||''}</div></td>
+    </tr>`).join('');
+
+  const ipoHtml = (my.ipos || []).length ? `
+    <div style="margin-top:1rem;">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint);font-family:var(--mono);margin-bottom:8px;">IPO Watch</div>
+      <div class="ipo-list">
+        ${(my.ipos || []).map(ipo => `
+          <div class="ipo-card">
+            <div class="ipo-main">
+              <div class="ipo-name">${ipo.name}</div>
+              <div class="ipo-meta">${ipo.sector || ''} ${ipo.listingDate ? '· Listing ' + ipo.listingDate : ''}</div>
+              ${ipo.note ? `<div class="ipo-note">${ipo.note}</div>` : ''}
+            </div>
+            <div class="ipo-right">
+              ${ipo.price ? `<div class="ipo-price">RM ${ipo.price}</div>` : ''}
+              <span class="ipo-status status-${(ipo.status||'upcoming').toLowerCase()}">${ipo.status || 'Upcoming'}</span>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>` : '';
+
+  const vClass = verdictClass(my.verdict || '');
+
+  return `
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <span class="section-title">Malaysia Market</span>
+      </div>
+      ${klciHtml}
+      ${forexHtml}
+      ${myStockRows ? `
+        <table class="stock-table" style="margin-bottom:0;">
+          <thead><tr>
+            <th>Stock</th><th class="right">Price</th><th class="right">Change</th><th>Insight</th>
+          </tr></thead>
+          <tbody>${myStockRows}</tbody>
+        </table>` : ''}
+      ${ipoHtml}
+      ${my.verdict ? `<div class="verdict ${vClass}" style="margin-top:1rem;">${my.verdict}</div>` : ''}
+    </div>`;
+}
+
+function renderNews(news) {
+  if (!news || !news.length) return '';
+  return `
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <span class="section-title">News That Moves Markets</span>
+      </div>
+      <div class="news-list">
+        ${news.map(n => `
+          <div class="news-card">
+            <div class="news-top">
+              <div class="news-headline">${n.headline}</div>
+              <span class="news-sentiment ${sentClass(n.sentiment)}">${(n.sentiment||'neutral').toUpperCase()}</span>
+            </div>
+            <div class="news-source">${n.source || ''}${n.time ? ' · ' + n.time : ''}</div>
+            ${n.meaning ? `
+              <div class="news-meaning">
+                <strong>What this means for you</strong>
+                ${n.meaning}
+              </div>` : ''}
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+function renderOpportunities(opps) {
+  if (!opps || !opps.length) return '';
+  return `
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <span class="section-title">Opportunities to Watch</span>
+      </div>
+      <div class="opp-list">
+        ${opps.map(o => {
+          const ot = oppTypeClass(o.type);
+          return `
+            <div class="opp-card ${ot}">
+              <div class="opp-top">
+                <span class="opp-ticker">${o.ticker || o.asset}</span>
+                <span class="opp-type type-${ot}">${o.type}</span>
+                ${o.timeframe ? `<span class="opp-timeframe">${o.timeframe}</span>` : ''}
+              </div>
+              <div class="opp-reasoning">${o.reasoning}</div>
+            </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+}
+
+function renderFooter(d) {
+  return `
+    <div class="footer">
+      <div class="footer-left">Crucix Intel · ${d.generated || '—'} · ${d.session || 'Morning'} session</div>
+      <div class="footer-right">${d.nextRun ? 'Next run: ' + d.nextRun : 'Auto-updates every session'}</div>
+    </div>`;
+}
+
+function renderNoData() {
+  return `
+    <div class="no-data">
+      <div class="pulse"></div>
+      <h2>Awaiting first run</h2>
+      <p>The Crucix Intel routine will populate this dashboard on its first scheduled run at 7:00 AM KL time.</p>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--faint);">data.js not found</p>
+    </div>`;
+}
+
+// ─── MAIN RENDER ────────────────────────────────────────────────────────────────
+
+function render() {
+  const root = document.getElementById('root');
+  const d = window.CRUCIX_DATA;
+
+  if (!d) {
+    root.innerHTML = renderNoData();
+    return;
+  }
+
+  root.innerHTML =
+    renderHeader(d) +
+    renderMacro(d.macro) +
+    '<div class="divider"></div>' +
+    renderCrypto(d.crypto) +
+    '<div class="divider"></div>' +
+    renderUSMarkets(d.usMarkets) +
+    '<div class="divider"></div>' +
+    renderMalaysia(d.malaysia) +
+    '<div class="divider"></div>' +
+    renderNews(d.news) +
+    '<div class="divider"></div>' +
+    renderOpportunities(d.opportunities) +
+    renderFooter(d);
+}
+
+window.addEventListener('DOMContentLoaded', render);
+</script>
+</body>
+</html>
