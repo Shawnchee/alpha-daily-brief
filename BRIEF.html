@@ -393,11 +393,26 @@ function renderInsights(d){
 function renderPerps(d){
   const perps=d.perps||[];
   if(!perps.length)return`<div class="no-data"><div class="pulse"></div><h2>No perps data</h2><p>Run the routine to generate trade setups.</p></div>`;
+
+  // Live ticker so user can see current price vs setup levels
+  const liveTicker=`
+    <div class="tv-wrap" style="margin-bottom:1.5rem">
+      <div class="tv-header">
+        <span class="tv-title">Live Prices — BTC · ETH · SOL</span>
+        <span class="tv-badge">Real-time · Binance</span>
+      </div>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {"symbols":[{"description":"BTC","proName":"BINANCE:BTCUSDT"},{"description":"ETH","proName":"BINANCE:ETHUSDT"},{"description":"SOL","proName":"BINANCE:SOLUSDT"}],"showSymbolLogo":true,"isTransparent":true,"displayMode":"adaptive","colorTheme":"light","locale":"en"}
+        <\/script>
+      </div>
+    </div>`;
   const cards=perps.map(p=>{
     const long=(p.direction||'').toUpperCase()==='LONG';
     return`<div class="perp-card"><div class="perp-header"><div><div class="perp-asset">${p.asset}</div><div class="perp-sym">${p.symbol||''} Perpetuals</div></div><div class="perp-dir ${long?'dir-long':'dir-short'}">${(p.direction||'').toUpperCase()}</div></div><div class="perp-body"><div class="perp-cur">Current: <span>${p.currentPrice||'—'}</span></div><div class="perp-levels"><div class="perp-lvl"><div class="lvl-lbl lbl-entry">Entry</div><div class="lvl-val">${p.entry||'—'}</div></div><div class="perp-lvl"><div class="lvl-lbl lbl-tp">TP 1</div><div class="lvl-val">${p.tp1?p.tp1.price:'—'}</div><div class="lvl-pct up">${p.tp1?p.tp1.pct:''}</div></div><div class="perp-lvl"><div class="lvl-lbl lbl-tp">TP 2</div><div class="lvl-val">${p.tp2?p.tp2.price:'—'}</div><div class="lvl-pct up">${p.tp2?p.tp2.pct:''}</div></div><div class="perp-lvl"><div class="lvl-lbl lbl-sl">Stop Loss</div><div class="lvl-val">${p.sl?p.sl.price:'—'}</div><div class="lvl-pct down">${p.sl?p.sl.pct:''}</div></div></div><div class="perp-meta"><span class="pbadge pb-lev">🔧 ${p.leverage||'—'}</span><span class="pbadge pb-rr">R:R ${p.riskReward||'—'}</span><span class="pbadge ${confCls(p.confidence)}">${(p.confidence||'—').toUpperCase()}</span><span class="pbadge pb-min">Min $${p.minUSD||'10'}</span></div><div class="perp-reasoning">${p.reasoning||''}</div></div></div>`;
   }).join('');
-  return`<div class="section"><div class="section-header"><span class="section-title">Perps Trade Setups — BTC · ETH · SOL</span></div><div class="perps-grid">${cards}</div><div class="disclaimer">⚠️ AI-generated setups based on available market data. Not financial advice. Always use your own judgment and manage risk accordingly. These are suggestions only.</div></div>`;
+  return`<div class="section"><div class="section-header"><span class="section-title">Perps Trade Setups — BTC · ETH · SOL</span></div>${liveTicker}<div class="perps-grid">${cards}</div><div class="disclaimer">⚠️ AI-generated setups based on available market data. Not financial advice. Always use your own judgment and manage risk accordingly. These are suggestions only.</div></div>`;
 }
 
 function renderGold(d){
