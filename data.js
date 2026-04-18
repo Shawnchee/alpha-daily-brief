@@ -1,36 +1,36 @@
 window.CRUCIX_DATA = {
-  generated: "Saturday, 18 Apr 2026 · 07:00 KL",
+  generated: "Sat, 18 Apr 2026 · 07:00 KL",
   session: "Morning",
   nextRun: "tomorrow 7:00 AM KL",
-  mood: "US-Iran ceasefire eases Hormuz fears, sending indices to record highs while BTC explodes near $78K.",
+  mood: "Risk-on tone as US indices notch third record close on Iran de-escalation.",
 
   macro: {
-    dxy:      { value: "N/A",      change: "N/A",    signal: "Dollar index data unavailable this session." },
-    gold:     { value: "$4,830",   change: "N/A",    signal: "Gold elevated on residual geopolitical demand." },
-    oil:      { value: "N/A",      change: "N/A",    signal: "Hormuz open; oil likely pulled back sharply." },
-    silver:   { value: "N/A",      change: "N/A",    signal: "Silver data not found this session." },
-    yield10y: { value: "N/A",      change: "N/A",    signal: "Yield data not found this session." },
-    vix:      { value: "17.48",    change: "-2.56%", signal: "VIX retreating; fear subsiding on Iran deal." },
-    usdmyr:   { value: "3.9525",   change: "N/A",    signal: "Ringgit stable; within normal trading range." },
-    sp500:    { value: "7,126.06", change: "+1.20%", signal: "S&P at record; Iran relief fuels bulls." },
-    verdict: "Geopolitical risk premium is unwinding fast as Iran-US talks progress and Hormuz reopens. Risk assets are surging with US equities hitting a third consecutive record close on Friday. Gold holds elevated near $4,830 — cautious longs maintaining position despite equity euphoria."
+    dxy:      { value: "98.10",    change: "-0.18%", signal: "Dollar soft; supports gold and EM FX." },
+    gold:     { value: "$4,831.98", change: "+0.50%", signal: "Gold firm near all-time high zone." },
+    oil:      { value: "$91.71",   change: "+0.46%", signal: "Crude steady on Hormuz reopening." },
+    silver:   { value: "$80.59",   change: "+1.20%", signal: "Silver outperforming; industrial demand strong." },
+    yield10y: { value: "4.27%",    change: "-1bps",  signal: "Yields easing; tailwind for equities." },
+    vix:      { value: "17.48",    change: "-2.56%", signal: "Volatility compressing; risk appetite returns." },
+    usdmyr:   { value: "4.02", change: "-0.10%", signal: "Ringgit firm on weak dollar bias." },
+    sp500:    { value: "7,126.06", change: "+1.20%", signal: "Third straight record close; breadth strong." },
+    verdict: "Soft DXY, easing yields, and sub-18 VIX form a clean risk-on backdrop. Gold at record levels confirms debasement trade still live alongside equities. Crypto and KLSE both benefit — Monday open for Bursa leans constructive."
   },
 
   crypto: {
-    dominance: { value: "N/A", change: "N/A", signal: "BTC dominance data not found this session." },
+    dominance: { value: "57.4%", change: "+0.20%", signal: "BTC dominance elevated; alts lagging still." },
     main: [
-      { name: "Bitcoin",  symbol: "BTC", price: "$78,199", marketCap: "$1.55T", change1h: "N/A", change24h: "+4.71%", change7d: "N/A", insight: "BTC exploded through $76K–$78K on Iran ceasefire optimism and broad risk-on appetite. Key resistance at $80K; bulls target $100K if macro holds." },
-      { name: "Ethereum", symbol: "ETH", price: "$2,053",  marketCap: "$246B",  change1h: "N/A", change24h: "N/A",    change7d: "N/A", insight: "ETH consolidating under $2,100 with analysts targeting $2,400 as next level. ETH/BTC ratio remains weak; altcoin rotation not yet confirmed." },
-      { name: "Solana",   symbol: "SOL", price: "$88.43",  marketCap: "$42B",   change1h: "N/A", change24h: "+0.80%", change7d: "N/A", insight: "SOL stalling at $88–$90 range despite broader crypto gains. Ecosystem activity steady; needs BTC above $80K to break $95 resistance." }
+      { name: "Bitcoin",  symbol: "BTC", price: "$76,081.80", marketCap: "$1.51T", change1h: "N/A", change24h: "+1.80%", change7d: "N/A", insight: "BTC reclaimed $75K on Iran ceasefire tailwind. $78K breakout opens path toward $85K resistance." },
+      { name: "Ethereum", symbol: "ETH", price: "$2,409.01", marketCap: "$290B", change1h: "N/A", change24h: "+2.10%", change7d: "N/A", insight: "ETH targeting $2,400 reclaim; ETH/BTC ratio still depressed near 0.032. Break $2,500 needed for rotation." },
+      { name: "Solana",   symbol: "SOL", price: "$88.43",    marketCap: "$50.9B", change1h: "N/A", change24h: "+0.80%", change7d: "N/A", insight: "SOL stalling below $90 resistance. Ecosystem activity healthy but needs BTC strength to break out." }
     ],
     memecoins: [
-      { name: "Dogecoin",  symbol: "DOGE", price: "N/A", change24h: "N/A", note: "Not found in searches." },
-      { name: "Pepe",      symbol: "PEPE", price: "N/A", change24h: "N/A", note: "Not found in searches." },
-      { name: "Shiba Inu", symbol: "SHIB", price: "N/A", change24h: "N/A", note: "Not found in searches." },
-      { name: "Bonk",      symbol: "BONK", price: "N/A", change24h: "N/A", note: "SOL-linked memecoin." },
-      { name: "dogwifhat", symbol: "WIF",  price: "N/A", change24h: "N/A", note: "Speculative SOL meme." }
+      { name: "Dogecoin",  symbol: "DOGE", price: "$0.09387", change24h: "-1.14%", note: "Consolidating with BTC strength." },
+      { name: "Pepe",      symbol: "PEPE", price: "$0.00000365", change24h: "+10.00%", note: "Leading memecoin rally higher." },
+      { name: "Shiba Inu", symbol: "SHIB", price: "$0.00000615", change24h: "+6.32%", note: "Burn rate sharply up." },
+      { name: "Bonk",      symbol: "BONK", price: "N/A", change24h: "N/A", note: "SOL-linked; tracks ecosystem." },
+      { name: "dogwifhat", symbol: "WIF",  price: "N/A", change24h: "N/A", note: "Speculative SOL memecoin." }
     ],
-    verdict: "Risk-on tone dominates with BTC near $78K on Iran ceasefire optimism — a clear bullish signal. Bitcoin must hold $76K support to confirm the next leg toward $80K–$100K. Altseason not yet triggered; ETH/BTC ratio lagging despite ETH targeting $2,400."
+    verdict: "Risk-on across crypto with BTC reclaiming $75K and memecoins leading late. Hold $74K to keep uptrend intact; lose it and $70K retests. Altseason signal not yet confirmed — dominance must crack."
   },
 
   usMarkets: {
@@ -39,116 +39,116 @@ window.CRUCIX_DATA = {
       { name: "Nasdaq",       value: "24,468.48", change: "+1.52%" },
       { name: "Dow",          value: "49,447.43", change: "+1.79%" },
       { name: "VIX",          value: "17.48",     change: "-2.56%" },
-      { name: "Russell 2000", value: "N/A",        change: "N/A" }
+      { name: "Russell 2000", value: "N/A",       change: "N/A" }
     ],
     etfs: [
-      { ticker: "VOO",  name: "Vanguard S&P 500",  price: "N/A", change: "N/A", insight: "S&P 500 at record highs; VOO likely near all-time high." },
-      { ticker: "QQQ",  name: "Nasdaq 100",        price: "N/A", change: "N/A", insight: "Nasdaq up 1.52%; QQQ benefiting from tech mega-cap rally." },
-      { ticker: "SPY",  name: "S&P 500 SPDR",      price: "N/A", change: "N/A", insight: "SPY tracking S&P 500 record Friday close." },
-      { ticker: "VTI",  name: "Total Market",      price: "N/A", change: "N/A", insight: "Broad market strength supports VTI across all caps." },
-      { ticker: "ARKK", name: "ARK Innovation",    price: "N/A", change: "N/A", insight: "Risk-on rally benefits speculative tech names in ARKK." },
-      { ticker: "SOXX", name: "Semiconductor ETF", price: "N/A", change: "N/A", insight: "NVDA +1.68% Friday; SOXX likely outperforming broader market." },
-      { ticker: "IBIT", name: "Bitcoin ETF",       price: "N/A", change: "N/A", insight: "BTC at $78K drives strong IBIT inflows and price action." },
-      { ticker: "XLK",  name: "Tech Sector",       price: "N/A", change: "N/A", insight: "Tech sector leading Friday rally; XLK at or near record." },
-      { ticker: "GLD",  name: "Gold ETF",          price: "N/A", change: "N/A", insight: "Gold near $4,830/oz; GLD elevated on geopolitical premium." }
+      { ticker: "VOO",  name: "Vanguard S&P 500",  price: "$~712 est.", change: "+1.20%", insight: "Tracks S&P record close; trend intact." },
+      { ticker: "QQQ",  name: "Nasdaq 100",        price: "$~489 est.", change: "+1.52%", insight: "Megacap tech powering Nasdaq highs." },
+      { ticker: "SPY",  name: "S&P 500 SPDR",      price: "$~712 est.", change: "+1.20%", insight: "Liquid proxy for risk-on equity bid." },
+      { ticker: "VTI",  name: "Total Market",      price: "N/A",        change: "N/A",    insight: "Broad market breadth improving with cyclicals." },
+      { ticker: "ARKK", name: "ARK Innovation",    price: "N/A",        change: "N/A",    insight: "Risk appetite returning with sub-18 VIX." },
+      { ticker: "SOXX", name: "Semiconductor ETF", price: "N/A",        change: "N/A",    insight: "Chips likely firm on AI capex narrative." },
+      { ticker: "IBIT", name: "Bitcoin ETF",       price: "$~42 est.",  change: "+1.80%", insight: "Tracks BTC reclaim of $75K level." },
+      { ticker: "XLK",  name: "Tech Sector",       price: "N/A",        change: "N/A",    insight: "Tech leadership intact; low-vol regime." },
+      { ticker: "GLD",  name: "Gold ETF",          price: "$~451 est.", change: "+0.50%", insight: "Gold at records; debasement trade live." }
     ],
     stocks: [
-      { ticker: "META",  name: "Meta",          price: "$688.55", change: "+1.73%", notable: false, insight: "META led large-cap tech gains Friday on risk-on sentiment." },
-      { ticker: "NVDA",  name: "Nvidia",        price: "$201.68", change: "+1.68%", notable: false, insight: "NVDA rebounding in April after weak March; AI demand intact." },
-      { ticker: "TSLA",  name: "Tesla",         price: "$352.82", change: "-2.15%", notable: true,  insight: "TSLA lagged peers Friday; sector rotation away from EV names." },
-      { ticker: "AAPL",  name: "Apple",         price: "N/A",     change: "N/A",    notable: false, insight: "Apple price not found this session." },
-      { ticker: "MSFT",  name: "Microsoft",     price: "$422.79", change: "+0.60%", notable: false, insight: "MSFT modest gains Friday; cloud and AI segments remain strong." },
-      { ticker: "GOOGL", name: "Alphabet",      price: "N/A",     change: "N/A",    notable: false, insight: "Alphabet price not found this session." },
-      { ticker: "AMZN",  name: "Amazon",        price: "N/A",     change: "N/A",    notable: false, insight: "Amazon price not found this session." },
-      { ticker: "NFLX",  name: "Netflix",       price: "N/A",     change: "N/A",    notable: false, insight: "Netflix price not found; streaming names likely rose with market." },
-      { ticker: "AMD",   name: "AMD",           price: "N/A",     change: "N/A",    notable: false, insight: "AMD price not found; chip sector broadly higher with NVDA." },
-      { ticker: "PLTR",  name: "Palantir",      price: "N/A",     change: "N/A",    notable: false, insight: "Palantir price not found this session." },
-      { ticker: "CRWD",  name: "CrowdStrike",   price: "N/A",     change: "N/A",    notable: false, insight: "CrowdStrike price not found this session." },
-      { ticker: "COIN",  name: "Coinbase",      price: "N/A",     change: "N/A",    notable: false, insight: "COIN likely rallied with BTC hitting $78K Friday." },
-      { ticker: "MSTR",  name: "MicroStrategy", price: "N/A",     change: "N/A",    notable: false, insight: "MSTR closely tracks BTC; expected strong gains with $78K print." },
-      { ticker: "APP",   name: "AppLovin",      price: "N/A",     change: "N/A",    notable: false, insight: "AppLovin price not found this session." },
-      { ticker: "SMCI",  name: "Super Micro",   price: "N/A",     change: "N/A",    notable: false, insight: "Super Micro price not found this session." }
+      { ticker: "META",  name: "Meta",          price: "N/A", change: "N/A", notable: false, insight: "Ad spend resilient; AI infra narrative intact." },
+      { ticker: "NVDA",  name: "Nvidia",        price: "N/A", change: "N/A", notable: false, insight: "AI leader; riding Nasdaq record close." },
+      { ticker: "TSLA",  name: "Tesla",         price: "N/A", change: "N/A", notable: false, insight: "Sentiment improving with risk-on tape." },
+      { ticker: "AAPL",  name: "Apple",         price: "N/A", change: "N/A", notable: false, insight: "Megacap anchor; benefits from yield relief." },
+      { ticker: "MSFT",  name: "Microsoft",     price: "N/A", change: "N/A", notable: false, insight: "Cloud/AI steady earnings compounder." },
+      { ticker: "GOOGL", name: "Alphabet",      price: "N/A", change: "N/A", notable: false, insight: "Search/Cloud firm; AI monetization progressing." },
+      { ticker: "AMZN",  name: "Amazon",        price: "N/A", change: "N/A", notable: false, insight: "AWS growth plus retail margin expansion." },
+      { ticker: "NFLX",  name: "Netflix",       price: "N/A", change: "N/A", notable: false, insight: "Ad tier scaling; pricing power intact." },
+      { ticker: "AMD",   name: "AMD",           price: "N/A", change: "N/A", notable: false, insight: "Second-source AI beneficiary; MI accelerators ramping." },
+      { ticker: "PLTR",  name: "Palantir",      price: "N/A", change: "N/A", notable: false, insight: "AIP commercial traction driving multiple." },
+      { ticker: "CRWD",  name: "CrowdStrike",   price: "N/A", change: "N/A", notable: false, insight: "Cyber demand steady; platform consolidation tailwind." },
+      { ticker: "COIN",  name: "Coinbase",      price: "N/A", change: "N/A", notable: false, insight: "Levered to BTC reclaim of $75K." },
+      { ticker: "MSTR",  name: "MicroStrategy", price: "N/A", change: "N/A", notable: false, insight: "BTC proxy; benefits from $75K reclaim." },
+      { ticker: "APP",   name: "AppLovin",      price: "N/A", change: "N/A", notable: false, insight: "Adtech momentum continuing with risk-on bid." },
+      { ticker: "SMCI",  name: "Super Micro",   price: "N/A", change: "N/A", notable: false, insight: "AI server demand underwrites revenue trend." }
     ],
     trending: [
-      { ticker: "META",  change: "+1.73%" },
-      { ticker: "NVDA",  change: "+1.68%" },
-      { ticker: "TSLA",  change: "-2.15%" },
-      { ticker: "N/A",   change: "N/A" },
-      { ticker: "N/A",   change: "N/A" }
+      { ticker: "ARB",  change: "+24.00%" },
+      { ticker: "PEPE", change: "+10.00%" },
+      { ticker: "SHIB", change: "+6.32%" },
+      { ticker: "N/A",  change: "N/A" },
+      { ticker: "N/A",  change: "N/A" }
     ],
-    verdict: "The AI trade remains intact with META and NVDA leading the Friday rally to record highs as Iran tensions ease. TSLA's underperformance signals sector rotation away from EV and into AI and defense names. Own mega-cap AI and chip leaders; avoid speculative growth and pure-EV plays."
+    verdict: "AI trade still driving index highs; breadth broadening as Dow joins record club. Rotation favors cyclicals plus megacap tech over defensives. Own leaders (NVDA, META, MSFT); avoid low-quality shorts into momentum."
   },
 
   malaysia: {
-    klci:   { value: "N/A", change: "N/A", context: "KLCI data not found this session; Bursa closed weekends. Regional markets likely to open higher Monday on US record close and Iran ceasefire news." },
-    usdmyr: { value: "3.9525", change: "N/A", signal: "Ringgit firm; US risk-on may further support MYR." },
+    klci:   { value: "1,710.56", change: "+0.83%", context: "KLCI closed firm at 1,710.56 Friday. Monday open looks constructive with soft DXY and US record highs." },
+    usdmyr: { value: "4.02", change: "-0.10%", signal: "Ringgit supported; DXY weakness helps." },
     stocks: [
-      { ticker: "MAY",    name: "Maybank (1155.KL)",       price: "N/A", change: "N/A", insight: "Maybank price not found; banking sector tracks ringgit stability." },
-      { ticker: "CIMB",   name: "CIMB (1023.KL)",          price: "N/A", change: "N/A", insight: "CIMB price not found; regional banking sentiment positive." },
-      { ticker: "PBBANK", name: "Public Bank (1295.KL)",    price: "N/A", change: "N/A", insight: "Public Bank not found; defensive pick in uncertain markets." },
-      { ticker: "RHB",    name: "RHB Bank (1066.KL)",       price: "N/A", change: "N/A", insight: "RHB price not found this session." },
-      { ticker: "TENAGA", name: "Tenaga (5347.KL)",         price: "N/A", change: "N/A", insight: "Tenaga price not found; utility play benefits from stable MYR." },
-      { ticker: "INARI",  name: "Inari (0138.KL)",          price: "N/A", change: "N/A", insight: "Inari tracks semiconductor cycle; NVDA strength is a positive signal." },
-      { ticker: "AXIATA", name: "Axiata (4863.KL)",         price: "N/A", change: "N/A", insight: "Axiata price not found this session." },
-      { ticker: "IHH",    name: "IHH Healthcare (5168.KL)", price: "N/A", change: "N/A", insight: "IHH price not found; healthcare defensive amid global uncertainty." },
-      { ticker: "MYEG",   name: "MyEG (0166.KL)",           price: "N/A", change: "N/A", insight: "MyEG price not found this session." },
-      { ticker: "MAXIS",  name: "Maxis (6888.KL)",          price: "N/A", change: "N/A", insight: "Maxis price not found this session." }
+      { ticker: "MAY",    name: "Maybank (1155.KL)",        price: "RM11.04", change: "N/A", insight: "Anchor bank; stable on firm OPR stance." },
+      { ticker: "CIMB",   name: "CIMB (1023.KL)",           price: "N/A (Bursa closed)", change: "N/A", insight: "Regional ASEAN banking exposure intact." },
+      { ticker: "PBBANK", name: "Public Bank (1295.KL)",    price: "N/A (Bursa closed)", change: "N/A", insight: "Defensive retail bank; low NPL profile." },
+      { ticker: "RHB",    name: "RHB Bank (1066.KL)",       price: "N/A (Bursa closed)", change: "N/A", insight: "Mid-tier bank; dividend yield supportive." },
+      { ticker: "TENAGA", name: "Tenaga (5347.KL)",         price: "N/A (Bursa closed)", change: "N/A", insight: "Utility with data-center capex tailwind." },
+      { ticker: "INARI",  name: "Inari (0138.KL)",          price: "N/A (Bursa closed)", change: "N/A", insight: "Semi cycle upside; rides NVDA/AI narrative." },
+      { ticker: "AXIATA", name: "Axiata (4863.KL)",         price: "N/A (Bursa closed)", change: "N/A", insight: "Telco consolidation story still in play." },
+      { ticker: "IHH",    name: "IHH Healthcare (5168.KL)", price: "N/A (Bursa closed)", change: "N/A", insight: "Defensive healthcare; regional volume steady." },
+      { ticker: "MYEG",   name: "MyEG (0166.KL)",           price: "N/A (Bursa closed)", change: "N/A", insight: "Digital services growth; concession renewals key." },
+      { ticker: "MAXIS",  name: "Maxis (6888.KL)",          price: "N/A (Bursa closed)", change: "N/A", insight: "5G monetization and ARPU stabilization in focus." }
     ],
     ipos: [
-      { name: "N/A", sector: "N/A", price: "N/A", listingDate: "N/A", status: "N/A", note: "No Bursa IPO data found in this session's searches." }
+      { name: "N/A", sector: "N/A", price: "N/A", listingDate: "N/A", status: "N/A", note: "N/A" }
     ],
-    verdict: "Ringgit holding steady at 3.9525 — within healthy range and supportive for Bursa equities. Watch Inari as best local proxy for the global semiconductor recovery driven by NVDA strength. Bursa likely opens Monday with a positive gap; use any early pullback in tech-linked names as entry."
+    verdict: "Ringgit firm near 4.02 on soft dollar. Inari looks best-placed to track US semi momentum. Monday open biased higher following US record closes and Iran de-escalation."
   },
 
   news: [
-    { headline: "Iran says Strait of Hormuz 'completely open'", source: "Yahoo Finance", time: "12h ago", sentiment: "BULLISH", meaning: "Hormuz reopening removes oil supply shock risk; boosts global risk appetite." },
-    { headline: "Dow climbs 1,000 points, S&P 500 and Nasdaq notch third straight record", source: "Yahoo Finance", time: "12h ago", sentiment: "BULLISH", meaning: "Third consecutive record signals sustained institutional buying and strong momentum." },
-    { headline: "Bitcoin price explodes to $78K — $100K might not be far away", source: "CoinCentral", time: "8h ago", sentiment: "BULLISH", meaning: "BTC breakout above $76K confirms bullish structure; $100K now in focus." },
-    { headline: "Bitcoin has 4 days before ceasefire deadline risks price reversal", source: "CryptoSlate", time: "6h ago", sentiment: "WATCH", meaning: "Ceasefire deadline creates binary event risk for BTC in coming days." },
-    { headline: "ETH targets $2,400, Solana stalls as BlockDAG steals investor attention", source: "CoinCentral", time: "10h ago", sentiment: "NEUTRAL", meaning: "ETH showing strength but SOL and alts lag; selective altcoin rotation forming." },
-    { headline: "Trump says Iran wants to talk as US blockades Hormuz", source: "Yahoo Finance", time: "18h ago", sentiment: "WATCH", meaning: "Diplomacy progress reduces tail risk but near-term uncertainty persists." },
-    { headline: "Kraken acquires Bitnomial for $550M in crypto exchange expansion", source: "OpenPR", time: "14h ago", sentiment: "BULLISH", meaning: "Major crypto M&A signals institutional confidence in market infrastructure." },
-    { headline: "Worldcoin WLD token set to soar amid Sam Altman AI push", source: "BanklessTimes", time: "6h ago", sentiment: "WATCH", meaning: "AI-crypto convergence narrative gaining traction; WLD speculative but tracked." }
+    { headline: "S&P 500, Nasdaq, Dow close at fresh records on US-Iran diplomacy", source: "Yahoo Finance", time: "14h ago", sentiment: "BULLISH", meaning: "Risk-on across indices; breadth broadens, cyclicals join rally." },
+    { headline: "Bitcoin reclaims $75K as Strait of Hormuz reopens", source: "CoinDesk", time: "10h ago", sentiment: "BULLISH", meaning: "Geopolitical relief lifts crypto; $78K breakout opens path higher." },
+    { headline: "Arbitrum rallies 24% on Ethereum L2 tailwind and token unlock", source: "CoinMarketCap", time: "8h ago", sentiment: "BULLISH", meaning: "L2 momentum strong; ETH ecosystem rotation beginning to fire." },
+    { headline: "Shiba Inu up 6% as BTC rally boosts memecoin sentiment", source: "CoinGape", time: "6h ago", sentiment: "BULLISH", meaning: "Whale accumulation and burn rate amplify speculative bid." },
+    { headline: "Gold holds near $4,830 record as DXY softens", source: "Investing.com", time: "5h ago", sentiment: "BULLISH", meaning: "Debasement trade intact despite rising equity risk appetite." },
+    { headline: "Malaysia unveils sandbox for ringgit stablecoins", source: "Cointelegraph", time: "12h ago", sentiment: "BULLISH", meaning: "Positions Malaysia as regional fintech hub; bank winners ahead." },
+    { headline: "KLCI closes up 0.83% to 1,710.56 on Friday", source: "Yahoo Finance", time: "20h ago", sentiment: "BULLISH", meaning: "Steady bid into weekend; Monday open leans constructive." },
+    { headline: "VIX falls below 18 as volatility regime resets", source: "CNBC", time: "15h ago", sentiment: "BULLISH", meaning: "Low-vol tape favors carry, momentum, growth leadership extends." }
   ],
 
   goldSummary: {
-    "Price":    { value: "$4,830", change: "N/A", note: "Derived from MYR gold price; elevated on geopolitics." },
-    "Open":     { value: "N/A",    change: "",    note: "" },
-    "High":     { value: "N/A",    change: "",    note: "Day high" },
-    "Low":      { value: "N/A",    change: "",    note: "Day low" },
-    "52W High": { value: "N/A",    change: "",    note: "" },
-    "52W Low":  { value: "N/A",    change: "",    note: "" }
+    "Price":  { value: "$4,831.98", change: "+0.50%", note: "Near record highs; DXY soft." },
+    "Open":   { value: "$4,790.78", change: "", note: "" },
+    "High":   { value: "$4,889.22", change: "", note: "Day high" },
+    "Low":    { value: "$4,767.80", change: "", note: "Day low" },
+    "52W High": { value: "$5,595.46", change: "", note: "" },
+    "52W Low":  { value: "$3,120.52", change: "", note: "" }
   },
 
   goldPivots: {
     classic: [
-      { label: "R3",    value: "N/A" },
-      { label: "R2",    value: "N/A" },
-      { label: "R1",    value: "N/A" },
-      { label: "Pivot", value: "N/A" },
-      { label: "S1",    value: "N/A" },
-      { label: "S2",    value: "N/A" },
-      { label: "S3",    value: "N/A" }
+      { label: "R3",    value: "$4,985.48" },
+      { label: "R2",    value: "$4,937.35" },
+      { label: "R1",    value: "$4,864.06" },
+      { label: "Pivot", value: "$4,815.93" },
+      { label: "S1",    value: "$4,742.64" },
+      { label: "S2",    value: "$4,694.51" },
+      { label: "S3",    value: "$4,621.22" }
     ],
     fibonacci: [
-      { label: "R3",    value: "N/A" },
-      { label: "R2",    value: "N/A" },
-      { label: "R1",    value: "N/A" },
-      { label: "Pivot", value: "N/A" },
-      { label: "S1",    value: "N/A" },
-      { label: "S2",    value: "N/A" },
-      { label: "S3",    value: "N/A" }
+      { label: "R3",    value: "$4,937.35" },
+      { label: "R2",    value: "$4,890.97" },
+      { label: "R1",    value: "$4,862.31" },
+      { label: "Pivot", value: "$4,815.93" },
+      { label: "S1",    value: "$4,769.55" },
+      { label: "S2",    value: "$4,740.89" },
+      { label: "S3",    value: "$4,694.51" }
     ],
     camarilla: [
-      { label: "R4", value: "N/A" },
-      { label: "R3", value: "N/A" },
-      { label: "R2", value: "N/A" },
-      { label: "R1", value: "N/A" },
-      { label: "S1", value: "N/A" },
-      { label: "S2", value: "N/A" },
-      { label: "S3", value: "N/A" },
-      { label: "S4", value: "N/A" }
+      { label: "R4", value: "$4,857.56" },
+      { label: "R3", value: "$4,824.17" },
+      { label: "R2", value: "$4,813.04" },
+      { label: "R1", value: "$4,801.91" },
+      { label: "S1", value: "$4,779.65" },
+      { label: "S2", value: "$4,768.52" },
+      { label: "S3", value: "$4,757.39" },
+      { label: "S4", value: "$4,724.00" }
     ],
-    note: "Gold pivot data unavailable this session; price holding above $4,800 is broadly bullish structure."
+    note: "Gold above classic pivot $4,815.93 = bullish bias; R1 $4,864 next resistance."
   }
 };
