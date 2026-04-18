@@ -3,1260 +3,293 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crucix Intel</title>
+<title>Alpha Daily Brief</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="data.js"></script>
 <style>
-  :root {
-    --bg: #F5F4F0;
-    --surface: #FFFFFF;
-    --surface2: #F0EFE9;
-    --border: #E2E0D8;
-    --border2: #CCCAC0;
-    --text: #1A1916;
-    --muted: #6B6860;
-    --faint: #9A9890;
-    --green: #1A6B3C;
-    --green-bg: #EAF5EE;
-    --red: #B83030;
-    --red-bg: #FAEAEA;
-    --amber: #8A5A00;
-    --amber-bg: #FFF4DC;
-    --blue: #1A3A8A;
-    --blue-bg: #EAF0FA;
-    --accent: #1A1916;
-    --mono: 'DM Mono', monospace;
-    --sans: 'Syne', sans-serif;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: var(--sans);
-    background: var(--bg);
-    color: var(--text);
-    font-size: 14px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  .page {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
-  }
-
-  /* HEADER */
-  .header {
-    border-bottom: 1.5px solid var(--text);
-    padding-bottom: 1.25rem;
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .header-left h1 {
-    font-family: var(--sans);
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: var(--text);
-  }
-
-  .header-left h1 span {
-    font-weight: 400;
-    opacity: 0.4;
-  }
-
-  .header-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 6px;
-  }
-
-  .header-date {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .session-badge {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
-    padding: 3px 10px;
-    border-radius: 2px;
-    background: var(--text);
-    color: #fff;
-    letter-spacing: 0.05em;
-  }
-
-  .session-badge.evening { background: #2C1A5E; }
-
-  .mood-bar {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--muted);
-    max-width: 480px;
-    text-align: right;
-    line-height: 1.4;
-  }
-
-  .mood-bar.bearish { color: var(--red); }
-  .mood-bar.bullish { color: var(--green); }
-  .mood-bar.neutral { color: var(--amber); }
-
-  /* SECTION */
-  .section { margin-bottom: 2.5rem; }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1rem;
-    padding-bottom: 6px;
-    border-bottom: 0.5px solid var(--border2);
-  }
-
-  .section-title {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .section-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--faint);
-  }
-
-  /* VERDICT BOX */
-  .verdict {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--text);
-    padding: 14px 18px;
-    border-radius: 0 4px 4px 0;
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--text);
-    margin-top: 1rem;
-  }
-
-  .verdict.bullish { border-left-color: var(--green); }
-  .verdict.bearish { border-left-color: var(--red); }
-  .verdict.caution { border-left-color: var(--amber); }
-
-  /* METRIC GRID */
-  .metric-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 8px;
-  }
-
-  .metric-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 14px 16px;
-    position: relative;
-  }
-
-  .metric-label {
-    font-size: 11px;
-    color: var(--faint);
-    font-family: var(--mono);
-    letter-spacing: 0.05em;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-  }
-
-  .metric-value {
-    font-family: var(--mono);
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.2;
-  }
-
-  .metric-change {
-    font-family: var(--mono);
-    font-size: 12px;
-    margin-top: 3px;
-  }
-
-  .metric-signal {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 6px;
-    line-height: 1.4;
-    border-top: 0.5px solid var(--border);
-    padding-top: 6px;
-  }
-
-  .up { color: var(--green); }
-  .down { color: var(--red); }
-  .flat { color: var(--muted); }
-
-  /* CRYPTO CARDS */
-  .crypto-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 8px;
-    margin-bottom: 8px;
-  }
-
-  .crypto-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 16px 18px;
-  }
-
-  .crypto-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px;
-  }
-
-  .crypto-name {
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: -0.2px;
-  }
-
-  .crypto-symbol {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--faint);
-    margin-top: 1px;
-  }
-
-  .crypto-price-block { text-align: right; }
-
-  .crypto-price {
-    font-family: var(--mono);
-    font-size: 18px;
-    font-weight: 500;
-  }
-
-  .crypto-changes {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
-    margin-top: 2px;
-  }
-
-  .change-pill {
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 2px 6px;
-    border-radius: 2px;
-  }
-
-  .change-pill.up { background: var(--green-bg); color: var(--green); }
-  .change-pill.down { background: var(--red-bg); color: var(--red); }
-  .change-pill.flat { background: var(--surface2); color: var(--muted); }
-
-  .crypto-insight {
-    font-size: 12px;
-    line-height: 1.6;
-    color: var(--muted);
-    border-top: 0.5px solid var(--border);
-    padding-top: 10px;
-    margin-top: 4px;
-  }
-
-  /* DOMINANCE BAR */
-  .dominance-row {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
-  }
-
-  .dom-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--faint);
-    text-transform: uppercase;
-    min-width: 120px;
-  }
-
-  .dom-bar-wrap {
-    flex: 1;
-    min-width: 200px;
-    height: 6px;
-    background: var(--surface2);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .dom-bar-fill {
-    height: 100%;
-    background: var(--text);
-    border-radius: 3px;
-    transition: width 1s ease;
-  }
-
-  .dom-value {
-    font-family: var(--mono);
-    font-size: 14px;
-    font-weight: 500;
-    min-width: 50px;
-    text-align: right;
-  }
-
-  .dom-signal {
-    font-size: 12px;
-    color: var(--muted);
-    flex: 1;
-    min-width: 200px;
-  }
-
-  /* MEMECOIN TABLE */
-  .meme-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 8px;
-  }
-
-  .meme-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 12px 14px;
-  }
-
-  .meme-name {
-    font-weight: 600;
-    font-size: 13px;
-  }
-
-  .meme-change {
-    font-family: var(--mono);
-    font-size: 18px;
-    font-weight: 500;
-    margin: 4px 0;
-  }
-
-  .meme-note {
-    font-size: 11px;
-    color: var(--muted);
-    line-height: 1.4;
-  }
-
-  /* STOCK TABLE */
-  .stock-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    font-size: 13px;
-  }
-
-  .stock-table thead tr {
-    background: var(--surface2);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .stock-table th {
-    padding: 8px 14px;
-    text-align: left;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--faint);
-    font-family: var(--mono);
-  }
-
-  .stock-table th.right, .stock-table td.right { text-align: right; }
-
-  .stock-table tbody tr {
-    border-bottom: 0.5px solid var(--border);
-    transition: background 0.1s;
-  }
-
-  .stock-table tbody tr:last-child { border-bottom: none; }
-  .stock-table tbody tr:hover { background: var(--surface2); }
-
-  .stock-table td {
-    padding: 9px 14px;
-    vertical-align: top;
-  }
-
-  .stock-ticker {
-    font-family: var(--mono);
-    font-weight: 500;
-    font-size: 13px;
-    color: var(--text);
-  }
-
-  .stock-name {
-    font-size: 11px;
-    color: var(--faint);
-    margin-top: 1px;
-  }
-
-  .stock-price {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  .stock-change {
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-
-  .stock-insight {
-    font-size: 11px;
-    color: var(--muted);
-    line-height: 1.5;
-    max-width: 320px;
-  }
-
-  .stock-flag {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 2px 6px;
-    border-radius: 2px;
-    font-family: var(--mono);
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-  }
-
-  .flag-earnings { background: var(--amber-bg); color: var(--amber); }
-  .flag-watch { background: var(--blue-bg); color: var(--blue); }
-  .flag-hot { background: var(--red-bg); color: var(--red); }
-
-  /* IPO TABLE */
-  .ipo-list { display: flex; flex-direction: column; gap: 8px; }
-
-  .ipo-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 14px 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .ipo-main { flex: 1; }
-  .ipo-name { font-weight: 600; font-size: 14px; }
-  .ipo-meta { font-size: 11px; color: var(--muted); margin-top: 3px; font-family: var(--mono); }
-  .ipo-note { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
-
-  .ipo-right { text-align: right; }
-
-  .ipo-price {
-    font-family: var(--mono);
-    font-size: 16px;
-    font-weight: 500;
-  }
-
-  .ipo-status {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 2px;
-    font-family: var(--mono);
-    letter-spacing: 0.05em;
-    margin-top: 6px;
-    display: inline-block;
-  }
-
-  .status-open { background: var(--green-bg); color: var(--green); }
-  .status-upcoming { background: var(--amber-bg); color: var(--amber); }
-  .status-listed { background: var(--surface2); color: var(--muted); }
-
-  /* NEWS */
-  .news-list { display: flex; flex-direction: column; gap: 8px; }
-
-  .news-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 14px 18px;
-  }
-
-  .news-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 6px;
-  }
-
-  .news-headline {
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 1.5;
-    flex: 1;
-  }
-
-  .news-sentiment {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 2px;
-    font-family: var(--mono);
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .sent-bullish { background: var(--green-bg); color: var(--green); }
-  .sent-bearish { background: var(--red-bg); color: var(--red); }
-  .sent-neutral { background: var(--surface2); color: var(--muted); }
-  .sent-watch { background: var(--amber-bg); color: var(--amber); }
-
-  .news-source {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--faint);
-    margin-bottom: 8px;
-  }
-
-  .news-meaning {
-    font-size: 12px;
-    color: var(--text);
-    line-height: 1.6;
-    background: var(--surface2);
-    padding: 8px 12px;
-    border-radius: 2px;
-    border-left: 2px solid var(--border2);
-  }
-
-  .news-meaning strong {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--faint);
-    display: block;
-    margin-bottom: 2px;
-    font-family: var(--mono);
-  }
-
-  /* OPPORTUNITIES */
-  .opp-list { display: flex; flex-direction: column; gap: 10px; }
-
-  .opp-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 16px 18px;
-    border-left: 3px solid var(--border2);
-  }
-
-  .opp-card.breakout { border-left-color: var(--green); }
-  .opp-card.dip { border-left-color: var(--blue); }
-  .opp-card.momentum { border-left-color: var(--amber); }
-  .opp-card.avoid { border-left-color: var(--red); }
-  .opp-card.watch { border-left-color: var(--faint); }
-
-  .opp-top {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-  }
-
-  .opp-ticker {
-    font-family: var(--mono);
-    font-size: 15px;
-    font-weight: 500;
-  }
-
-  .opp-type {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 2px;
-    font-family: var(--mono);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .type-breakout { background: var(--green-bg); color: var(--green); }
-  .type-dip { background: var(--blue-bg); color: var(--blue); }
-  .type-momentum { background: var(--amber-bg); color: var(--amber); }
-  .type-avoid { background: var(--red-bg); color: var(--red); }
-  .type-watch { background: var(--surface2); color: var(--muted); }
-
-  .opp-timeframe {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--faint);
-    padding: 3px 8px;
-    border: 0.5px solid var(--border2);
-    border-radius: 2px;
-    margin-left: auto;
-  }
-
-  .opp-reasoning {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  /* TWO COLUMN */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-
-  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
-
-  /* FOOTER */
-  .footer {
-    margin-top: 3rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .footer-left {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--faint);
-  }
-
-  .footer-right {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--faint);
-  }
-
-  /* NO DATA STATE */
-  .no-data {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 60vh;
-    text-align: center;
-    gap: 12px;
-  }
-
-  .no-data h2 {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text);
-  }
-
-  .no-data p {
-    font-size: 13px;
-    color: var(--muted);
-    max-width: 320px;
-    line-height: 1.6;
-  }
-
-  .no-data .pulse {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--text);
-    animation: pulse 2s infinite;
-    margin-bottom: 8px;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.3; transform: scale(0.7); }
-  }
-
-  /* TRENDING ROW */
-  .trending-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .trending-pill {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 8px 12px;
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-
-  .trending-ticker { font-weight: 500; }
-  .trending-price { color: var(--muted); }
-
-  /* INDICES ROW */
-  .indices-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 8px;
-    margin-bottom: 8px;
-  }
-
-  .index-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 12px 14px;
-  }
-
-  .index-name {
-    font-size: 11px;
-    color: var(--faint);
-    font-family: var(--mono);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .index-value {
-    font-family: var(--mono);
-    font-size: 17px;
-    font-weight: 500;
-    margin: 3px 0;
-  }
-
-  .index-change {
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-
-  /* KLCI HIGHLIGHT */
-  .klci-card {
-    background: var(--text);
-    color: white;
-    border-radius: 4px;
-    padding: 16px 18px;
-    margin-bottom: 8px;
-  }
-
-  .klci-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    opacity: 0.5;
-  }
-
-  .klci-value {
-    font-family: var(--mono);
-    font-size: 32px;
-    font-weight: 500;
-    letter-spacing: -1px;
-    margin: 4px 0;
-  }
-
-  .klci-change {
-    font-family: var(--mono);
-    font-size: 14px;
-    opacity: 0.7;
-  }
-
-  .klci-context {
-    font-size: 12px;
-    opacity: 0.6;
-    margin-top: 8px;
-    line-height: 1.5;
-  }
-
-  /* USDMYR ROW */
-  .forex-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 12px 18px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .forex-pair {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  .forex-rate {
-    font-family: var(--mono);
-    font-size: 20px;
-    font-weight: 500;
-  }
-
-  .forex-signal {
-    font-size: 12px;
-    color: var(--muted);
-    flex: 1;
-    text-align: right;
-  }
-
-  /* DIVIDER */
-  .divider {
-    height: 0.5px;
-    background: var(--border);
-    margin: 2rem 0;
-  }
+:root{--bg:#F5F4F0;--surface:#FFFFFF;--surface2:#EEEDE8;--border:#E0DED6;--border2:#C8C6BC;--text:#18170F;--muted:#68665A;--faint:#9A9888;--green:#1A6B3C;--green-bg:#E8F5EE;--red:#B83028;--red-bg:#FAEAEA;--amber:#8A5800;--amber-bg:#FFF4DC;--blue:#1A3A8A;--blue-bg:#EAF0FA;--purple:#5A1A8A;--purple-bg:#F2EAFA;--mono:'DM Mono',monospace;--sans:'Syne',sans-serif;--r:4px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+.topbar{background:var(--text);color:#fff;padding:11px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:100}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.topbar-title{font-size:15px;font-weight:700;letter-spacing:-.3px}
+.topbar-session{font-family:var(--mono);font-size:11px;opacity:.5}
+.topbar-mood{font-size:12px;opacity:.7;max-width:480px;text-align:right}
+.tab-nav{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;position:sticky;top:44px;z-index:99}
+.tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{font-family:var(--sans);font-size:12px;font-weight:500;padding:11px 16px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .15s;letter-spacing:.02em}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--text);border-bottom-color:var(--text);font-weight:600}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.page{max-width:1100px;margin:0 auto;padding:1.75rem 1.5rem 4rem}
+.section{margin-bottom:2rem}
+.section-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding-bottom:6px;border-bottom:.5px solid var(--border2)}
+.section-title{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.section-num{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.divider{height:.5px;background:var(--border);margin:1.75rem 0}
+.verdict{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--text);padding:14px 18px;border-radius:0 var(--r) var(--r) 0;font-size:13px;line-height:1.75;margin-top:1rem}
+.verdict.bull{border-left-color:var(--green)}
+.verdict.bear{border-left-color:var(--red)}
+.verdict.neutral{border-left-color:var(--amber)}
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.metric-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:13px 15px}
+.metric-label{font-size:10px;color:var(--faint);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.metric-value{font-family:var(--mono);font-size:19px;font-weight:500;line-height:1.2}
+.metric-change{font-family:var(--mono);font-size:12px;margin-top:2px}
+.metric-signal{font-size:11px;color:var(--muted);margin-top:6px;border-top:.5px solid var(--border);padding-top:6px;line-height:1.4}
+.up{color:var(--green)}.down{color:var(--red)}.flat{color:var(--muted)}
+.crypto-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:8px;margin-bottom:8px}
+.crypto-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px}
+.crypto-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.crypto-name{font-weight:600;font-size:15px}
+.crypto-symbol{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:1px}
+.crypto-price{font-family:var(--mono);font-size:19px;font-weight:500}
+.crypto-changes{display:flex;gap:6px;justify-content:flex-end;margin-top:3px;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:11px;padding:2px 6px;border-radius:2px}
+.pill.up{background:var(--green-bg);color:var(--green)}
+.pill.down{background:var(--red-bg);color:var(--red)}
+.pill.flat{background:var(--surface2);color:var(--muted)}
+.crypto-insight{font-size:12px;line-height:1.7;color:var(--muted);border-top:.5px solid var(--border);padding-top:10px;margin-top:4px}
+.dom-row{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:13px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.dom-label{font-family:var(--mono);font-size:11px;color:var(--faint);text-transform:uppercase;min-width:120px}
+.dom-track{flex:1;min-width:160px;height:5px;background:var(--surface2);border-radius:3px;overflow:hidden}
+.dom-fill{height:100%;background:var(--text);border-radius:3px}
+.dom-val{font-family:var(--mono);font-size:14px;font-weight:500;min-width:50px;text-align:right}
+.dom-signal{font-size:12px;color:var(--muted);flex:1;min-width:160px}
+.meme-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.meme-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}
+.meme-name{font-weight:600;font-size:13px}
+.meme-chg{font-family:var(--mono);font-size:18px;font-weight:500;margin:3px 0}
+.meme-note{font-size:11px;color:var(--muted);line-height:1.4}
+.tbl{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;font-size:13px}
+.tbl thead tr{background:var(--surface2);border-bottom:1px solid var(--border)}
+.tbl th{padding:8px 14px;text-align:left;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-family:var(--mono)}
+.tbl th.r,.tbl td.r{text-align:right}
+.tbl tbody tr{border-bottom:.5px solid var(--border);transition:background .1s}
+.tbl tbody tr:last-child{border-bottom:none}
+.tbl tbody tr:hover{background:var(--surface2)}
+.tbl td{padding:9px 14px;vertical-align:top}
+.ticker{font-family:var(--mono);font-weight:500;font-size:13px}
+.ticker-name{font-size:11px;color:var(--faint);margin-top:1px}
+.price{font-family:var(--mono);font-size:13px;font-weight:500}
+.chg{font-family:var(--mono);font-size:12px}
+.note{font-size:11px;color:var(--muted);line-height:1.5;max-width:300px}
+.flag{font-size:10px;font-weight:600;padding:2px 6px;border-radius:2px;font-family:var(--mono);display:inline-block;margin-top:3px}
+.flag-earn{background:var(--amber-bg);color:var(--amber)}
+.flag-hot{background:var(--red-bg);color:var(--red)}
+.flag-watch{background:var(--blue-bg);color:var(--blue)}
+.idx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:8px;margin-bottom:8px}
+.idx-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}
+.idx-name{font-size:11px;color:var(--faint);font-family:var(--mono);text-transform:uppercase}
+.idx-val{font-family:var(--mono);font-size:17px;font-weight:500;margin:3px 0}
+.idx-chg{font-family:var(--mono);font-size:12px}
+.trending{display:flex;flex-wrap:wrap;gap:7px}
+.t-pill{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:7px 12px;font-family:var(--mono);font-size:12px}
+.t-tick{font-weight:500}
+.klci-hero{background:var(--text);color:#fff;border-radius:var(--r);padding:18px 20px;margin-bottom:8px}
+.klci-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.5}
+.klci-val{font-family:var(--mono);font-size:34px;font-weight:500;letter-spacing:-1px;margin:4px 0}
+.klci-chg{font-family:var(--mono);font-size:14px;opacity:.65}
+.klci-ctx{font-size:12px;opacity:.55;margin-top:8px;line-height:1.5}
+.forex-row{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 18px;margin-bottom:8px;flex-wrap:wrap;gap:8px}
+.forex-pair{font-family:var(--mono);font-size:13px;font-weight:500}
+.forex-rate{font-family:var(--mono);font-size:20px;font-weight:500}
+.forex-sig{font-size:12px;color:var(--muted);flex:1;text-align:right}
+.ipo-list{display:flex;flex-direction:column;gap:8px}
+.ipo-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.ipo-name{font-weight:600;font-size:14px}
+.ipo-meta{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:3px}
+.ipo-note{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+.ipo-price{font-family:var(--mono);font-size:16px;font-weight:500;text-align:right}
+.ipo-status{font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;font-family:var(--mono);display:inline-block;margin-top:6px}
+.s-open{background:var(--green-bg);color:var(--green)}
+.s-upcoming{background:var(--amber-bg);color:var(--amber)}
+.s-listed{background:var(--surface2);color:var(--muted)}
+.news-list{display:flex;flex-direction:column;gap:8px}
+.news-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px}
+.news-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:5px}
+.news-hl{font-weight:500;font-size:13px;line-height:1.5;flex:1}
+.sent{font-size:10px;font-weight:600;padding:3px 8px;border-radius:2px;font-family:var(--mono);letter-spacing:.06em;white-space:nowrap;flex-shrink:0}
+.sent-bull{background:var(--green-bg);color:var(--green)}
+.sent-bear{background:var(--red-bg);color:var(--red)}
+.sent-neu{background:var(--surface2);color:var(--muted)}
+.sent-watch{background:var(--amber-bg);color:var(--amber)}
+.news-src{font-family:var(--mono);font-size:11px;color:var(--faint);margin-bottom:8px}
+.news-meaning{font-size:12px;color:var(--text);line-height:1.6;background:var(--surface2);padding:8px 12px;border-radius:2px;border-left:2px solid var(--border2)}
+.news-meaning strong{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:2px;font-family:var(--mono)}
+.insights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.ins-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.ins-header{padding:12px 16px;background:var(--surface2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.ins-title{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text)}
+.tf-tabs{display:flex;border-bottom:1px solid var(--border)}
+.tf-btn{flex:1;padding:8px;font-size:11px;font-weight:500;font-family:var(--mono);background:none;border:none;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all .1s}
+.tf-btn.active{color:var(--text);border-bottom-color:var(--text);background:var(--surface)}
+.tf-body{display:none;padding:14px 16px;font-size:13px;line-height:1.8;color:var(--muted)}
+.tf-body.active{display:block}
+.action-tag{display:inline-block;font-size:10px;font-weight:600;padding:3px 10px;border-radius:2px;font-family:var(--mono);letter-spacing:.05em;margin-bottom:8px}
+.act-buy{background:var(--green-bg);color:var(--green)}
+.act-sell{background:var(--red-bg);color:var(--red)}
+.act-hold{background:var(--amber-bg);color:var(--amber)}
+.act-watch{background:var(--blue-bg);color:var(--blue)}
+.perps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:12px}
+.perp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.perp-header{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.perp-asset{font-size:16px;font-weight:700}
+.perp-sym{font-family:var(--mono);font-size:12px;color:var(--faint)}
+.perp-dir{font-size:12px;font-weight:700;padding:5px 14px;border-radius:2px;font-family:var(--mono);letter-spacing:.08em}
+.dir-long{background:var(--green-bg);color:var(--green);border:1px solid var(--green)}
+.dir-short{background:var(--red-bg);color:var(--red);border:1px solid var(--red)}
+.perp-body{padding:16px 18px}
+.perp-cur{font-family:var(--mono);font-size:12px;color:var(--faint);margin-bottom:14px}
+.perp-cur span{color:var(--text);font-weight:500}
+.perp-levels{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.perp-lvl{background:var(--surface2);border-radius:var(--r);padding:10px 12px}
+.lvl-lbl{font-size:10px;font-weight:600;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.lvl-val{font-family:var(--mono);font-size:14px;font-weight:500}
+.lvl-pct{font-family:var(--mono);font-size:11px;margin-top:1px}
+.lbl-entry{color:var(--muted)}
+.lbl-tp{color:var(--green)}
+.lbl-sl{color:var(--red)}
+.perp-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.pbadge{font-size:11px;font-weight:600;padding:4px 10px;border-radius:2px;font-family:var(--mono)}
+.pb-lev{background:var(--purple-bg);color:var(--purple)}
+.pb-rr{background:var(--blue-bg);color:var(--blue)}
+.pb-hi{background:var(--green-bg);color:var(--green)}
+.pb-med{background:var(--amber-bg);color:var(--amber)}
+.pb-lo{background:var(--red-bg);color:var(--red)}
+.pb-min{background:var(--surface2);color:var(--muted)}
+.perp-reasoning{font-size:12px;line-height:1.75;color:var(--muted);border-top:.5px solid var(--border);padding-top:12px}
+.disclaimer{margin-top:1.5rem;font-size:11px;color:var(--faint);background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;line-height:1.6}
+.no-data{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;text-align:center;gap:10px}
+.no-data h2{font-size:18px;font-weight:600}
+.no-data p{font-size:13px;color:var(--muted);max-width:300px;line-height:1.6}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--text);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+.footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:11px;color:var(--faint)}
+@media(max-width:600px){.topbar{padding:10px 14px}.tab-nav{padding:0 14px}.page{padding:1.25rem 1rem 3rem}}
 </style>
 </head>
 <body>
-<div class="page" id="root"></div>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-title">Alpha Daily Brief</span>
+    <span class="topbar-session" id="top-meta">—</span>
+  </div>
+  <div class="topbar-mood" id="top-mood">Loading...</div>
+</div>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('overview',this)">◈ Overview</button>
+  <button class="tab-btn" onclick="switchTab('crypto',this)">₿ Crypto</button>
+  <button class="tab-btn" onclick="switchTab('us',this)">◎ US Markets</button>
+  <button class="tab-btn" onclick="switchTab('malaysia',this)">◇ Malaysia</button>
+  <button class="tab-btn" onclick="switchTab('insights',this)">◉ Insights</button>
+  <button class="tab-btn" onclick="switchTab('perps',this)">⚡ Perps</button>
+</nav>
+
+<div id="tab-overview" class="tab-content active"><div class="page" id="r-overview"></div></div>
+<div id="tab-crypto"   class="tab-content"><div class="page" id="r-crypto"></div></div>
+<div id="tab-us"       class="tab-content"><div class="page" id="r-us"></div></div>
+<div id="tab-malaysia" class="tab-content"><div class="page" id="r-malaysia"></div></div>
+<div id="tab-insights" class="tab-content"><div class="page" id="r-insights"></div></div>
+<div id="tab-perps"    class="tab-content"><div class="page" id="r-perps"></div></div>
 
 <script>
-// ─── HELPERS ───────────────────────────────────────────────────────────────────
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+function switchTf(uid,tf,btn){
+  ['today','week','month'].forEach(t=>{const e=document.getElementById(uid+'-'+t);if(e)e.classList.remove('active');});
+  btn.parentElement.querySelectorAll('.tf-btn').forEach(b=>b.classList.remove('active'));
+  const t=document.getElementById(uid+'-'+tf);
+  if(t)t.classList.add('active');
+  btn.classList.add('active');
+}
+function cc(v){if(v==null||v==='')return'flat';const n=parseFloat(String(v).replace(/[%+]/g,''));if(isNaN(n)||n===0)return'flat';return n>0?'up':'down';}
+function fc(v){if(v==null||v==='')return'—';const s=String(v);const n=parseFloat(s.replace(/[%+]/g,''));if(isNaN(n))return s;return(n>0?'+':'')+n.toFixed(2)+(s.includes('%')?'%':'');}
+function sc(s){const v=(s||'').toLowerCase();if(v.includes('bull'))return'sent-bull';if(v.includes('bear'))return'sent-bear';if(v.includes('watch'))return'sent-watch';return'sent-neu';}
+function vc(t){const s=(t||'').toLowerCase();const b=(s.match(/bull|buy|upside|break|opportun|positive|strong/g)||[]).length;const r=(s.match(/bear|sell|risk|caution|down|weak|pressure/g)||[]).length;if(b>r)return'bull';if(r>b)return'bear';return'neutral';}
+function acCls(a){const v=(a||'').toLowerCase();if(v.includes('buy')||v.includes('long')||v.includes('add'))return'act-buy';if(v.includes('sell')||v.includes('short')||v.includes('exit')||v.includes('reduce'))return'act-sell';if(v.includes('hold'))return'act-hold';return'act-watch';}
+function confCls(c){const v=(c||'').toLowerCase();if(v==='high')return'pb-hi';if(v==='medium'||v==='med')return'pb-med';return'pb-lo';}
 
-function changeClass(val) {
-  if (val === undefined || val === null || val === '') return 'flat';
-  const n = parseFloat(String(val).replace('%','').replace('+',''));
-  if (isNaN(n) || n === 0) return 'flat';
-  return n > 0 ? 'up' : 'down';
+function renderOverview(d){
+  const m=d.macro||{};
+  const items=[{k:'dxy',l:'DXY'},{k:'gold',l:'Gold'},{k:'oil',l:'Crude Oil'},{k:'silver',l:'Silver'},{k:'yield10y',l:'10Y Yield'},{k:'vix',l:'VIX'},{k:'usdmyr',l:'USD/MYR'},{k:'sp500',l:'S&P 500'}];
+  const cards=items.filter(i=>m[i.k]).map(i=>{const x=m[i.k];return`<div class="metric-card"><div class="metric-label">${i.l}</div><div class="metric-value ${cc(x.change)}">${x.value||'—'}</div><div class="metric-change ${cc(x.change)}">${fc(x.change)}</div>${x.signal?`<div class="metric-signal">${x.signal}</div>`:''}</div>`;}).join('');
+  const news=(d.news||[]).map(n=>`<div class="news-card"><div class="news-top"><div class="news-hl">${n.headline||''}</div><span class="sent ${sc(n.sentiment)}">${(n.sentiment||'').toUpperCase()}</span></div><div class="news-src">${n.source||''}${n.time?' · '+n.time:''}</div>${n.meaning?`<div class="news-meaning"><strong>What to do</strong>${n.meaning}</div>`:''}</div>`).join('');
+  return`<div class="section"><div class="section-header"><span class="section-num">01</span><span class="section-title">Macro Pulse</span></div><div class="metric-grid">${cards}</div>${m.verdict?`<div class="verdict ${vc(m.verdict)}">${m.verdict}</div>`:''}</div><div class="divider"></div><div class="section"><div class="section-header"><span class="section-num">02</span><span class="section-title">News That Moves Markets</span></div><div class="news-list">${news}</div></div><div class="footer"><div>Alpha Daily Brief · ${d.generated||'—'} · ${d.session||'Morning'}</div><div>${d.nextRun?'Next: '+d.nextRun:''}</div></div>`;
 }
 
-function fmtChange(val) {
-  if (val === undefined || val === null || val === '') return '—';
-  const s = String(val);
-  const n = parseFloat(s.replace('%','').replace('+',''));
-  if (isNaN(n)) return s;
-  const sign = n > 0 ? '+' : '';
-  return sign + n.toFixed(2) + (s.includes('%') ? '%' : '');
+function renderCrypto(d){
+  const c=d.crypto||{};
+  const dom=c.dominance?`<div class="dom-row"><div class="dom-label">BTC Dominance</div><div class="dom-track"><div class="dom-fill" style="width:${Math.min(parseFloat(c.dominance.value)||50,100)}%"></div></div><div class="dom-val ${cc(c.dominance.change)}">${c.dominance.value}%</div><div class="dom-signal">${c.dominance.signal||''}</div></div>`:'';
+  const coins=(c.main||[]).map(x=>`<div class="crypto-card"><div class="crypto-top"><div><div class="crypto-name">${x.name}</div><div class="crypto-symbol">${x.symbol||''} ${x.marketCap?'· '+x.marketCap:''}</div></div><div><div class="crypto-price ${cc(x.change24h)}">${x.price}</div><div class="crypto-changes">${x.change1h!=null?`<span class="pill ${cc(x.change1h)}">1h ${fc(x.change1h)}%</span>`:''}<span class="pill ${cc(x.change24h)}">24h ${fc(x.change24h)}%</span>${x.change7d!=null?`<span class="pill ${cc(x.change7d)}">7d ${fc(x.change7d)}%</span>`:''}</div></div></div>${x.insight?`<div class="crypto-insight">${x.insight}</div>`:''}</div>`).join('');
+  const memes=(c.memecoins||[]).length?`<div class="section-header" style="margin-top:1.25rem;"><span class="section-title" style="font-size:10px;">Memecoin Radar</span></div><div class="meme-grid">${(c.memecoins||[]).map(m=>`<div class="meme-card"><div class="meme-name">${m.name} <span style="font-weight:400;color:var(--faint);font-size:11px;">${m.symbol||''}</span></div><div class="meme-chg ${cc(m.change24h)}">${fc(m.change24h)}%</div>${m.price?`<div style="font-family:var(--mono);font-size:11px;color:var(--muted);">${m.price}</div>`:''} ${m.note?`<div class="meme-note">${m.note}</div>`:''}</div>`).join('')}</div>`:'';
+  return`<div class="section"><div class="section-header"><span class="section-num">01</span><span class="section-title">Crypto Market</span></div>${dom}<div class="crypto-grid">${coins}</div>${memes}${c.verdict?`<div class="verdict ${vc(c.verdict)}">${c.verdict}</div>`:''}</div>`;
 }
 
-function oppTypeClass(type) {
-  const t = (type||'').toLowerCase();
-  if (t.includes('break')) return 'breakout';
-  if (t.includes('dip')) return 'dip';
-  if (t.includes('momentum') || t.includes('mom')) return 'momentum';
-  if (t.includes('avoid')) return 'avoid';
-  return 'watch';
+function renderUS(d){
+  const u=d.usMarkets||{};
+  const idx=(u.indices||[]).map(i=>`<div class="idx-card"><div class="idx-name">${i.name}</div><div class="idx-val ${cc(i.change)}">${i.value}</div><div class="idx-chg ${cc(i.change)}">${fc(i.change)}</div></div>`).join('');
+  const etfRows=(u.etfs||[]).map(s=>`<tr><td><div class="ticker">${s.ticker}</div><div class="ticker-name">${s.name||''}</div></td><td class="r"><div class="price">${s.price||'—'}</div></td><td class="r"><div class="chg ${cc(s.change)}">${fc(s.change)}</div></td><td><div class="note">${s.insight||''}</div></td></tr>`).join('');
+  const stkRows=(u.stocks||[]).map(s=>`<tr><td><div class="ticker">${s.ticker}</div><div class="ticker-name">${s.name||''}</div>${s.notable?'<span class="flag flag-hot">Notable</span>':''}</td><td class="r"><div class="price">${s.price||'—'}</div></td><td class="r"><div class="chg ${cc(s.change)}">${fc(s.change)}</div></td><td><div class="note">${s.insight||''}</div></td></tr>`).join('');
+  const trend=(u.trending||[]).length?`<div style="margin-top:1rem;"><div class="section-header" style="margin-bottom:.75rem;"><span class="section-title" style="font-size:10px;">Trending Today</span></div><div class="trending">${(u.trending||[]).map(t=>`<div class="t-pill"><span class="t-tick">${t.ticker}</span><span class="${cc(t.change)}">${fc(t.change)}</span></div>`).join('')}</div></div>`:'';
+  return`<div class="section"><div class="section-header"><span class="section-num">01</span><span class="section-title">Indices</span></div><div class="idx-grid">${idx}</div></div><div class="divider"></div><div class="section"><div class="section-header"><span class="section-num">02</span><span class="section-title">ETF Watchlist</span></div><table class="tbl"><thead><tr><th>ETF</th><th class="r">Price</th><th class="r">Chg</th><th>Read</th></tr></thead><tbody>${etfRows}</tbody></table></div><div class="divider"></div><div class="section"><div class="section-header"><span class="section-num">03</span><span class="section-title">Stocks Watchlist</span></div><table class="tbl"><thead><tr><th>Stock</th><th class="r">Price</th><th class="r">Chg</th><th>Read</th></tr></thead><tbody>${stkRows}</tbody></table>${trend}${u.verdict?`<div class="verdict ${vc(u.verdict)}">${u.verdict}</div>`:''}</div>`;
 }
 
-function sentClass(s) {
-  const v = (s||'').toLowerCase();
-  if (v.includes('bull')) return 'sent-bullish';
-  if (v.includes('bear')) return 'sent-bearish';
-  if (v.includes('watch')) return 'sent-watch';
-  return 'sent-neutral';
+function renderMalaysia(d){
+  const my=d.malaysia||{};
+  const klci=my.klci?`<div class="klci-hero"><div class="klci-lbl">FTSE Bursa Malaysia KLCI</div><div class="klci-val">${my.klci.value}</div><div class="klci-chg">${fc(my.klci.change)} today</div>${my.klci.context?`<div class="klci-ctx">${my.klci.context}</div>`:''}</div>`:'';
+  const forex=my.usdmyr?`<div class="forex-row"><div class="forex-pair">USD / MYR</div><div class="forex-rate ${cc(my.usdmyr.change)}">${my.usdmyr.value}</div><div class="forex-sig">${my.usdmyr.signal||''}</div></div>`:'';
+  const myRows=(my.stocks||[]).map(s=>`<tr><td><div class="ticker">${s.ticker}</div><div class="ticker-name">${s.name||''}</div></td><td class="r"><div class="price">RM ${s.price||'—'}</div></td><td class="r"><div class="chg ${cc(s.change)}">${fc(s.change)}</div></td><td><div class="note">${s.insight||''}</div></td></tr>`).join('');
+  const ipos=(my.ipos||[]).length?`<div class="divider"></div><div class="section"><div class="section-header"><span class="section-title">IPO Watch</span></div><div class="ipo-list">${(my.ipos||[]).map(i=>`<div class="ipo-card"><div><div class="ipo-name">${i.name}</div><div class="ipo-meta">${i.sector||''}${i.listingDate?' · Listing '+i.listingDate:''}</div>${i.note?`<div class="ipo-note">${i.note}</div>`:''}</div><div>${i.price?`<div class="ipo-price">RM ${i.price}</div>`:''}<span class="ipo-status s-${(i.status||'upcoming').toLowerCase()}">${i.status||'Upcoming'}</span></div></div>`).join('')}</div></div>`:'';
+  return`<div class="section"><div class="section-header"><span class="section-num">01</span><span class="section-title">KLCI & Ringgit</span></div>${klci}${forex}</div><div class="divider"></div><div class="section"><div class="section-header"><span class="section-num">02</span><span class="section-title">Malaysia Stocks</span></div><table class="tbl"><thead><tr><th>Stock</th><th class="r">Price</th><th class="r">Chg</th><th>Read</th></tr></thead><tbody>${myRows}</tbody></table>${my.verdict?`<div class="verdict ${vc(my.verdict)}">${my.verdict}</div>`:''}</div>${ipos}`;
 }
 
-function moodClass(s) {
-  const v = (s||'').toLowerCase();
-  if (v.includes('bullish') || v.includes('risk-on') || v.includes('green')) return 'bullish';
-  if (v.includes('bearish') || v.includes('risk-off') || v.includes('red') || v.includes('fear')) return 'bearish';
-  return 'neutral';
-}
-
-function verdictClass(text) {
-  const t = (text||'').toLowerCase();
-  const bullScore = (t.match(/bull|opportunity|buy|upside|positive|breakout/g)||[]).length;
-  const bearScore = (t.match(/bear|risk|caution|sell|downside|negative|break/g)||[]).length;
-  if (bullScore > bearScore) return 'bullish';
-  if (bearScore > bullScore) return 'bearish';
-  return 'caution';
-}
-
-// ─── RENDERERS ──────────────────────────────────────────────────────────────────
-
-function renderHeader(d) {
-  const session = d.session || 'Morning';
-  const mClass = moodClass(d.mood || '');
-  return `
-    <div class="header">
-      <div class="header-left">
-        <h1>Crucix <span>Intel</span></h1>
-        <div class="header-meta">
-          <span class="header-date">${d.generated || '—'}</span>
-          <span class="session-badge ${session === 'Evening' ? 'evening' : ''}">${session} Brief</span>
-        </div>
-      </div>
-      <div class="mood-bar ${mClass}">${d.mood || 'Analysing market conditions...'}</div>
-    </div>`;
-}
-
-function renderMacro(macro) {
-  if (!macro) return '';
-  const items = [
-    { key: 'dxy',     label: 'DXY' },
-    { key: 'gold',    label: 'Gold' },
-    { key: 'oil',     label: 'Crude Oil' },
-    { key: 'yield10y',label: '10Y Yield' },
-    { key: 'vix',     label: 'VIX' },
-    { key: 'usdmyr',  label: 'USD/MYR' },
-    { key: 'silver',  label: 'Silver' },
-    { key: 'sp500',   label: 'S&P 500' },
-  ];
-
-  const cards = items.filter(i => macro[i.key]).map(i => {
-    const m = macro[i.key];
-    const cc = changeClass(m.change);
-    return `
-      <div class="metric-card">
-        <div class="metric-label">${i.label}</div>
-        <div class="metric-value">${m.value || '—'}</div>
-        <div class="metric-change ${cc}">${fmtChange(m.change)}</div>
-        ${m.signal ? `<div class="metric-signal">${m.signal}</div>` : ''}
-      </div>`;
+function renderInsights(d){
+  const ins=d.insights||{};
+  const mkts=[{k:'crypto',l:'Crypto',ic:'₿'},{k:'usStocks',l:'US Stocks',ic:'◎'},{k:'etfs',l:'ETFs',ic:'◈'},{k:'malaysia',l:'Malaysia',ic:'◇'}];
+  const cards=mkts.filter(m=>ins[m.k]).map(m=>{
+    const x=ins[m.k];const uid='ins-'+m.k;
+    return`<div class="ins-card"><div class="ins-header"><span style="font-size:15px;">${m.ic}</span><span class="ins-title">${m.l}</span></div><div class="tf-tabs"><button class="tf-btn active" onclick="switchTf('${uid}','today',this)">Today</button><button class="tf-btn" onclick="switchTf('${uid}','week',this)">This Week</button><button class="tf-btn" onclick="switchTf('${uid}','month',this)">This Month</button></div><div id="${uid}-today" class="tf-body active">${x.todayAction?`<span class="action-tag ${acCls(x.todayAction)}">${x.todayAction.toUpperCase()}</span><br>`:''}<div>${x.today||'No data.'}</div></div><div id="${uid}-week" class="tf-body">${x.weekAction?`<span class="action-tag ${acCls(x.weekAction)}">${x.weekAction.toUpperCase()}</span><br>`:''}<div>${x.thisWeek||'No data.'}</div></div><div id="${uid}-month" class="tf-body">${x.monthAction?`<span class="action-tag ${acCls(x.monthAction)}">${x.monthAction.toUpperCase()}</span><br>`:''}<div>${x.thisMonth||'No data.'}</div></div></div>`;
   }).join('');
-
-  const vClass = verdictClass(macro.verdict || '');
-
-  return `
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">01</span>
-        <span class="section-title">Macro Pulse</span>
-      </div>
-      <div class="metric-grid">${cards}</div>
-      ${macro.verdict ? `<div class="verdict ${vClass}">${macro.verdict}</div>` : ''}
-    </div>`;
+  return`<div class="section"><div class="section-header"><span class="section-title">Actionable Insights</span></div><p style="font-size:12px;color:var(--muted);margin-bottom:1rem;">Direct calls — what to do, not just what happened.</p><div class="insights-grid">${cards}</div></div>`;
 }
 
-function renderCrypto(crypto) {
-  if (!crypto) return '';
-
-  const mainCoins = (crypto.main || []).map(c => {
-    const c1 = changeClass(c.change1h);
-    const c24 = changeClass(c.change24h);
-    const c7 = changeClass(c.change7d);
-    return `
-      <div class="crypto-card">
-        <div class="crypto-top">
-          <div>
-            <div class="crypto-name">${c.name}</div>
-            <div class="crypto-symbol">${c.symbol || ''}</div>
-          </div>
-          <div class="crypto-price-block">
-            <div class="crypto-price ${c24}">${c.price}</div>
-            <div class="crypto-changes">
-              ${c.change1h !== undefined ? `<span class="change-pill ${c1}">1h ${fmtChange(c.change1h)}%</span>` : ''}
-              <span class="change-pill ${c24}">24h ${fmtChange(c.change24h)}%</span>
-              ${c.change7d !== undefined ? `<span class="change-pill ${c7}">7d ${fmtChange(c.change7d)}%</span>` : ''}
-            </div>
-          </div>
-        </div>
-        ${c.insight ? `<div class="crypto-insight">${c.insight}</div>` : ''}
-      </div>`;
+function renderPerps(d){
+  const perps=d.perps||[];
+  if(!perps.length)return`<div class="no-data"><div class="pulse"></div><h2>No perps data</h2><p>Run the routine to generate trade setups.</p></div>`;
+  const cards=perps.map(p=>{
+    const long=(p.direction||'').toUpperCase()==='LONG';
+    return`<div class="perp-card"><div class="perp-header"><div><div class="perp-asset">${p.asset}</div><div class="perp-sym">${p.symbol||''} Perpetuals</div></div><div class="perp-dir ${long?'dir-long':'dir-short'}">${(p.direction||'').toUpperCase()}</div></div><div class="perp-body"><div class="perp-cur">Current: <span>${p.currentPrice||'—'}</span></div><div class="perp-levels"><div class="perp-lvl"><div class="lvl-lbl lbl-entry">Entry</div><div class="lvl-val">${p.entry||'—'}</div></div><div class="perp-lvl"><div class="lvl-lbl lbl-tp">TP 1</div><div class="lvl-val">${p.tp1?p.tp1.price:'—'}</div><div class="lvl-pct up">${p.tp1?p.tp1.pct:''}</div></div><div class="perp-lvl"><div class="lvl-lbl lbl-tp">TP 2</div><div class="lvl-val">${p.tp2?p.tp2.price:'—'}</div><div class="lvl-pct up">${p.tp2?p.tp2.pct:''}</div></div><div class="perp-lvl"><div class="lvl-lbl lbl-sl">Stop Loss</div><div class="lvl-val">${p.sl?p.sl.price:'—'}</div><div class="lvl-pct down">${p.sl?p.sl.pct:''}</div></div></div><div class="perp-meta"><span class="pbadge pb-lev">🔧 ${p.leverage||'—'}</span><span class="pbadge pb-rr">R:R ${p.riskReward||'—'}</span><span class="pbadge ${confCls(p.confidence)}">${(p.confidence||'—').toUpperCase()}</span><span class="pbadge pb-min">Min $${p.minUSD||'10'}</span></div><div class="perp-reasoning">${p.reasoning||''}</div></div></div>`;
   }).join('');
-
-  const domHtml = crypto.dominance ? `
-    <div class="dominance-row">
-      <div class="dom-label">BTC Dominance</div>
-      <div class="dom-bar-wrap">
-        <div class="dom-bar-fill" style="width:${Math.min(parseFloat(crypto.dominance.value)||50, 100)}%"></div>
-      </div>
-      <div class="dom-value ${changeClass(crypto.dominance.change)}">${crypto.dominance.value}%</div>
-      <div class="dom-signal">${crypto.dominance.signal || ''}</div>
-    </div>` : '';
-
-  const memeHtml = (crypto.memecoins || []).length ? `
-    <div class="section-header" style="margin-top:1.25rem;">
-      <span class="section-title" style="font-size:10px;">Memecoin Radar</span>
-    </div>
-    <div class="meme-grid">
-      ${(crypto.memecoins || []).map(m => {
-        const cc = changeClass(m.change24h);
-        return `
-          <div class="meme-card">
-            <div class="meme-name">${m.name} <span style="font-weight:400;color:var(--faint);font-size:11px;">${m.symbol||''}</span></div>
-            <div class="meme-change ${cc}">${fmtChange(m.change24h)}%</div>
-            ${m.price ? `<div style="font-family:var(--mono);font-size:12px;color:var(--muted);">${m.price}</div>` : ''}
-            ${m.note ? `<div class="meme-note">${m.note}</div>` : ''}
-          </div>`;
-      }).join('')}
-    </div>` : '';
-
-  const vClass = verdictClass(crypto.verdict || '');
-
-  return `
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">02</span>
-        <span class="section-title">Crypto Market</span>
-      </div>
-      ${domHtml}
-      <div class="crypto-grid">${mainCoins}</div>
-      ${memeHtml}
-      ${crypto.verdict ? `<div class="verdict ${vClass}" style="margin-top:1rem;">${crypto.verdict}</div>` : ''}
-    </div>`;
+  return`<div class="section"><div class="section-header"><span class="section-title">Perps Trade Setups — BTC · ETH · SOL</span></div><div class="perps-grid">${cards}</div><div class="disclaimer">⚠️ AI-generated setups based on available market data. Not financial advice. Always use your own judgment and manage risk accordingly. These are suggestions only.</div></div>`;
 }
 
-function renderUSMarkets(us) {
-  if (!us) return '';
-
-  const indicesHtml = (us.indices || []).length ? `
-    <div class="indices-row">
-      ${(us.indices || []).map(idx => {
-        const cc = changeClass(idx.change);
-        return `
-          <div class="index-card">
-            <div class="index-name">${idx.name}</div>
-            <div class="index-value ${cc}">${idx.value}</div>
-            <div class="index-change ${cc}">${fmtChange(idx.change)}</div>
-          </div>`;
-      }).join('')}
-    </div>` : '';
-
-  const etfRows = (us.etfs || []).map(s => `
-    <tr>
-      <td><div class="stock-ticker">${s.ticker}</div><div class="stock-name">${s.name||''}</div></td>
-      <td class="right"><div class="stock-price">${s.price||'—'}</div></td>
-      <td class="right"><div class="stock-change ${changeClass(s.change)}">${fmtChange(s.change)}</div></td>
-      <td><div class="stock-insight">${s.insight||''}</div></td>
-    </tr>`).join('');
-
-  const stockRows = (us.stocks || []).map(s => `
-    <tr>
-      <td>
-        <div class="stock-ticker">${s.ticker}</div>
-        <div class="stock-name">${s.name||''}</div>
-        ${s.flag ? `<span class="stock-flag flag-${(s.flag||'').toLowerCase()}">${s.flag}</span>` : ''}
-      </td>
-      <td class="right"><div class="stock-price">${s.price||'—'}</div></td>
-      <td class="right"><div class="stock-change ${changeClass(s.change)}">${fmtChange(s.change)}</div></td>
-      <td><div class="stock-insight">${s.insight||''}</div></td>
-    </tr>`).join('');
-
-  const trendingHtml = (us.trending || []).length ? `
-    <div style="margin-top:1rem;">
-      <div class="section-header" style="margin-bottom:0.75rem;">
-        <span class="section-title" style="font-size:10px;">Trending & Most Active</span>
-      </div>
-      <div class="trending-row">
-        ${(us.trending || []).map(t => `
-          <div class="trending-pill">
-            <span class="trending-ticker">${t.ticker}</span>
-            <span class="trending-price ${changeClass(t.change)}">${fmtChange(t.change)}</span>
-          </div>`).join('')}
-      </div>
-    </div>` : '';
-
-  const vClass = verdictClass(us.verdict || '');
-
-  return `
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">03</span>
-        <span class="section-title">US Markets</span>
-      </div>
-      ${indicesHtml}
-      ${etfRows ? `
-        <div style="margin-bottom:8px;">
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint);font-family:var(--mono);margin-bottom:6px;">ETF Watchlist</div>
-          <table class="stock-table">
-            <thead><tr>
-              <th>Ticker</th><th class="right">Price</th><th class="right">Change</th><th>Insight</th>
-            </tr></thead>
-            <tbody>${etfRows}</tbody>
-          </table>
-        </div>` : ''}
-      ${stockRows ? `
-        <div>
-          <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint);font-family:var(--mono);margin-bottom:6px;">Stocks Watchlist</div>
-          <table class="stock-table">
-            <thead><tr>
-              <th>Ticker</th><th class="right">Price</th><th class="right">Change</th><th>Insight</th>
-            </tr></thead>
-            <tbody>${stockRows}</tbody>
-          </table>
-        </div>` : ''}
-      ${trendingHtml}
-      ${us.verdict ? `<div class="verdict ${vClass}" style="margin-top:1rem;">${us.verdict}</div>` : ''}
-    </div>`;
-}
-
-function renderMalaysia(my) {
-  if (!my) return '';
-
-  const klciHtml = my.klci ? `
-    <div class="klci-card">
-      <div class="klci-label">FTSE Bursa Malaysia KLCI</div>
-      <div class="klci-value">${my.klci.value}</div>
-      <div class="klci-change">${fmtChange(my.klci.change)} today</div>
-      ${my.klci.context ? `<div class="klci-context">${my.klci.context}</div>` : ''}
-    </div>` : '';
-
-  const forexHtml = my.usdmyr ? `
-    <div class="forex-row">
-      <div class="forex-pair">USD / MYR</div>
-      <div class="forex-rate ${changeClass(my.usdmyr.change)}">${my.usdmyr.value}</div>
-      <div class="forex-signal">${my.usdmyr.signal || ''}</div>
-    </div>` : '';
-
-  const myStockRows = (my.stocks || []).map(s => `
-    <tr>
-      <td><div class="stock-ticker">${s.ticker}</div><div class="stock-name">${s.name||''}</div></td>
-      <td class="right"><div class="stock-price">RM ${s.price||'—'}</div></td>
-      <td class="right"><div class="stock-change ${changeClass(s.change)}">${fmtChange(s.change)}</div></td>
-      <td><div class="stock-insight">${s.insight||''}</div></td>
-    </tr>`).join('');
-
-  const ipoHtml = (my.ipos || []).length ? `
-    <div style="margin-top:1rem;">
-      <div style="font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint);font-family:var(--mono);margin-bottom:8px;">IPO Watch</div>
-      <div class="ipo-list">
-        ${(my.ipos || []).map(ipo => `
-          <div class="ipo-card">
-            <div class="ipo-main">
-              <div class="ipo-name">${ipo.name}</div>
-              <div class="ipo-meta">${ipo.sector || ''} ${ipo.listingDate ? '· Listing ' + ipo.listingDate : ''}</div>
-              ${ipo.note ? `<div class="ipo-note">${ipo.note}</div>` : ''}
-            </div>
-            <div class="ipo-right">
-              ${ipo.price ? `<div class="ipo-price">RM ${ipo.price}</div>` : ''}
-              <span class="ipo-status status-${(ipo.status||'upcoming').toLowerCase()}">${ipo.status || 'Upcoming'}</span>
-            </div>
-          </div>`).join('')}
-      </div>
-    </div>` : '';
-
-  const vClass = verdictClass(my.verdict || '');
-
-  return `
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">04</span>
-        <span class="section-title">Malaysia Market</span>
-      </div>
-      ${klciHtml}
-      ${forexHtml}
-      ${myStockRows ? `
-        <table class="stock-table" style="margin-bottom:0;">
-          <thead><tr>
-            <th>Stock</th><th class="right">Price</th><th class="right">Change</th><th>Insight</th>
-          </tr></thead>
-          <tbody>${myStockRows}</tbody>
-        </table>` : ''}
-      ${ipoHtml}
-      ${my.verdict ? `<div class="verdict ${vClass}" style="margin-top:1rem;">${my.verdict}</div>` : ''}
-    </div>`;
-}
-
-function renderNews(news) {
-  if (!news || !news.length) return '';
-  return `
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">05</span>
-        <span class="section-title">News That Moves Markets</span>
-      </div>
-      <div class="news-list">
-        ${news.map(n => `
-          <div class="news-card">
-            <div class="news-top">
-              <div class="news-headline">${n.headline}</div>
-              <span class="news-sentiment ${sentClass(n.sentiment)}">${(n.sentiment||'neutral').toUpperCase()}</span>
-            </div>
-            <div class="news-source">${n.source || ''}${n.time ? ' · ' + n.time : ''}</div>
-            ${n.meaning ? `
-              <div class="news-meaning">
-                <strong>What this means for you</strong>
-                ${n.meaning}
-              </div>` : ''}
-          </div>`).join('')}
-      </div>
-    </div>`;
-}
-
-function renderOpportunities(opps) {
-  if (!opps || !opps.length) return '';
-  return `
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">06</span>
-        <span class="section-title">Opportunities to Watch</span>
-      </div>
-      <div class="opp-list">
-        ${opps.map(o => {
-          const ot = oppTypeClass(o.type);
-          return `
-            <div class="opp-card ${ot}">
-              <div class="opp-top">
-                <span class="opp-ticker">${o.ticker || o.asset}</span>
-                <span class="opp-type type-${ot}">${o.type}</span>
-                ${o.timeframe ? `<span class="opp-timeframe">${o.timeframe}</span>` : ''}
-              </div>
-              <div class="opp-reasoning">${o.reasoning}</div>
-            </div>`;
-        }).join('')}
-      </div>
-    </div>`;
-}
-
-function renderFooter(d) {
-  return `
-    <div class="footer">
-      <div class="footer-left">Crucix Intel · ${d.generated || '—'} · ${d.session || 'Morning'} session</div>
-      <div class="footer-right">${d.nextRun ? 'Next run: ' + d.nextRun : 'Auto-updates every session'}</div>
-    </div>`;
-}
-
-function renderNoData() {
-  return `
-    <div class="no-data">
-      <div class="pulse"></div>
-      <h2>Awaiting first run</h2>
-      <p>The Crucix Intel routine will populate this dashboard on its first scheduled run at 7:00 AM KL time.</p>
-      <p style="font-family:var(--mono);font-size:11px;color:var(--faint);">data.js not found</p>
-    </div>`;
-}
-
-// ─── MAIN RENDER ────────────────────────────────────────────────────────────────
-
-function render() {
-  const root = document.getElementById('root');
-  const d = window.CRUCIX_DATA;
-
-  if (!d) {
-    root.innerHTML = renderNoData();
+function init(){
+  const d=window.CRUCIX_DATA;
+  const tabs=['overview','crypto','us','malaysia','insights','perps'];
+  if(!d){
+    tabs.forEach(id=>{document.getElementById('r-'+id).innerHTML=`<div class="no-data"><div class="pulse"></div><h2>Awaiting first run</h2><p>The routine will populate this at 7:00 AM KL time.</p></div>`;});
     return;
   }
-
-  root.innerHTML =
-    renderHeader(d) +
-    renderMacro(d.macro) +
-    '<div class="divider"></div>' +
-    renderCrypto(d.crypto) +
-    '<div class="divider"></div>' +
-    renderUSMarkets(d.usMarkets) +
-    '<div class="divider"></div>' +
-    renderMalaysia(d.malaysia) +
-    '<div class="divider"></div>' +
-    renderNews(d.news) +
-    '<div class="divider"></div>' +
-    renderOpportunities(d.opportunities) +
-    renderFooter(d);
+  document.getElementById('top-meta').textContent=(d.session||'Morning')+' · '+(d.generated||'');
+  document.getElementById('top-mood').textContent=d.mood||'';
+  document.getElementById('r-overview').innerHTML=renderOverview(d);
+  document.getElementById('r-crypto').innerHTML=renderCrypto(d);
+  document.getElementById('r-us').innerHTML=renderUS(d);
+  document.getElementById('r-malaysia').innerHTML=renderMalaysia(d);
+  document.getElementById('r-insights').innerHTML=renderInsights(d);
+  document.getElementById('r-perps').innerHTML=renderPerps(d);
 }
-
-window.addEventListener('DOMContentLoaded', render);
+window.addEventListener('DOMContentLoaded',init);
 </script>
 </body>
 </html>
