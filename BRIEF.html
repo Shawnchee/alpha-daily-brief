@@ -284,6 +284,7 @@ function switchTf(uid,tf,btn){
 }
 function cc(v){if(v==null||v==='')return'flat';const n=parseFloat(String(v).replace(/[%+]/g,''));if(isNaN(n)||n===0)return'flat';return n>0?'up':'down';}
 function fc(v){if(v==null||v==='')return'—';const s=String(v);const n=parseFloat(s.replace(/[%+]/g,''));if(isNaN(n))return s;return(n>0?'+':'')+n.toFixed(2)+(s.includes('%')?'%':'');}
+function pct(v){if(v==null||v==='')return'—';const n=parseFloat(String(v).replace(/[%+,]/g,''));if(isNaN(n))return'—';return(n>0?'+':'')+n.toFixed(2)+'%';}
 function sc(s){const v=(s||'').toLowerCase();if(v.includes('bull'))return'sent-bull';if(v.includes('bear'))return'sent-bear';if(v.includes('watch'))return'sent-watch';return'sent-neu';}
 function vc(t){const s=(t||'').toLowerCase();const b=(s.match(/bull|buy|upside|break|opportun|positive|strong/g)||[]).length;const r=(s.match(/bear|sell|risk|caution|down|weak|pressure/g)||[]).length;if(b>r)return'bull';if(r>b)return'bear';return'neutral';}
 function acCls(a){const v=(a||'').toLowerCase();if(v.includes('buy')||v.includes('long')||v.includes('add'))return'act-buy';if(v.includes('sell')||v.includes('short')||v.includes('exit')||v.includes('reduce'))return'act-sell';if(v.includes('hold'))return'act-hold';return'act-watch';}
@@ -299,17 +300,73 @@ function renderOverview(d){
 
 function renderCrypto(d){
   const c=d.crypto||{};
+
+  // Live TradingView widget — always real-time prices from Binance
+  const liveWidget=`
+    <div class="tv-wrap" style="margin-bottom:1.5rem">
+      <div class="tv-header">
+        <span class="tv-title">Live Crypto Prices</span>
+        <span class="tv-badge">Real-time · Binance via TradingView</span>
+      </div>
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+        {"colorTheme":"light","dateRange":"1D","showChart":true,"locale":"en","width":"100%","height":"420","isTransparent":true,"showSymbolLogo":true,"showFloatingTooltip":false,"tabs":[{"title":"Crypto","symbols":[{"s":"BINANCE:BTCUSDT","d":"Bitcoin"},{"s":"BINANCE:ETHUSDT","d":"Ethereum"},{"s":"BINANCE:SOLUSDT","d":"Solana"},{"s":"BINANCE:DOGEUSDT","d":"Dogecoin"},{"s":"BINANCE:PEPEUSDT","d":"Pepe"},{"s":"BINANCE:SHIBUSDT","d":"Shiba Inu"},{"s":"BINANCE:WIFUSDT","d":"dogwifhat"},{"s":"BINANCE:BONKUSDT","d":"Bonk"}],"originalTitle":"Crypto"}]}
+        </script>
+      </div>
+    </div>`;
+
   const dom=c.dominance?`<div class="dom-row"><div class="dom-label">BTC Dominance</div><div class="dom-track"><div class="dom-fill" style="width:${Math.min(parseFloat(c.dominance.value)||50,100)}%"></div></div><div class="dom-val ${cc(c.dominance.change)}">${c.dominance.value}%</div><div class="dom-signal">${c.dominance.signal||''}</div></div>`:'';
-  const coins=(c.main||[]).map(x=>`<div class="crypto-card"><div class="crypto-top"><div><div class="crypto-name">${x.name}</div><div class="crypto-symbol">${x.symbol||''} ${x.marketCap?'· '+x.marketCap:''}</div></div><div><div class="crypto-price ${cc(x.change24h)}">${x.price}</div><div class="crypto-changes">${x.change1h!=null?`<span class="pill ${cc(x.change1h)}">1h ${fc(x.change1h)}%</span>`:''}<span class="pill ${cc(x.change24h)}">24h ${fc(x.change24h)}%</span>${x.change7d!=null?`<span class="pill ${cc(x.change7d)}">7d ${fc(x.change7d)}%</span>`:''}</div></div></div>${x.insight?`<div class="crypto-insight">${x.insight}</div>`:''}</div>`).join('');
-  const memes=(c.memecoins||[]).length?`<div class="section-header" style="margin-top:1.25rem;"><span class="section-title" style="font-size:10px;">Memecoin Radar</span></div><div class="meme-grid">${(c.memecoins||[]).map(m=>`<div class="meme-card"><div class="meme-name">${m.name} <span style="font-weight:400;color:var(--faint);font-size:11px;">${m.symbol||''}</span></div><div class="meme-chg ${cc(m.change24h)}">${fc(m.change24h)}%</div>${m.price?`<div style="font-family:var(--mono);font-size:11px;color:var(--muted);">${m.price}</div>`:''} ${m.note?`<div class="meme-note">${m.note}</div>`:''}</div>`).join('')}</div>`:'';
-  return`<div class="section"><div class="section-header"><span class="section-num">01</span><span class="section-title">Crypto Market</span></div>${dom}<div class="crypto-grid">${coins}</div>${memes}${c.verdict?`<div class="verdict ${vc(c.verdict)}">${c.verdict}</div>`:''}</div>`;
+
+  const coins=(c.main||[]).map(x=>`
+    <div class="crypto-card">
+      <div class="crypto-top">
+        <div><div class="crypto-name">${x.name}</div><div class="crypto-symbol">${x.symbol||''} ${x.marketCap?'· '+x.marketCap:''}</div></div>
+        <div>
+          <div class="crypto-price ${cc(x.change24h)}">${x.price}</div>
+          <div class="crypto-changes">
+            ${x.change1h!=null&&x.change1h!='N/A'?`<span class="pill ${cc(x.change1h)}">1h ${pct(x.change1h)}</span>`:''}
+            <span class="pill ${cc(x.change24h)}">24h ${pct(x.change24h)}</span>
+            ${x.change7d!=null&&x.change7d!='N/A'?`<span class="pill ${cc(x.change7d)}">7d ${pct(x.change7d)}</span>`:''}
+          </div>
+        </div>
+      </div>
+      ${x.insight?`<div class="crypto-insight">${x.insight}</div>`:''}
+    </div>`).join('');
+
+  const memes=(c.memecoins||[]).length?`
+    <div class="section-header" style="margin-top:1.25rem;">
+      <span class="section-title" style="font-size:10px;">Memecoin Radar — from last brief</span>
+    </div>
+    <div class="meme-grid">
+      ${(c.memecoins||[]).map(m=>`
+        <div class="meme-card">
+          <div class="meme-name">${m.name} <span style="font-weight:400;color:var(--faint);font-size:11px;">${m.symbol||''}</span></div>
+          <div class="meme-chg ${cc(m.change24h)}">${pct(m.change24h)}</div>
+          ${m.price?`<div style="font-family:var(--mono);font-size:11px;color:var(--muted);">${m.price}</div>`:''}
+          ${m.note?`<div class="meme-note">${m.note}</div>`:''}
+        </div>`).join('')}
+    </div>` : '';
+
+  const briefNote=`<div style="font-size:11px;color:var(--faint);font-family:var(--mono);margin-top:1rem;padding:8px 12px;background:var(--surface2);border-radius:var(--r)">↑ Live widget above shows real-time prices · Cards below show data from last brief run (${d.generated||'—'})</div>`;
+
+  return`<div class="section">
+    <div class="section-header"><span class="section-num">01</span><span class="section-title">Crypto Market</span></div>
+    ${liveWidget}
+    ${dom}
+    <div class="section-header" style="margin-top:1rem;"><span class="section-title" style="font-size:10px;">Last Brief Data · ${d.generated||'—'}</span></div>
+    <div class="crypto-grid">${coins}</div>
+    ${memes}
+    ${briefNote}
+    ${c.verdict?`<div class="verdict ${vc(c.verdict)}">${c.verdict}</div>`:''}
+  </div>`;
 }
 
 function renderUS(d){
   const u=d.usMarkets||{};
-  const idx=(u.indices||[]).map(i=>`<div class="idx-card"><div class="idx-name">${i.name}</div><div class="idx-val ${cc(i.change)}">${i.value}</div><div class="idx-chg ${cc(i.change)}">${fc(i.change)}</div></div>`).join('');
-  const etfRows=(u.etfs||[]).map(s=>`<tr><td><div class="ticker">${s.ticker}</div><div class="ticker-name">${s.name||''}</div></td><td class="r"><div class="price">${s.price||'—'}</div></td><td class="r"><div class="chg ${cc(s.change)}">${fc(s.change)}</div></td><td><div class="note">${s.insight||''}</div></td></tr>`).join('');
-  const stkRows=(u.stocks||[]).map(s=>`<tr><td><div class="ticker">${s.ticker}</div><div class="ticker-name">${s.name||''}</div>${s.notable?'<span class="flag flag-hot">Notable</span>':''}</td><td class="r"><div class="price">${s.price||'—'}</div></td><td class="r"><div class="chg ${cc(s.change)}">${fc(s.change)}</div></td><td><div class="note">${s.insight||''}</div></td></tr>`).join('');
+  const idx=(u.indices||[]).map(i=>`<div class="idx-card"><div class="idx-name">${i.name}</div><div class="idx-val ${cc(i.change)}">${i.value}</div><div class="idx-chg ${cc(i.change)}">${pct(i.change)}</div></div>`).join('');
+  const etfRows=(u.etfs||[]).map(s=>`<tr><td><div class="ticker">${s.ticker}</div><div class="ticker-name">${s.name||''}</div></td><td class="r"><div class="price">${s.price||'—'}</div></td><td class="r"><div class="chg ${cc(s.change)}">${pct(s.change)}</div></td><td><div class="note">${s.insight||''}</div></td></tr>`).join('');
+  const stkRows=(u.stocks||[]).map(s=>`<tr><td><div class="ticker">${s.ticker}</div><div class="ticker-name">${s.name||''}</div>${s.notable?'<span class="flag flag-hot">Notable</span>':''}</td><td class="r"><div class="price">${s.price||'—'}</div></td><td class="r"><div class="chg ${cc(s.change)}">${pct(s.change)}</div></td><td><div class="note">${s.insight||''}</div></td></tr>`).join('');
   const trend=(u.trending||[]).length?`<div style="margin-top:1rem;"><div class="section-header" style="margin-bottom:.75rem;"><span class="section-title" style="font-size:10px;">Trending Today</span></div><div class="trending">${(u.trending||[]).map(t=>`<div class="t-pill"><span class="t-tick">${t.ticker}</span><span class="${cc(t.change)}">${fc(t.change)}</span></div>`).join('')}</div></div>`:'';
   return`<div class="section"><div class="section-header"><span class="section-num">01</span><span class="section-title">Indices</span></div><div class="idx-grid">${idx}</div></div><div class="divider"></div><div class="section"><div class="section-header"><span class="section-num">02</span><span class="section-title">ETF Watchlist</span></div><table class="tbl"><thead><tr><th>ETF</th><th class="r">Price</th><th class="r">Chg</th><th>Read</th></tr></thead><tbody>${etfRows}</tbody></table></div><div class="divider"></div><div class="section"><div class="section-header"><span class="section-num">03</span><span class="section-title">Stocks Watchlist</span></div><table class="tbl"><thead><tr><th>Stock</th><th class="r">Price</th><th class="r">Chg</th><th>Read</th></tr></thead><tbody>${stkRows}</tbody></table>${trend}${u.verdict?`<div class="verdict ${vc(u.verdict)}">${u.verdict}</div>`:''}</div>`;
 }
@@ -318,7 +375,7 @@ function renderMalaysia(d){
   const my=d.malaysia||{};
   const klci=my.klci?`<div class="klci-hero"><div class="klci-lbl">FTSE Bursa Malaysia KLCI</div><div class="klci-val">${my.klci.value}</div><div class="klci-chg">${fc(my.klci.change)} today</div>${my.klci.context?`<div class="klci-ctx">${my.klci.context}</div>`:''}</div>`:'';
   const forex=my.usdmyr?`<div class="forex-row"><div class="forex-pair">USD / MYR</div><div class="forex-rate ${cc(my.usdmyr.change)}">${my.usdmyr.value}</div><div class="forex-sig">${my.usdmyr.signal||''}</div></div>`:'';
-  const myRows=(my.stocks||[]).map(s=>`<tr><td><div class="ticker">${s.ticker}</div><div class="ticker-name">${s.name||''}</div></td><td class="r"><div class="price">RM ${s.price||'—'}</div></td><td class="r"><div class="chg ${cc(s.change)}">${fc(s.change)}</div></td><td><div class="note">${s.insight||''}</div></td></tr>`).join('');
+  const myRows=(my.stocks||[]).map(s=>`<tr><td><div class="ticker">${s.ticker}</div><div class="ticker-name">${s.name||''}</div></td><td class="r"><div class="price">RM ${s.price||'—'}</div></td><td class="r"><div class="chg ${cc(s.change)}">${pct(s.change)}</div></td><td><div class="note">${s.insight||''}</div></td></tr>`).join('');
   const ipos=(my.ipos||[]).length?`<div class="divider"></div><div class="section"><div class="section-header"><span class="section-title">IPO Watch</span></div><div class="ipo-list">${(my.ipos||[]).map(i=>`<div class="ipo-card"><div><div class="ipo-name">${i.name}</div><div class="ipo-meta">${i.sector||''}${i.listingDate?' · Listing '+i.listingDate:''}</div>${i.note?`<div class="ipo-note">${i.note}</div>`:''}</div><div>${i.price?`<div class="ipo-price">RM ${i.price}</div>`:''}<span class="ipo-status s-${(i.status||'upcoming').toLowerCase()}">${i.status||'Upcoming'}</span></div></div>`).join('')}</div></div>`:'';
   return`<div class="section"><div class="section-header"><span class="section-num">01</span><span class="section-title">KLCI & Ringgit</span></div>${klci}${forex}</div><div class="divider"></div><div class="section"><div class="section-header"><span class="section-num">02</span><span class="section-title">Malaysia Stocks</span></div><table class="tbl"><thead><tr><th>Stock</th><th class="r">Price</th><th class="r">Chg</th><th>Read</th></tr></thead><tbody>${myRows}</tbody></table>${my.verdict?`<div class="verdict ${vc(my.verdict)}">${my.verdict}</div>`:''}</div>${ipos}`;
 }
