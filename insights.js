@@ -2,47 +2,47 @@ window.CRUCIX_INSIGHTS = {
 
   insights: {
     crypto: {
-      todayAction: "Buy",
-      today: "BTC at $96,262 is firmly bullish — buy dips toward $95,000 with immediate target $100,000 psychological level. Solana leads the alt narrative today: SOL ETFs have zero outflow days in May with $90.83M inflows, Alpenglow upgrade (150ms finality) is the live catalyst. BTC ETFs had a $635M one-day outflow spike but six prior weeks of inflows means institutional hands are still net long — this is noise, not reversal. Buy SOL at $83–86, target $91 then $98, cut if $80 breaks on a daily close.",
+      todayAction: "Sell",
+      today: "BTC rejected $80K hard and is drifting $76K–$77.5K with ETF outflows rising and Coinbase Premium Index slipping — any bounce into $77,300 is a sell. Hot narrative today is RWA (Solana RWA ecosystem hit $2B) and AI infra (Solana Foundation at Consensus Miami), but macro pressure from Iran tensions and Trump ETF withdrawal is drowning both. FOMC minutes drop today at 2pm EST — hawkish read on April CPI (+0.6% MoM) kills risk appetite and sends crypto lower into the afternoon. Sell BTC at $77,200–$77,500, target $74,800, cut if $79,200 breaks on volume.",
 
-      weekAction: "Buy",
-      thisWeek: "NVDA earnings Wednesday May 20 after close is the macro catalyst that decides risk-on or risk-off across all assets including crypto — beat sends AI tokens up 10%+. BTC holds bullish above $93,000 this week; a daily close below $90,000 triggers real concern and de-risking. Best crypto sector this week: AI tokens (FET, RENDER, TAO) — NVDA beat will spike the AI narrative immediately and these are the first movers. BTC dominance at 61% = stay heavy BTC and SOL, don't chase low-cap alts yet.",
+      weekAction: "Wait",
+      thisWeek: "Biggest catalyst this week: FOMC minutes Wed May 20 2pm EST and BTC options expiry Fri May 23 — both point to elevated vol and downside risk. BTC weekly key level: hold $76,500 = range intact, break below = flush toward $73,000 and real damage. Best crypto sector this week is RWA — SOL and LINK are the two plays if BTC stabilises above $76K as tokenized asset TVL crossed $65B. Stay patient this week; no aggressive sizing until NVDA earnings digest and FOMC minutes are behind us.",
 
-      monthAction: "Accumulate",
-      thisMonth: "Early-to-mid bull cycle confirmed: Bitwise predicts BTC, ETH, and SOL all hit new ATH in 2026 and institutional ETF flows back that call with real money. Accumulate BTC below $98,000 and SOL below $90 — both have ETF tailwinds and protocol upgrades acting as fundamental catalysts this month. SOL (Alpenglow finality upgrade, staking ETF inflows) and RENDER (AI GPU compute narrative tied to NVDA cycle) are the two best accumulation targets. Avoid memecoins this month — Altcoin Season Index at 39/100 means broad altseason is not here yet and memes are exit liquidity."
+      monthAction: "Trim",
+      thisMonth: "Cycle reads late-bull/early-distribution: BTC rejecting $80K on shrinking ETF inflows and rising 30-year yields signals smart money reducing, not adding. Trim altcoin exposure this month, hold only BTC and SOL as core positions. Accumulate SOL below $82 (RWA ecosystem + AI infra narrative with real institutional inflow of $55M last week) and LINK under $12 (tokenized assets are the one macro-backed narrative with legs). Avoid ETH this month — ETH/BTC at multi-month lows with zero near-term catalyst to reverse the ratio."
     },
 
     usStocks: {
-      todayAction: "Buy",
-      today: "Market opens with a pre-NVDA earnings bid — buy the rumor, S&P gapping up into the May 20 catalyst with Polymarket at 95% beat probability. NVDA is the single stock with catalyst today: earnings drop after close tomorrow, $78B revenue guidance at 75% YoY growth, buy under $1,150 with target $1,250 post-beat. AI trade is intact — NVDA and AMD both dipped 4–5% on May 15 chipmaker selloff which was the entry, not the exit. Best setup today: NVDA long at market open with stop below $1,080, target $1,220.",
+      todayAction: "Wait",
+      today: "Market open bias is choppy and tight pre-NVDA — expect low conviction until FOMC minutes at 2pm EST then a vol spike into the close. NVDA reports after close today May 20 with consensus at $78B revenue and $1.77 EPS; pre-earnings drift is sideways, do not chase the setup. AI trade read: SOX fell 7% this week ahead of NVDA print — narrative intact but positioning light, meaning any beat gap-up has legs but a miss gets ugly fast. Best setup: only buy NVDA post-close if it beats $78B and guides above $80B — otherwise avoid all tech until tomorrow open.",
 
-      weekAction: "Buy",
-      thisWeek: "NVDA reports Wednesday May 20 after close — Wall Street expects $78B revenue, beat likely as MI450 GPU ramp drives Data Center upside, buy into the print. No Fed meeting this week but hot April CPI (3.8% vs 3.7% expected) means Fed stays on hold through 2026 — earnings growth at 21.3% for CY2026 overrides the rate ceiling. Best sector rotation this week: XLK and SOXX — semiconductors lead with AMD +114% YTD and MI450 ramp in H2, buy SOXX at $280–290. Top stock pick for the week: AMD at $175–185, target $210, catalyst is MI450 production ramp announcement and NVDA halo effect.",
+      weekAction: "Hold",
+      thisWeek: "NVDA reports today May 20 after close — consensus $78B revenue, 78% YoY; Polymarket has 90% beat probability but buy-rumor-sell-news risk is real if guidance disappoints on Blackwell-to-Vera-Rubin margin compression. FOMC minutes today lean hawkish given hot April CPI — growth stocks face a rate headwind if Chair Warsh signals caution on cuts this year. Best sector rotation play: AMD at $108–$112 entry — already beat estimates, guided 35% server CPU growth, and is the 'changing of guard in AI' trade CNBC called this week. Top pick for the week: AMD at $110, target $125, stop $103.",
 
-      monthAction: "Accumulate",
-      thisMonth: "Bull phase confirmed: S&P 500 on track for 7,600 year-end target, earnings revisions just flipped positive for the first time in months, AI capex driving 40% of S&P EPS growth in 2026. AI and semiconductor sector leads this month — SOXX outperforming QQQ, AMD +114% YTD, NVDA $78B quarter showing AI spending is not slowing. Monthly conviction stock: AMD long at $175–185, thesis is MI450 GPU ramp captures market share from NVDA supply constraints in H2 2026. Add US equity exposure this month — 21.3% earnings growth CY2026, Fed on hold not hiking, macro supports equities over bonds."
+      monthAction: "Hold",
+      thisMonth: "VIX elevated but SPY breadth is still positive — not bear phase, but the 7% SOX drop in days is a yellow flag for concentrated tech risk. AI semiconductor sector leads this month: NVDA + AMD + MRVL are repricing a $1.3T 2026 semiconductor market that Bank of America just raised from $1.0T four months ago. Monthly conviction stock: AMD under $115 — Wall Street is rotating from NVDA to AMD as the cleaner AI play, and Lisa Su's 35% growth guidance gives institutional cover to buy. Hold current US equity exposure, do not add until NVDA earnings are fully digested."
     },
 
     etfs: {
-      todayAction: "Buy",
-      today: "IBIT had a $635M single-day outflow last week but six weeks of prior inflows means institutional positioning is still net long — positive IBIT flow today confirms BTC $100K re-test is next. QQQ is a dip-buy above $490; below $480 is real weakness, watch NVDA reaction post-earnings Wednesday for QQQ direction. Best ETF entry today: SOXX at $280–290 — pure semiconductor play directly ahead of NVDA earnings beat tomorrow. ARKK modestly outperforming QQQ this month = risk appetite returning, not a blow-off top, stay long growth.",
+      todayAction: "Watch",
+      today: "IBIT saw net outflows today alongside broader BTC ETF redemptions — institutions are reducing crypto exposure ahead of FOMC minutes, read this as a risk-off signal for the session. QQQ at its 50-day MA is the line that matters: hold post-FOMC = dip buy, break on hawkish minutes = exit tech exposure fast. Best ETF entry today: XLE (energy) at market open — oil and risk-off rotation are working when tech is under pressure and vol is spiking. ARKK vs QQQ spread is compressing with ARKK underperforming — speculative risk appetite is not back, stay defensive.",
 
-      weekAction: "Buy",
-      thisWeek: "Best ETF this week: SOXX — NVDA earnings beat Wednesday is a direct catalyst for the entire chip sector to gap up Thursday morning. SOXX chip trade is alive: AMD MI450 ramp, NVDA $78B quarter, 95% beat probability on Polymarket — add SOXX at $285 and hold through Thursday. Add SOXX at $280–290 this week, avoid TLT as hot CPI keeps Fed on hold and bond prices stay pressured. IBIT weekly signal: watch for institutional re-entry after the $635M outflow spike — positive IBIT flow mid-week = BTC $100K green light.",
+      weekAction: "Hold",
+      thisWeek: "Best ETF this week: SMH (semiconductor ETF) — buy the post-NVDA earnings dip to $210–215 if revenue beats $78B, the AI data-center cycle is intact despite this week's SOX weakness. SOXX chip trade is alive but paused: the 7% drop is a shakeout not a breakdown given AMD's 35% guidance and Blackwell demand confirmation. Add SMH at $212 on a post-earnings dip, avoid ARKK until it clears $55. IBIT weekly flow direction is negative — institutional crypto bid absent until BTC reclaims $80K.",
 
-      monthAction: "Accumulate",
-      thisMonth: "Monthly DCA pick: SOXX at $280–295 — AI capex super-cycle drives semiconductors as 40% of S&P EPS growth in 2026 flows through chip names. SOXX outperforming QQQ confirms AI narrative is intact, not fading — relative strength is clear and persistent. Portfolio allocation this month: 40% US equities/ETFs (SOXX/QQQ), 35% crypto (BTC/SOL), 25% Malaysia KLCI plays. Long-term conviction ETF: QQQ at $490–510 — 21.3% earnings growth CY2026 with AI driving revenue beats across mega-cap tech."
+      monthAction: "Hold",
+      thisMonth: "Monthly DCA pick: SMH at $210–215 — AI semiconductor cycle is multi-year and the $1.3T market forecast supports accumulation on every dip. SOXX up 59% YTD vs QQQ lagging — AI semiconductor relative strength is intact and remains the leadership sector for this cycle. Rough monthly allocation: 40% ETFs (SMH/QQQ), 35% individual stocks (AMD/NVDA/AAPL), 25% crypto (BTC/SOL). Long-term conviction hold: QQQ at $470 — US mega-cap tech drives global AI monetization and this dip is macro noise, not a trend change."
     },
 
     malaysia: {
-      todayAction: "Buy",
-      today: "KLCI opened higher today after Malaysia Q1 2026 GDP printed 5.4%, beating the 5.3% estimate — domestic demand story intact, buy the morning open. Best Malaysia stock today: Inari Amertron at RM3.00–3.20 entry — semiconductor proxy, tracks global semis with one-day lag, NVDA earnings tomorrow will lift Inari on Wednesday. Ringgit at RM4.10 and strengthening toward RM4.00 is a foreign fund buying signal — direct tailwind for export-tech names like Inari and MPI. No IPO flag today — focus on Inari and YTL Power for the AI data center ringgit-hedge play.",
+      todayAction: "Watch",
+      today: "KLCI flat-to-weak today as global risk-off from BTC selloff and Iran tensions weigh on EM Asia sentiment. Best Malaysia stock today: Inari Amertron at RM3.20–3.30 entry — NVDA earnings tonight flow directly into Inari buy tomorrow via 1-day global semi lag. USD/MYR at ~RM4.10 is in a strengthening trend toward RM4.00 year-end; each 0.05 drop in USD/MYR adds ~3% to Inari's foreign revenue translation, making it the direct FX-to-stock play today. Apply for SKYECHIP IPO (Main Market listing) — Bursa's only AI/semiconductor pure play and the only listing this year with a direct NVDA/AMD narrative.",
 
-      weekAction: "Buy",
-      thisWeek: "KLCI is bullish above 1,650 this week — GDP beat 5.4% removes the near-term bear case and KLCI target remains 1,760 by year-end. No BNM meeting this week — next rate decision not until Q3, bank stocks (CIMB, Maybank) are stable with no rate surprise risk so hold them. Top Malaysia pick for the week: YTL Power at RM3.50–3.70, catalyst is AI data center demand from the Johor data hub plus ringgit strengthening reducing import costs, target RM4.20. Best sector this week: tech and semis (Inari, MPI) ahead of NVDA earnings echo on Wednesday — also check Maybank ex-dividend date (early June) for pre-ex buy.",
+      weekAction: "Watch",
+      thisWeek: "KLCI this week: cautious, hold 1,580 as key support — break below drags MAY and CIMB lower and triggers EM selling from foreign funds. No BNM event this week; OPR stays at 2.75% all 2026 so bank stocks CIMB and PBBANK drift sideways without a catalyst, avoid them. Top Malaysia pick: Inari Amertron — buy RM3.20–3.30, target RM3.60, catalyst is NVDA beat tonight flowing through to Inari by Thursday open. Check Axiata and Maxis for ex-dividend dates this month — telco dividend plays outperform in flat-market weeks.",
 
       monthAction: "Accumulate",
-      thisMonth: "Bursa is in buy mode this month — GDP beat 5.4%, ringgit strengthening, and foreign funds expected to return after RM20B+ net outflows in 2025. Foreign funds are buying: USD/MYR at 4.10 heading to 4.00 is the clearest signal that foreigners are re-entering KLCI now, accumulate before the full flow lands. Best sectors this month: AI/data center (YTL Power, JAKS) and solar EPCC (Solarvest, Samaiden) — Budget 2026 committed renewable energy capex is deploying into CY2026 projects. Monthly dividend play: Maybank at RM10.20–10.50, approximately 6% dividend yield, ex-date expected early June 2026."
+      thisMonth: "Bursa is in accumulate mode this month — foreign shareholding at historic low 19% means structural buying pressure as USD/MYR trends toward RM4.00 and foreign funds repatriate after RM20B+ of 2025 outflows. Foreign funds are net buyers in 2026 as ringgit strengthens; USD weakness amplifies RM-denominated returns and reversal of historic underweight will drive KLCI toward the 1,821 analyst target. Best sectors: tech manufacturing (Inari at RM3.20 = global semi cycle proxy with FX tailwind) and AI-adjacent (SKYECHIP post-IPO = Bursa's only AI semiconductor story worth holding 6–12 months). Monthly dividend play: PBBANK at RM4.30 with ~5% yield, ex-date expected early June — buy now for dividend capture plus potential foreign inflow re-rating."
     }
   },
 
@@ -50,47 +50,47 @@ window.CRUCIX_INSIGHTS = {
     {
       asset: "Bitcoin",
       symbol: "BTC",
-      direction: "LONG",
-      currentPrice: "$96,262",
-      entry: "$95,000 - $96,500",
-      tp1: { price: "$100,500", pct: "+4.7%" },
-      tp2: { price: "$105,800", pct: "+10.2%" },
-      sl:  { price: "$93,000", pct: "-3.4%" },
-      leverage: "15x",
-      riskReward: "1:3.1",
-      confidence: "High",
+      direction: "SHORT",
+      currentPrice: "$77,369",
+      entry: "$77,000 - $77,500",
+      tp1: { price: "$74,800", pct: "-3.3%" },
+      tp2: { price: "$71,500", pct: "-7.6%" },
+      sl:  { price: "$79,200", pct: "+2.4%" },
+      leverage: "10x",
+      riskReward: "1:2.5",
+      confidence: "Medium",
       minUSD: "10",
-      reasoning: "BTC at $96,262 is in full bull mode above the $85K threshold — price action is constructive and trending directly toward the $100K psychological level. NVDA earnings beat tomorrow will spike risk-on sentiment across all assets; BTC ETFs had a brief $635M outflow but six prior weeks of institutional inflows confirm the trend is intact and hands are strong. Funding rates are moderate and not overcrowded in longs — squeeze risk is low, this is a clean directional trade. Macro: hot CPI keeps Fed on hold but equities are rallying on earnings growth anyway, and crypto is correlating positively with risk assets. Enter at $95,000–96,500 on any dip to support, invalidate and cut fully if BTC closes below $93,000 on the daily."
+      reasoning: "BTC rejected $80K with force and is now drifting under $77.5K with ETF outflows rising and Coinbase Premium Index slipping — structure is bearish and $78,800 has flipped to supply. Trump's firm withdrew its BTC ETF application, Iran tensions are escalating, and 30-year yields are at 2007 levels — three macro headwinds hitting simultaneously. Funding rates cooled to near-neutral, removing long-squeeze risk and clearing the path for clean downside. FOMC minutes today lean hawkish on 0.6% April CPI — any rate-hike signal sends BTC directly to $74K–$75K before options expiry Friday. Short at $77,000–$77,500 on any bounce into resistance; full exit and thesis invalidated if BTC reclaims $79,200 on volume."
     },
     {
       asset: "Ethereum",
       symbol: "ETH",
-      direction: "LONG",
-      currentPrice: "$2,140",
-      entry: "$2,100 - $2,150",
-      tp1: { price: "$2,270", pct: "+6.1%" },
-      tp2: { price: "$2,400", pct: "+12.1%" },
-      sl:  { price: "$2,040", pct: "-4.7%" },
-      leverage: "10x",
-      riskReward: "1:2.3",
+      direction: "SHORT",
+      currentPrice: "$2,282",
+      entry: "$2,265 - $2,295",
+      tp1: { price: "$2,195", pct: "-3.8%" },
+      tp2: { price: "$2,090", pct: "-8.4%" },
+      sl:  { price: "$2,345", pct: "+2.8%" },
+      leverage: "8x",
+      riskReward: "1:2.8",
       confidence: "Medium",
       minUSD: "10",
-      reasoning: "ETH/BTC ratio at 0.022 is historically depressed — ETH is underperforming BTC hard right now, making it a catch-up trade the moment BTC clears $100K and the market rotates. RWA catalyst: ONDO and real-world asset tokenization are driving DeFi TVL back onto Ethereum mainnet, providing a demand floor and a narrative that institutional buyers care about. Key technical level: ETH must hold $2,050 — below that the next support is $1,900, which is a capitulation move and exit signal. Entry trigger: BTC breaks $97,500 cleanly and ETH follows immediately — enter at $2,100–2,150 on the BTC breakout confirmation. Invalidation: ETH fails to hold $2,040 on a daily close or BTC drops below $93,000."
+      reasoning: "ETH/BTC ratio is at multi-month lows — ETH is actively underperforming BTC, which means in a BTC downmove ETH drops harder and faster. RWA on Ethereum is a strong long-term narrative ($65B+ tokenized assets, 33% market share) but does nothing for spot price today with institutions in risk-reduction mode. The current $2,280 bounce is a textbook retest of the $2,080–$2,140 breakdown zone — supply is sitting right here. Enter short at $2,265–$2,295; if ETH reclaims $2,345 on a daily close the breakdown thesis is wrong, cut without hesitation."
     },
     {
       asset: "Solana",
       symbol: "SOL",
-      direction: "LONG",
-      currentPrice: "$85",
-      entry: "$83 - $86",
-      tp1: { price: "$91", pct: "+7.1%" },
-      tp2: { price: "$98", pct: "+15.3%" },
-      sl:  { price: "$80", pct: "-5.9%" },
-      leverage: "15x",
-      riskReward: "1:2.5",
-      confidence: "High",
+      direction: "SHORT",
+      currentPrice: "$84.88",
+      entry: "$84.50 - $85.50",
+      tp1: { price: "$81.50", pct: "-3.9%" },
+      tp2: { price: "$78.00", pct: "-8.1%" },
+      sl:  { price: "$87.20", pct: "+2.6%" },
+      leverage: "8x",
+      riskReward: "1:2.8",
+      confidence: "Medium",
       minUSD: "10",
-      reasoning: "SOL ETF inflows have zero outflow days in all of May 2026 with $90.83M accumulated — this is the strongest institutional buying signal in crypto right now, stronger than BTC ETF flows on a relative basis. Volume is rising with price, not diverging — this is a genuine trend driven by real demand, not a pump-and-dump. Key level: SOL holding $83 keeps the bull structure intact; a break below $78 on a daily close means exit immediately. BTC correlation: SOL is leading BTC on a relative basis this week as SOL ETF flows are outpacing BTC ETF flows — this is an early altcoin outperformance signal, not a lag. Enter at $83–86 on any dip, take partial profit at $91 and ride to $98; invalidate the trade if SOL closes below $80 on the daily."
+      reasoning: "SOL memecoin and DeFi on-chain activity has plateaued — Consensus Miami AI infra narrative is priced in and daily active addresses are flat while price consolidates at the top of its $83–$85 range. Volume is declining on each bounce to $85 while price fails to break out — classic distribution at range top. Key support below is $82; a clean break opens $78 quickly given thin order book structure in that zone. SOL is lagging BTC on up-moves this week but leading on down-moves — it is the highest-beta short in the trio. Enter at $84.50–$85.50 range top; flip flat or long only if SOL breaks $87.20 on above-average volume."
     }
   ]
 
