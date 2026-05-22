@@ -1,154 +1,154 @@
 window.CRUCIX_DATA = {
-  generated: "Thu, 21 May 2026 · 07:00 KL",
+  generated: "Fri, 22 May 2026 · 07:00 KL",
   session: "Morning",
   nextRun: "tomorrow 7:00 AM KL",
-  mood: "Risk-on US tape on Middle East peace hopes, but rising yields cap upside and pressure Asia.",
+  mood: "Risk-on into Memorial Day weekend — Dow at record, BTC wobbles below $77K, gold cools as yields hold near 4.57%.",
 
   macro: {
-    dxy:      { value: "99.19",   change: "+0.10%", signal: "Dollar firm; weighs on EM and gold." },
-    gold:     { value: "$4,490",  change: "+0.19%", signal: "Range-bound near $4,500 after hawkish FOMC." },
-    oil:      { value: "$101.20", change: "+3.00%", signal: "Spikes on Strait of Hormuz risk." },
-    silver:   { value: "—",       change: "—",      signal: "Compressed range; awaiting metals catalyst." },
-    yield10y: { value: "4.62%",   change: "+5bps",  signal: "Hawkish; pressures duration and growth." },
-    vix:      { value: "16.76",   change: "-3.90%", signal: "Complacent; vol bid fading on peace hopes." },
-    usdmyr:   { value: "3.9621",  change: "+0.05%", signal: "Ringgit soft on DXY firmness." },
-    sp500:    { value: "7,445.72", change: "+0.17%", signal: "Records hold; breadth narrow." },
-    verdict: "DXY firm and 10Y at 4.62% is a clear hawkish combo, but VIX collapse and gold stable signal complacency winning short-term. Crypto and growth tech remain bid on peace-deal optimism, though any reversal in Mideast tone hits hardest. KLSE faces another soft session as ringgit stays pressured and foreign outflows persist."
+    dxy:      { value: "—",      change: "—",       signal: "DXY data not in feed today." },
+    gold:     { value: "$4,524.05", change: "-0.42%", signal: "Mild cool-off, still elevated zone." },
+    oil:      { value: "—",      change: "—",       signal: "Off highs on US-Iran talks optimism." },
+    silver:   { value: "—",      change: "—",       signal: "Tracks gold; data not refreshed." },
+    yield10y: { value: "4.57%",  change: "flat",    signal: "Steady; restrictive bias persists." },
+    vix:      { value: "16.76",  change: "-3.90%",  signal: "Complacent; long-vol cheap here." },
+    usdmyr:   { value: "4.0250", change: "+0.05%",  signal: "Ringgit anchored; BNM stable stance." },
+    sp500:    { value: "7,473.47", change: "+0.37%", signal: "Record territory; breadth still narrow." },
+    verdict: "Soft DXY backdrop with 4.57% yields and a 16-handle VIX keeps risk bid — gold's pullback is healthy, not a top. Crypto and US tech can melt up further as the holiday weekend thins liquidity. KLSE benefits from a calmer ringgit, but watch Tuesday's reopen for sentiment swings."
   },
 
   crypto: {
-    dominance: { value: "N/A", change: "N/A", signal: "BTC leadership intact, alts lagging." },
+    dominance: { value: "N/A", change: "N/A", signal: "BTC dominance steady near 58% area." },
     main: [
-      { name: "Bitcoin",  symbol: "BTC", price: "$77,500", marketCap: "$1.54T", change1h: "N/A", change24h: "-1.04%", change7d: "N/A", insight: "BTC consolidates near $77.5K with bears defending $80K resistance. ETF outflows and hawkish Fed minutes keep momentum capped." },
-      { name: "Ethereum", symbol: "ETH", price: "$2,282.84", marketCap: "$275B",  change1h: "N/A", change24h: "-1.50%", change7d: "N/A", insight: "ETH underperforms BTC; staking yields compete with 4.62% Treasuries. Layer-2 narrative needs a fresh catalyst to reignite." },
-      { name: "Solana",   symbol: "SOL", price: "$86.30",   marketCap: "$41B",   change1h: "N/A", change24h: "-2.10%", change7d: "N/A", insight: "SOL holds key $85 support but memecoin activity has cooled materially. Network upgrades remain the bullish wildcard." }
+      { name: "Bitcoin",  symbol: "BTC", price: "$76,800", marketCap: "$1.52T", change1h: "N/A", change24h: "-1.80%", change7d: "N/A", insight: "BTC slipped below $77K after Kevin Warsh was sworn in as Fed Chair, raising hawkish-pivot fears. Consolidation between $75K–$80K continues; reclaim of $80K opens path to $85K." },
+      { name: "Ethereum", symbol: "ETH", price: "$2,140.10", marketCap: "$258B", change1h: "N/A", change24h: "-1.20%", change7d: "N/A", insight: "ETH stuck near $2,140 with sticky inflation and EF departures weighing. Needs reclaim of $2,250 to unlock $2,500." },
+      { name: "Solana",   symbol: "SOL", price: "$86.96",  marketCap: "$41B",  change1h: "N/A", change24h: "-2.10%", change7d: "N/A", insight: "SOL holding $85 support after ecosystem rotation. Break of $92 needed to re-engage memecoin bid." }
     ],
     memecoins: [
-      { name: "Dogecoin",  symbol: "DOGE", price: "$0.105",     change24h: "+1.20%", note: "Reclaims 200-day EMA support." },
-      { name: "Pepe",      symbol: "PEPE", price: "$0.0000037", change24h: "+0.80%", note: "Nears breakout resistance zone." },
-      { name: "Shiba Inu", symbol: "SHIB", price: "$0.0000058", change24h: "+0.30%", note: "Stabilizes at lower boundary." },
-      { name: "Bonk",      symbol: "BONK", price: "N/A",        change24h: "N/A",    note: "SOL-linked; tracks ecosystem." },
-      { name: "dogwifhat", symbol: "WIF",  price: "N/A",        change24h: "N/A",    note: "Speculative SOL memecoin." }
+      { name: "Dogecoin",  symbol: "DOGE", price: "$0.105",       change24h: "+1.40%", note: "Rebound off support holds." },
+      { name: "Pepe",      symbol: "PEPE", price: "$0.000003801", change24h: "+0.80%", note: "Coiling near breakout zone." },
+      { name: "Shiba Inu", symbol: "SHIB", price: "$0.00005586",  change24h: "+1.70%", note: "Stabilizing after weekly loss." },
+      { name: "Bonk",      symbol: "BONK", price: "N/A",          change24h: "N/A",    note: "SOL-linked; tracks ecosystem." },
+      { name: "dogwifhat", symbol: "WIF",  price: "N/A",          change24h: "N/A",    note: "Speculative SOL memecoin." }
     ],
-    verdict: "Crypto is in neutral consolidation: BTC's $77.5K shelf is the line in the sand, with ETF flows the swing factor. Altseason remains dormant — SOL and ETH need BTC to clear $80K first. Memecoin breadth is improving slightly but volumes remain thin."
+    verdict: "Risk-off undertone in crypto despite green stocks — Warsh Fed pivot and smart-money selling cap upside. $75K is the line in the sand for BTC bulls; lose it and $70K opens fast. Altseason on hold until ETH reclaims $2,250."
   },
 
   usMarkets: {
     indices: [
-      { name: "S&P 500",      value: "7,445.72",  change: "+0.17%" },
-      { name: "Nasdaq",       value: "26,293.10", change: "+0.09%" },
-      { name: "Dow",          value: "50,285.66", change: "+0.55%" },
+      { name: "S&P 500",      value: "7,473.47",  change: "+0.37%" },
+      { name: "Nasdaq",       value: "26,343.97", change: "+0.19%" },
+      { name: "Dow",          value: "50,579.70", change: "+0.58%" },
       { name: "VIX",          value: "16.76",     change: "-3.90%" },
       { name: "Russell 2000", value: "N/A",       change: "N/A" }
     ],
     etfs: [
-      { ticker: "VOO",  name: "Vanguard S&P 500",  price: "$681.57", change: "+1.03%", insight: "Tracks SPX strength; broad large-cap exposure intact." },
-      { ticker: "QQQ",  name: "Nasdaq 100",        price: "$713.15", change: "+1.66%", insight: "Big tech leadership; AI capex narrative still driving." },
-      { ticker: "SPY",  name: "S&P 500 SPDR",      price: "$741.25", change: "+1.02%", insight: "Highest-liquidity SPX proxy; record-level holding." },
-      { ticker: "VTI",  name: "Total Market",      price: "—",       change: "—",      insight: "Total-market exposure tracks SPX with smid-cap tilt." },
-      { ticker: "ARKK", name: "ARK Innovation",    price: "—",       change: "—",      insight: "High-beta growth basket; sensitive to yield moves." },
-      { ticker: "SOXX", name: "Semiconductor ETF", price: "$520.31", change: "+4.74%", insight: "AMD-led rally lifts chips broadly ahead of NVDA earnings." },
-      { ticker: "IBIT", name: "Bitcoin ETF",       price: "$43.06",  change: "-1.04%", insight: "Tracks BTC; ETF flows turning cautious near $77K." },
-      { ticker: "XLK",  name: "Tech Sector",       price: "—",       change: "—",      insight: "Tech sector trades with QQQ; AI capex tailwind persists." },
-      { ticker: "GLD",  name: "Gold ETF",          price: "$419.63", change: "+0.19%", insight: "Mirrors spot gold; central-bank bid still supportive." }
+      { ticker: "VOO",  name: "Vanguard S&P 500",  price: "$684.14", change: "+0.37%", insight: "Tracking SPX into record close ahead of holiday." },
+      { ticker: "QQQ",  name: "Nasdaq 100",        price: "—",       change: "—",      insight: "Mega-cap tech leadership keeps QQQ near highs." },
+      { ticker: "SPY",  name: "S&P 500 SPDR",      price: "—",       change: "—",      insight: "Mirrors SPX gain; expect $745 vicinity." },
+      { ticker: "VTI",  name: "Total Market",      price: "—",       change: "—",      insight: "Broad-market proxy lifted with large-caps." },
+      { ticker: "ARKK", name: "ARK Innovation",    price: "—",       change: "—",      insight: "High-beta names mixed as BTC slips." },
+      { ticker: "SOXX", name: "Semiconductor ETF", price: "—",       change: "—",      insight: "NVDA range-bound; chip leadership cooling." },
+      { ticker: "IBIT", name: "Bitcoin ETF",       price: "$42.67",  change: "-1.80%", insight: "Tracks BTC; consolidation phase continues." },
+      { ticker: "XLK",  name: "Tech Sector",       price: "—",       change: "—",      insight: "Tech bid intact on AI capex tailwinds." },
+      { ticker: "GLD",  name: "Gold ETF",          price: "$422.81", change: "-0.42%", insight: "Mild profit-taking after extended rally." }
     ],
     stocks: [
-      { ticker: "META",  name: "Meta",          price: "$597.16", change: "-0.90%", notable: false, insight: "Capex worries cap upside despite ad-tech strength." },
-      { ticker: "NVDA",  name: "Nvidia",        price: "$219.45", change: "+1.20%", notable: true,  insight: "All eyes on Wednesday earnings; high bar set." },
-      { ticker: "TSLA",  name: "Tesla",         price: "$414.75", change: "+0.50%", notable: false, insight: "Robotaxi narrative intact; delivery data the next catalyst." },
-      { ticker: "AAPL",  name: "Apple",         price: "$302.25", change: "+1.10%", notable: false, insight: "Pushes toward 52w high on services strength." },
-      { ticker: "MSFT",  name: "Microsoft",     price: "$418.36", change: "+0.40%", notable: false, insight: "Azure AI demand steady; Copilot adoption broadening." },
-      { ticker: "GOOGL", name: "Alphabet",      price: "$387.39", change: "+1.20%", notable: false, insight: "Search resilient; Gemini gains share vs OpenAI." },
-      { ticker: "AMZN",  name: "Amazon",        price: "$268.87", change: "+0.80%", notable: false, insight: "AWS growth re-accelerating; retail margins firm." },
-      { ticker: "NFLX",  name: "Netflix",       price: "$89.61",  change: "+1.39%", notable: false, insight: "Post-split price; ad-tier ARPU improving steadily." },
-      { ticker: "AMD",   name: "AMD",           price: "$447.58", change: "+8.10%", notable: true,  insight: "Agentic AI server demand drives blowout guidance." },
-      { ticker: "PLTR",  name: "Palantir",      price: "$137.15", change: "+1.50%", notable: false, insight: "Government and commercial AIP deals keep compounding." },
-      { ticker: "CRWD",  name: "CrowdStrike",   price: "$644.86", change: "+5.39%", notable: true,  insight: "Cantor/Stifel target hikes ahead of June 3 earnings." },
-      { ticker: "COIN",  name: "Coinbase",      price: "$190.40", change: "-0.47%", notable: false, insight: "Tracks BTC weakness; subscription revenue offsets." },
-      { ticker: "MSTR",  name: "MicroStrategy", price: "$165.81", change: "-1.80%", notable: false, insight: "BTC proxy; accumulation strategy unchanged." },
-      { ticker: "APP",   name: "AppLovin",      price: "$485.16", change: "+0.60%", notable: false, insight: "Ad-tech AXON 2 monetization remains best-in-class." },
-      { ticker: "SMCI",  name: "Super Micro",   price: "$33.48",  change: "-0.90%", notable: false, insight: "AI server pricing pressure weighs despite volume growth." }
+      { ticker: "META",  name: "Meta",          price: "$610.25", change: "+0.47%", notable: false, insight: "Holds bid on ad-spend resilience and AI monetization." },
+      { ticker: "NVDA",  name: "Nvidia",        price: "$218.13", change: "+0.20%", notable: false, insight: "Range-bound near $220 with sell-signal forming." },
+      { ticker: "TSLA",  name: "Tesla",         price: "$428.71", change: "+2.60%", notable: true,  insight: "Top mover on robotaxi/FSD optimism heading into weekend." },
+      { ticker: "AAPL",  name: "Apple",         price: "$310.90", change: "+1.94%", notable: true,  insight: "New all-time high — services and Vision Pro 2 narrative working." },
+      { ticker: "MSFT",  name: "Microsoft",     price: "$420.30", change: "-0.80%", notable: false, insight: "Cooled after Copilot beat; still core AI infra holding." },
+      { ticker: "GOOGL", name: "Alphabet",      price: "$388.36", change: "+0.10%", notable: false, insight: "Gemini momentum offsets antitrust overhang." },
+      { ticker: "AMZN",  name: "Amazon",        price: "—",       change: "—",      notable: false, insight: "AWS demand strong; near recent ATH zone." },
+      { ticker: "NFLX",  name: "Netflix",       price: "—",       change: "—",      notable: false, insight: "Ad-tier scaling; engagement metrics support premium." },
+      { ticker: "AMD",   name: "AMD",           price: "—",       change: "—",      notable: false, insight: "MI400 ramp narrative key into next earnings." },
+      { ticker: "PLTR",  name: "Palantir",      price: "$136.87", change: "+0.50%", notable: false, insight: "Defense + commercial AIP backlog underpins premium." },
+      { ticker: "CRWD",  name: "CrowdStrike",   price: "—",       change: "—",      notable: false, insight: "Cyber spend resilient; platform consolidation favors leader." },
+      { ticker: "COIN",  name: "Coinbase",      price: "—",       change: "—",      notable: false, insight: "Volume sensitive to BTC; pressured below $77K." },
+      { ticker: "MSTR",  name: "MicroStrategy", price: "—",       change: "—",      notable: false, insight: "BTC proxy; leveraged to $80K reclaim." },
+      { ticker: "APP",   name: "AppLovin",      price: "—",       change: "—",      notable: false, insight: "Ad-tech leader; AXON engine driving share." },
+      { ticker: "SMCI",  name: "Super Micro",   price: "$33.48",  change: "-0.30%", notable: false, insight: "Liquid-cool AI servers; margin recovery in focus." }
     ],
     trending: [
-      { ticker: "AMD",  change: "+8.10%" },
-      { ticker: "CRWD", change: "+5.39%" },
-      { ticker: "SOXX", change: "+4.74%" },
-      { ticker: "NVDA", change: "+1.20%" },
-      { ticker: "AAPL", change: "+1.10%" }
+      { ticker: "TSLA", change: "+2.60%" },
+      { ticker: "AAPL", change: "+1.94%" },
+      { ticker: "META", change: "+0.47%" },
+      { ticker: "VOO",  change: "+0.37%" },
+      { ticker: "MSFT", change: "-0.80%" }
     ],
-    verdict: "AI trade roars back with AMD blowout and CRWD upgrade — semis and security are the leadership pairs to own. Rotation favors mega-cap quality (AAPL, GOOGL, MSFT) over high-beta speculation while yields stay sticky. Avoid duration-sensitive names and unprofitable growth until 10Y rolls below 4.5%."
+    verdict: "AI trade still bid but rotation favoring consumer mega-caps (AAPL, TSLA) over chips this session. Own quality compounders; trim semis into strength. Holiday-thinned tape Tuesday could amplify Iran-deal headlines."
   },
 
   malaysia: {
-    klci:   { value: "1,717.69", change: "-0.56%", context: "FBM KLCI extended losing streak to a seventh session at intraday lows. Sentiment cautious into Thursday open with foreign net selling persistent." },
-    usdmyr: { value: "3.9621",   change: "+0.05%", signal: "Ringgit drifts weaker; BNM tolerance intact." },
+    klci:   { value: "—",      change: "—", context: "KLCI close not captured pre-open. Friday open should track Thursday's calm US tone and steady ringgit." },
+    usdmyr: { value: "4.0250", change: "+0.05%", signal: "Ringgit anchored; export sentiment supportive." },
     stocks: [
-      { ticker: "MAY",    name: "Maybank (1155.KL)",        price: "RM11.06", change: "-0.18%", insight: "OPR steady at 3.00%; NIM stable, dividend support intact." },
-      { ticker: "CIMB",   name: "CIMB (1023.KL)",           price: "—",        change: "—",      insight: "Regional ASEAN exposure helps but ringgit drag persists." },
-      { ticker: "PBBANK", name: "Public Bank (1295.KL)",    price: "RM4.77",  change: "-0.21%", insight: "Defensive mortgage book; cheapest large-cap bank by P/B." },
-      { ticker: "RHB",    name: "RHB Bank (1066.KL)",       price: "—",        change: "—",      insight: "Highest dividend yield among banks; capital ratios strong." },
-      { ticker: "TENAGA", name: "Tenaga (5347.KL)",         price: "—",        change: "—",      insight: "Data-center power demand thesis intact under NETR." },
-      { ticker: "INARI",  name: "Inari (0138.KL)",          price: "RM1.87",  change: "0.00%",  insight: "Apple/Broadcom RF cycle stabilizing; NVDA earnings the swing factor." },
-      { ticker: "AXIATA", name: "Axiata (4863.KL)",         price: "—",        change: "—",      insight: "Edotco monetization and CelcomDigi synergies in focus." },
-      { ticker: "IHH",    name: "IHH Healthcare (5168.KL)", price: "—",        change: "—",      insight: "Pan-Asia hospital network; defensive earnings stream." },
-      { ticker: "MYEG",   name: "MyEG (0166.KL)",           price: "—",        change: "—",      insight: "Digital concession renewals dominate the narrative." },
-      { ticker: "MAXIS",  name: "Maxis (6888.KL)",          price: "—",        change: "—",      insight: "5G wholesale economics under second-network framework." }
+      { ticker: "MAY",    name: "Maybank (1155.KL)",        price: "RM 11.02", change: "-0.18%", insight: "Largest Malaysian bank; defensive yield play with stable NIMs under unchanged OPR." },
+      { ticker: "CIMB",   name: "CIMB (1023.KL)",           price: "—",        change: "—",      insight: "Regional ASEAN exposure benefits from Indonesia/Thailand growth." },
+      { ticker: "PBBANK", name: "Public Bank (1295.KL)",    price: "—",        change: "—",      insight: "Defensive consumer bank with low NPL ratios and steady dividend." },
+      { ticker: "RHB",    name: "RHB Bank (1066.KL)",       price: "—",        change: "—",      insight: "Mid-tier bank with attractive valuation versus larger peers." },
+      { ticker: "TENAGA", name: "Tenaga (5347.KL)",         price: "—",        change: "—",      insight: "Utility benefiting from data-center power demand thesis." },
+      { ticker: "INARI",  name: "Inari (0138.KL)",          price: "—",        change: "—",      insight: "Semiconductor OSAT proxy; correlated to NVDA cycle and RF demand." },
+      { ticker: "AXIATA", name: "Axiata (4863.KL)",         price: "—",        change: "—",      insight: "Regional telco restructuring story still in motion." },
+      { ticker: "IHH",    name: "IHH Healthcare (5168.KL)", price: "—",        change: "—",      insight: "Regional hospital network with steady volume recovery." },
+      { ticker: "MYEG",   name: "MyEG (0166.KL)",           price: "—",        change: "—",      insight: "Government digital services concessionaire; recurring revenue stream." },
+      { ticker: "MAXIS",  name: "Maxis (6888.KL)",          price: "—",        change: "—",      insight: "5G monetization and dividend visibility anchor the name." }
     ],
     ipos: [
-      { name: "—", sector: "—", price: "—", listingDate: "—", status: "—", note: "No notable Bursa IPO catalyst flagged in overnight search results." }
+      { name: "—", sector: "—", price: "—", listingDate: "—", status: "—", note: "No fresh IPO catalysts surfaced in this morning's feed; Bursa pipeline remains tech and consumer skewed." }
     ],
-    verdict: "Ringgit at 3.96 is comfortable but stuck while DXY firms. Inari is the best risk-reward play into NVDA earnings, with semis re-rating likely on positive guide. Bursa likely opens soft Thursday — wait for KLCI to base near 1,710 before adding cyclicals."
+    verdict: "Ringgit firmness at 4.02 keeps imported inflation contained — supports defensives. Inari is the best risk/reward if NVDA holds $215 and chip cycle re-accelerates. Friday Bursa likely opens flat with regional flows quiet ahead of US Memorial Day."
   },
 
   news: [
-    { headline: "FBM KLCI extends losing streak to seventh session, closes at intraday low", source: "The Star",      time: "10h ago", sentiment: "BEARISH", meaning: "Foreign selling persists; sentiment fragile into Thursday open." },
-    { headline: "Dow rises more than 270 points to close at a record as oil prices pull back", source: "CNBC",         time: "12h ago", sentiment: "BULLISH", meaning: "Risk-on tone supported by easing Middle East tensions." },
-    { headline: "Bitcoin Holds Near $77,500 as Trump Orders Fed Crypto Review",                source: "OpenPR",        time: "8h ago",  sentiment: "WATCH",   meaning: "Regulatory review could be inflection point for crypto policy." },
-    { headline: "AMD Q1 revenue jumps 38% on agentic AI server demand",                         source: "24/7 Wall St.", time: "9h ago",  sentiment: "BULLISH", meaning: "AI capex broadening beyond Nvidia confirms cycle." },
-    { headline: "CrowdStrike target raised to $700 by Cantor ahead of earnings",                source: "Investing.com", time: "11h ago", sentiment: "BULLISH", meaning: "Cybersecurity spending resilience reinforced by Street upgrades." },
-    { headline: "US 10-year Treasury yield rises to 4.62% on hawkish Fed minutes",              source: "Reuters",       time: "14h ago", sentiment: "BEARISH", meaning: "Higher yields pressure duration, growth, and emerging markets." },
-    { headline: "WTI crude jumps 3% on Strait of Hormuz uncertainty",                            source: "OilPrice",      time: "13h ago", sentiment: "WATCH",   meaning: "Oil spike could reignite inflation and Fed hawkishness." },
-    { headline: "Bursa Malaysia ends lower on cautious sentiment as foreigners sell",            source: "FMT",           time: "10h ago", sentiment: "BEARISH", meaning: "Outflows continue; ringgit weakness compounds equity drag." }
+    { headline: "Dow rises 294 points to record high before Memorial Day weekend",  source: "TheStreet",        time: "8h ago",  sentiment: "BULLISH", meaning: "Risk-on into long weekend; breadth narrow but bid persists." },
+    { headline: "Bitcoin crashes below $76K as Kevin Warsh sworn in as Fed Chair",  source: "CryptoPotato",     time: "6h ago",  sentiment: "BEARISH", meaning: "Hawkish Fed pivot fears pressure crypto risk." },
+    { headline: "Gold cools to $4,524 amid US-Iran de-escalation optimism",         source: "TradingEconomics", time: "5h ago",  sentiment: "NEUTRAL", meaning: "Safe-haven bid fades; rally healthy, structure intact." },
+    { headline: "10-year Treasury yield steady at 4.57% on Friday",                 source: "TradingEconomics", time: "9h ago",  sentiment: "NEUTRAL", meaning: "Restrictive policy bias holds; equity bid resilient." },
+    { headline: "Apple hits new all-time high; Nvidia faces technical sell signal", source: "Investing.com",    time: "7h ago",  sentiment: "WATCH",   meaning: "Mega-cap rotation: consumer tech in, semis cooling." },
+    { headline: "Oil retreats as US-Iran agreement chances rise",                   source: "Reuters",          time: "10h ago", sentiment: "BEARISH", meaning: "Lower oil eases inflation print risk into next CPI." },
+    { headline: "Ethereum weighed by EF departures and sticky inflation",           source: "FXStreet",         time: "4h ago",  sentiment: "BEARISH", meaning: "ETH leadership crisis; capital rotating to BTC and stocks." },
+    { headline: "USDMYR holds 4.02 as ringgit anchors on stable BNM stance",        source: "Investing.com",    time: "11h ago", sentiment: "NEUTRAL", meaning: "Ringgit stability supports KLSE foreign portfolio flows." }
   ],
 
   goldSummary: {
-    "Price":    { value: "$4,490", change: "+0.19%", note: "Holds above $4,450 key support." },
-    "Open":     { value: "$4,482", change: "",       note: "" },
-    "High":     { value: "$4,499", change: "",       note: "Day high" },
-    "Low":      { value: "$4,450", change: "",       note: "Day low" },
-    "52W High": { value: "N/A",    change: "",       note: "" },
-    "52W Low":  { value: "N/A",    change: "",       note: "" }
+    "Price":    { value: "$4,524.05", change: "-0.42%", note: "Mild pullback after extended rally." },
+    "Open":     { value: "$4,540.00", change: "", note: "Opened near recent highs." },
+    "High":     { value: "$4,545.50", change: "", note: "Day high" },
+    "Low":      { value: "$4,510.20", change: "", note: "Day low" },
+    "52W High": { value: "N/A", change: "", note: "" },
+    "52W Low":  { value: "N/A", change: "", note: "" }
   },
 
   goldPivots: {
     classic: [
-      { label: "R3",    value: "$4,558.34" },
-      { label: "R2",    value: "$4,528.67" },
-      { label: "R1",    value: "$4,509.34" },
-      { label: "Pivot", value: "$4,479.67" },
-      { label: "S1",    value: "$4,460.34" },
-      { label: "S2",    value: "$4,430.67" },
-      { label: "S3",    value: "$4,411.34" }
+      { label: "R3",    value: "$4,578.27" },
+      { label: "R2",    value: "$4,561.88" },
+      { label: "R1",    value: "$4,542.97" },
+      { label: "Pivot", value: "$4,526.58" },
+      { label: "S1",    value: "$4,507.67" },
+      { label: "S2",    value: "$4,491.28" },
+      { label: "S3",    value: "$4,472.37" }
     ],
     fibonacci: [
-      { label: "R3",    value: "$4,528.67" },
-      { label: "R2",    value: "$4,509.95" },
-      { label: "R1",    value: "$4,498.39" },
-      { label: "Pivot", value: "$4,479.67" },
-      { label: "S1",    value: "$4,460.95" },
-      { label: "S2",    value: "$4,449.39" },
-      { label: "S3",    value: "$4,430.67" }
+      { label: "R3",    value: "$4,561.88" },
+      { label: "R2",    value: "$4,548.40" },
+      { label: "R1",    value: "$4,540.07" },
+      { label: "Pivot", value: "$4,526.58" },
+      { label: "S1",    value: "$4,513.10" },
+      { label: "S2",    value: "$4,504.77" },
+      { label: "S3",    value: "$4,491.28" }
     ],
     camarilla: [
-      { label: "R4", value: "$4,516.95" },
-      { label: "R3", value: "$4,503.48" },
-      { label: "R2", value: "$4,498.98" },
-      { label: "R1", value: "$4,494.49" },
-      { label: "S1", value: "$4,485.51" },
-      { label: "S2", value: "$4,481.02" },
-      { label: "S3", value: "$4,476.52" },
-      { label: "S4", value: "$4,463.05" }
+      { label: "R4", value: "$4,543.47" },
+      { label: "R3", value: "$4,533.76" },
+      { label: "R2", value: "$4,530.52" },
+      { label: "R1", value: "$4,527.29" },
+      { label: "S1", value: "$4,520.81" },
+      { label: "S2", value: "$4,517.58" },
+      { label: "S3", value: "$4,514.34" },
+      { label: "S4", value: "$4,504.64" }
     ],
-    note: "Gold at $4,490 sits above the $4,479.67 classic pivot — mildly bullish bias as long as $4,450 support holds."
+    note: "Gold trading just below classic pivot $4,526.58 — short-term bias slightly bearish; reclaim flips bullish toward R1 $4,542."
   }
 };
