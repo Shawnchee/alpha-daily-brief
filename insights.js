@@ -2,47 +2,47 @@ window.CRUCIX_INSIGHTS = {
 
   insights: {
     crypto: {
-      todayAction: "Sell",
-      today: "BTC at $61,531 is below the $75K defensive threshold — short-only bias, no longs. May CPI printed 3.8% annualized + NVDA cratered 6% = sustained risk-off backdrop bleeding into crypto today. FOMC June 16-17 under new Fed Chair Warsh removes any rate-cut hopium that could lift BTC this week. Trade: short BTC on bounce to $62,000-$62,500, target $59,500 first, cut if $64,000 holds.",
+      todayAction: "Wait",
+      today: "BTC is at $63,359 — well below the $75K caution zone, but the SpaceX IPO listing today removes the two-week liquidity overhang suppressing prices and sets up a short-term relief bounce. SOL is the only real buy today: SpaceX equity is tokenized and trading live on Solana at Nasdaq open, Western Union's USDPT stablecoin just went live on Solana for 24/7 settlement, and World Cup meme coins on Solana are printing 650x Ethereum's trading volume. CoinShares data shows institutional money rotating OUT of BTC and ETH ETFs and INTO SOL and XRP products — follow the flow, not the narrative. Buy SOL at $63-66, target $70, cut if $62 breaks.",
 
-      weekAction: "Wait",
-      thisWeek: "FOMC June 16-17 is the single event that matters — Warsh's debut, 65% hold odds but 3.8% CPI makes a hawkish statement live risk. BTC weekly: hold above $63,500 = possible dead-cat relief, lose $59,000 = flush to $55K zone. RWA sector (ONDO, LINK) is the only crypto sub-sector showing relative strength vs BTC this week. Stay flat on alts; only run short BTC setups until post-FOMC clarity.",
+      weekAction: "Hold",
+      thisWeek: "FOMC Wednesday June 17 is the defining event — Kevin Warsh's first meeting with rate hold expected at 3.50-3.75%, but any hawkish tone flushes crypto 5-8% instantly. BTC weekly key level: above $66,000 = relief rally on, below $60,000 = capitulation and don't catch the knife. Best crypto sector this week is Solana ecosystem — SOL and World Cup meme tokens have real on-chain volume, not just speculation, backing the move. Wait for post-FOMC clarity before adding any size; trade the reaction, not the anticipation.",
 
-      monthAction: "Reduce",
-      thisMonth: "Late bull / early distribution — BTC below $75K with hot inflation and an untested Fed chair = cycle caution red flag. Reduce altcoin exposure to minimum sizing; hold BTC-only if you must be in crypto. ONDO (RWA leader, tokenized Treasury growth) and FET (AI agent narrative, working product) are the two names worth accumulating on further dips below June 10 lows. Avoid memecoins entirely this month — they get liquidated hardest in BTC weakness + macro hostility."
+      monthAction: "Hold",
+      thisMonth: "Late bull sliding into distribution — BTC dropping from $80K to $63K while ETF outflows accelerate signals smart money reducing, not accumulating. Hold spot positions but don't add this month; one hawkish FOMC miss breaks $58K and you need dry powder for that entry. SOL is the only accumulation target below $60 given live RWA pipeline (Western Union, SpaceX tokenization, World Cup flows); RENDER is the AI narrative pick under $4. Avoid BTC-linked leverage plays and overlevered DeFi this month — the deleveraging cycle is not done."
     },
 
     usStocks: {
-      todayAction: "Sell",
-      today: "Gap-down open bias today: NVDA -6% yesterday below $5T market cap, AMD and MU each -9%+ — hot May CPI at 3.8% blew out the rate-cut narrative. NVDA is the short-term tell — watch $195-200 zone; if it can't hold, semis drag QQQ lower into FOMC. AI chip trade is broken for today — do not buy the dip in NVDA or AMD until June 17 FOMC clears. Best setup: short QQQ weakness, avoid tech longs; rotate into XLE (crude above $100/barrel provides earnings floor).",
+      todayAction: "Hold",
+      today: "Market opens flat to slightly positive as SpaceX IPO clears uncertainty, but AI chip weakness (NVDA down 2%, AMD down 3.5% on June 10) caps tech upside and there is no immediate catalyst to reverse the selloff. AMD is the single stock with a catalyst today — Citigroup upgraded it to Buy citing underpriced GPU upside, entry at $150-155 targeting $168 within two weeks. NVDA is below its 50-day MA and needs an earnings or guidance catalyst to restart — don't chase here, watch AMD earnings this week for sector direction. Best setup is AMD long at $152 with stop at $144; avoid SOXX ETF until the semiconductor complex stabilizes.",
 
-      weekAction: "Reduce",
-      thisWeek: "FOMC June 16-17 is the week's entire story — Warsh debuts hawkish, 3.8% CPI gives him cover to hold and signal longer. No major earnings this week — tech is adrift between Broadcom's AI hardware miss and the upcoming Fed tone-set. Best rotation play: XLE (energy) at current levels for the Brent crude $100+ tailwind; XLU (utilities) as rate-hold beneficiary. Top stock pick: AMZN over NVDA this week — AWS cloud + AI inference demand is a software story that doesn't need rate cuts.",
+      weekAction: "Hold",
+      thisWeek: "AMD reports earnings this week — consensus EPS $6.58 vs $0.58 last year signals massive growth, but the beat is priced in so watch for sell-the-news risk if data center guidance underwhelms. FOMC June 17 is the macro binary: hold at 3.50-3.75% expected but hawkish language pressures QQQ by 2-3% intraday — hedge with QQQ $465 puts before Wednesday. Best rotation play is AMD long entry $150-155, target $172, as Citi upgrade plus earnings is a double catalyst in the same week. Reduce all growth exposure to half size before FOMC; reload on the dovish reaction if Warsh signals H2 cuts.",
 
-      monthAction: "Reduce",
-      thisMonth: "VIX elevated, breadth rolling over in XLK and SOXX — reduce US equity exposure by 20% this month and hold cash. Leading sectors are XLE (energy) and XLV (healthcare); XLK and SOXX are laggards as AI hardware trade digests a rate-hike risk repricing. Monthly conviction hold: AMZN at $195 entry — cloud and AI inference are durable regardless of Fed trajectory. Trim speculative tech, keep defensive quality; cash is a legitimate position into Warsh's first policy signal."
+      monthAction: "Hold",
+      thisMonth: "VIX at moderate levels but breadth is narrowing as the AI chip complex sells off — this is late-cycle chop, not a clean bull phase to size up into. Semiconductor sector leads the recovery IF FOMC confirms rate cuts are coming in H2 — NVDA at $108-115 and AMD at $148-155 are the accumulation zones to watch. Monthly conviction stock is AMD at $148-155 with a 3-month target of $190 on GPU cycle acceleration and AI capex spend from hyperscalers. Hold current US equity exposure and add only after June 17 FOMC if Warsh sounds even slightly dovish."
     },
 
     etfs: {
       todayAction: "Watch",
-      today: "IBIT is likely bleeding today — BTC at $61,531 with macro headwinds means institutional flows are pausing or reversing. QQQ is a short today at open: hot CPI breaks the Fed-pivot thesis that held it up, key support at $445 is the level to watch for a bounce. Best ETF entry today: XLE on any pull to $90 — energy outperforms when rate cuts are off the table and crude holds $100. ARKK vs QQQ spread is widening to the downside — risk appetite is definitively off, no speculative buying today.",
+      today: "IBIT is posting weekly net outflows per CoinShares — institutional crypto money is rotating into XRP and SOL products, not BTC ETFs, a clear negative signal for IBIT today. QQQ's key intraday level is $465 — dip buy only if it holds the open, otherwise real AI-driven weakness is playing out and avoid. Best ETF entry today is SOXX at $195-200 given the AMD Citi upgrade and structural AI chip demand intact despite the three-day selloff. ARKK vs QQQ spread is flat to negative, confirming risk appetite is cautious not euphoric — size down across the board.",
 
-      weekAction: "Reduce",
-      thisWeek: "SOXX is the ETF to avoid this week — chip stocks broken on Broadcom miss and hot CPI, FOMC adds another risk layer. IBIT weekly flows will be net negative as BTC orbits $60K — institutional signal says wait, not buy. Add XLP (consumer staples) or XLV (healthcare) for defensive cover this week; avoid XLK and SOXX until post-June 17. IBIT needs BTC to reclaim $65K to see meaningful inflows return — that doesn't happen before FOMC.",
+      weekAction: "Hold",
+      thisWeek: "SOXX is the best ETF for the week — AMD earnings could rerate the entire semiconductor basket if data center revenue guidance beats expectations. SOXX sold off three straight sessions and AMD's upgrade signals bottom-fishing has started; entry $196-200, stop $188, target $215 if AMD reports clean. Add SOXX at $198 on any further dip; avoid IBIT this week given sustained BTC ETF outflow trend from institutional desks. Watch IBIT Thursday close — if inflows return post-FOMC clarity that is the signal to re-enter BTC exposure.",
 
       monthAction: "Hold",
-      thisMonth: "Monthly DCA pick: XLV at $155 — healthcare is rate-insensitive, earnings are stable, and it's defensive in a 3.8% inflation regime. SOXX vs QQQ relative strength is turning negative — AI hardware narrative is cooling, AI software (MSFT, AMZN) is the better expression. Portfolio split this month: 40% ETFs (XLV/XLE/QQQ), 35% individual stocks (AMZN/MSFT), 25% cash. Long-term conviction accumulate: QQQ at $440-445 — sell the FOMC spike if it comes, buy the post-Warsh clarity dip."
+      thisMonth: "Monthly DCA pick is QQQ at $465-470 — the Fed pivot thesis for H2 2026 remains intact, and a dovish FOMC June 17 sends QQQ to $490 by end of July. SOXX vs QQQ relative strength shows AI chip narrative is weakening short-term but the structural AI capex buildout means SOXX outperforms once NVDA reclaims its 50-day MA. Portfolio split this month: 40% US ETFs (QQQ/SOXX), 30% crypto (SOL-heavy), 30% cash waiting for FOMC outcome before deploying. Long-term conviction hold is QQQ at $460-470, target $520 by Q4 2026 on Fed pivot delivery."
     },
 
     malaysia: {
       todayAction: "Watch",
-      today: "KLCI opens soft today — Inari Amertron tracks global semis with 1-day lag and will feel NVDA's -6% drop at open. Best stock today: HSS Holdings (listed today, 10.56x IPO subscription) — momentum play on debut, watch entry on first-hour volatility pullback. USD/MYR holding above 4.70 on hot US CPI keeping dollar firm — ringgit pressure directly hurts Inari and Frontken on export margins. Avoid Inari today on the open; wait for a flush and re-entry only if global chip sentiment stabilizes.",
+      today: "KLCI opens flat — Visit Malaysia Year 2026 and 13MP domestic spending support the floor, but global AI chip selloff will lag into Bursa semiconductor names like Inari with a one-session delay. Best Malaysia stock today is Stratus Global Holdings — semiconductor automated material handling system solutions provider filing for Main Market listing, apply if allocated at IPO. Ringgit is on a strengthening trend in 2026 as the Fed-BNM rate differential narrows, reducing foreign fund exit pressure and providing quiet support for KLCI. Avoid Inari and Frontken today — NVDA and AMD's global selloff from June 10 will print on Bursa screens this session.",
 
       weekAction: "Watch",
-      thisWeek: "KLCI weekly: hold above 1,590 is the line — break below triggers foreign fund outflows from MAY, CIMB, and PBBANK which are 70% of index weight. No BNM meeting this week — bank stocks drift without a catalyst, stay selective and don't chase. Top pick this week: HSS Holdings post-debut volatility — infrastructure and engineering play with strong IPO demand signal. Ex-dividend watch: check Maybank (MAY) and Public Bank (PBBANK) for June ex-dates; buy 3 sessions before to capture the pre-ex run.",
+      thisWeek: "KLCI weekly level is 1,500 — hold above = neutral to bullish, break below = foreign selling accelerates and stay cash. BNM is not meeting this week so bank stocks CIMB and PBBANK stay range-bound without an OPR catalyst; no trade there. Top pick this week is Gamuda at RM4.20-4.40 — 13MP infrastructure contract awards are the catalyst and construction is fully insulated from the global semiconductor selloff. Stratus Global Holdings IPO is the event of the week — semiconductor AMHS theme with domestic listed scarcity premium.",
 
-      monthAction: "Accumulate",
-      thisMonth: "Bursa is in selective accumulate mode if KLCI holds 1,590 — Q1 2026 earnings season confirmed solid corporate fundamentals. Foreign funds buying ringgit assets only if USD/MYR stays below 4.75 — watch for a reversal above 4.75 as the hard exit signal. Best sectors this month: tech infrastructure (Stratus Global Holdings on Main Market debut, Inari on dips below RM3.50) and financials (CIMB for rate-exposure upside). Monthly dividend play: Maybank (MAY) at RM8.50 entry — ~6% yield, ex-dividend typically falls June/July, steady anchor for the portfolio."
+      monthAction: "Hold",
+      thisMonth: "Bursa is in hold mode this month — 13MP infrastructure spend is a slow-burn catalyst, not an immediate pop driver, but it keeps the floor firm. Ringgit strengthening means foreign funds are slowly returning — KLCI target 1,520 to 1,540 by end of June as the trend builds. Best sector picks are infrastructure (Gamuda entry RM4.20-4.40, target RM4.80, thesis: 13MP awards) and tech (Inari entry RM1.60-1.70, target RM1.90, only if AMD earnings restore global semi confidence). Monthly dividend play: CIMB Group entry RM8.50-8.80, approximately 5.5% dividend yield, ex-date expected mid-year."
     }
   },
 
@@ -50,47 +50,47 @@ window.CRUCIX_INSIGHTS = {
     {
       asset: "Bitcoin",
       symbol: "BTC",
-      direction: "SHORT",
-      currentPrice: "$61,531",
-      entry: "$62,000 - $62,500",
-      tp1: { price: "$59,500", pct: "-4.4%" },
-      tp2: { price: "$57,000", pct: "-8.8%" },
-      sl:  { price: "$64,000", pct: "+2.8%" },
-      leverage: "10x",
-      riskReward: "1:3.0",
+      direction: "LONG",
+      currentPrice: "$63,359",
+      entry: "$62,500 - $63,500",
+      tp1: { price: "$65,000", pct: "+3.2%" },
+      tp2: { price: "$68,000", pct: "+7.9%" },
+      sl:  { price: "$61,200", pct: "-2.9%" },
+      leverage: "8x",
+      riskReward: "1:2.7",
       confidence: "Medium",
       minUSD: "10",
-      reasoning: "BTC at $61,531 is below the $75K defensive threshold with a clear lower-high lower-low structure — trend is down, not a dip-buy. May CPI 3.8% annualized + NVDA -6% + AMD -9% on June 10 confirms risk-off is structural, not a one-day event. Funding rates are likely neutral-to-negative meaning shorts aren't crowded and there's room to press. FOMC June 16-17 under new chair Warsh removes any rate-cut narrative that could bid BTC this week. Enter on a bounce to $62,000-$62,500 resistance; invalidate and exit above $64,000 which would signal a reversal structure."
+      reasoning: "BTC at $63,359 is in caution territory below $75K but the SpaceX IPO clearing today removes the liquidity overhang that compressed prices for two weeks — historical pattern shows a 3-5% relief bounce in 24-48h following major IPO closings. BTC ETF outflows per CoinShares are a headwind but not a panic signal; funding rates are likely neutral to negative after the selloff, meaning longs are not overcrowded and short-squeeze risk is real. Macro context is mixed: jobs data surprised strong which keeps rates higher for longer, but SpaceX post-IPO cash seeking yield historically flows partly into digital assets. FOMC June 17 is the hard invalidation event — if Warsh surprises hawkish, BTC breaks $61,200 and the trade is off immediately. Enter $62,500-63,500, take partial at $65,000, full exit target $68,000, stop $61,200."
     },
     {
       asset: "Ethereum",
       symbol: "ETH",
-      direction: "SHORT",
-      currentPrice: "$1,582",
-      entry: "$1,600 - $1,620",
-      tp1: { price: "$1,540", pct: "-4.3%" },
-      tp2: { price: "$1,480", pct: "-7.8%" },
-      sl:  { price: "$1,660", pct: "+3.1%" },
-      leverage: "8x",
-      riskReward: "1:2.6",
-      confidence: "Medium",
+      direction: "LONG",
+      currentPrice: "$1,725",
+      entry: "$1,680 - $1,725",
+      tp1: { price: "$1,785", pct: "+3.5%" },
+      tp2: { price: "$1,860", pct: "+8.1%" },
+      sl:  { price: "$1,640", pct: "-3.6%" },
+      leverage: "5x",
+      riskReward: "1:2.5",
+      confidence: "Low",
       minUSD: "10",
-      reasoning: "ETH/BTC ratio at 0.0257 is historically suppressed — ETH is underperforming BTC, zero early altseason signal and no reason to be long. ETH ETF inflows have been modest to negative and DeFi volumes are subdued — no on-chain catalyst to absorb selling. $1,600-$1,620 is short-term resistance where any relief bounce from $1,582 current will stall. Enter short at $1,610 area on the bounce; above $1,660 invalidates the setup and signals BTC-led recovery pulling ETH along. Exact exit trigger: loss of $1,520 opens the $1,450 flush."
+      reasoning: "ETH at $1,725 against BTC at $63,359 gives a historically depressed ETH/BTC ratio of 0.027 — ETH is underperforming and altseason is not here, which means size this at 50% of your normal position. CoinShares shows ETH ETF net outflows while SOL and XRP products attract inflows — institutional money is not rotating into ETH, so there is no independent catalyst today. Key technical support is $1,680; this level must hold on the first test or exit immediately — do not average down. Enter only after BTC shows a clean bounce above $63,500 first, as ETH has no solo driver right now and is purely trading BTC correlation. Invalidation at $1,640; break there opens path to $1,550 with no support in between."
     },
     {
       asset: "Solana",
       symbol: "SOL",
-      direction: "SHORT",
-      currentPrice: "$79",
-      entry: "$80 - $82",
-      tp1: { price: "$76", pct: "-4.9%" },
-      tp2: { price: "$70", pct: "-12.3%" },
-      sl:  { price: "$85", pct: "+3.7%" },
-      leverage: "8x",
-      riskReward: "1:2.8",
+      direction: "LONG",
+      currentPrice: "$65",
+      entry: "$63 - $66",
+      tp1: { price: "$68", pct: "+4.6%" },
+      tp2: { price: "$72", pct: "+11.1%" },
+      sl:  { price: "$62", pct: "-3.9%" },
+      leverage: "10x",
+      riskReward: "1:3.0",
       confidence: "Medium",
       minUSD: "10",
-      reasoning: "SOL at $79 and down 1.43% today — memecoin activity on Solana has cooled sharply as BTC weakens and retail exits risk. Volume is contracting as price consolidates near lows — classic bearish continuation, not accumulation. $85 was support-turned-resistance and any bounce to $80-$82 is a textbook short entry. SOL is lagging BTC, not leading — this is a passive follower in risk-off, not a narrative trade. Enter short on bounce to $80-$82; invalidation above $85; flush target $70 if $76 loses support."
+      reasoning: "SOL has three live on-chain catalysts today: SpaceX equity tokenized and trading on Solana at Nasdaq open, Western Union USDPT stablecoin live on Solana for 24/7 real-time settlement, and World Cup meme coins driving 650x Ethereum's trading volume through May. CoinShares ETF inflow data shows institutional desks specifically rotating into SOL products this week while dumping BTC and ETH — this is the clearest relative strength signal in crypto right now. Key support is $62; hold above that and the World Cup plus RWA narrative stays intact, break below and the next level is $58 with no meaningful support. BTC correlation still applies — SOL outperforms but cannot fully decouple, so enter only after BTC holds $62,500 on the open. Enter $63-66, TP1 $68, TP2 $72, hard stop $62."
     }
   ]
 
